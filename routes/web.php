@@ -37,8 +37,10 @@ Route::group(['prefix' => 'admin'], function(){
 Route::group(['prefix' => 'api'], function(){
 
     //products apic
-    // Route::get('/products')
+    Route::get('/', function(){
+        return 'here we are';
+    });
 
     //brands controller
-    Route::get('/getbrands/{$cat}', 'ApiBrandController@getCatBrands')->name('api.getCategoryBrands');
+    Route::get('/getbrands/{id}', 'ApiBrandController@getCatBrands');
 });

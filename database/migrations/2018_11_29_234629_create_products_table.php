@@ -19,11 +19,13 @@ class CreateProductsTable extends Migration
             $table->integer('brand_id');
             $table->string('code')->unique();
             $table->string('name');
+            $table->string('slug');
             $table->string('price');
             $table->string('quantity');
             $table->boolean('published')->defalt(false);
-            $table->string('description');
-            $table->string('description_long');
+            $table->text('description')->nullable();
+            $table->text('description_long')->nullable();
+            $table->string('tags')->nullable();
             $table->string('thumbnail');
             $table->string('image');
             $table->timestamps();

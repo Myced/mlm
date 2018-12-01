@@ -16,7 +16,10 @@
         <div id="page-wrapper" class="page-loading">
 
             <div class="preloader themed-background page-loading">
-                <h1 class="push-top-bottom text-light text-center"><strong>Pro</strong>UI</h1>
+                <h1 class="push-top-bottom text-light text-center">
+                    <strong> {{ env('ADMIN_TITLE') }} </strong>
+                    E commerce
+                </h1>
                 <div class="inner">
                     <h3 class="text-light visible-lt-ie10"><strong>Loading..</strong></h3>
                     <div class="preloader-spinner hidden-lt-ie10"></div>
