@@ -20,8 +20,11 @@ class CreateProductsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('price');
+            $table->string('quantity');
+            $table->boolean('published')->defalt(false);
             $table->string('description');
             $table->string('description_long');
+            $table->string('thumbnail');
             $table->string('image');
             $table->timestamps();
         });

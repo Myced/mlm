@@ -9,7 +9,7 @@
     <div class="sidebar-section sidebar-user clearfix sidebar-nav-mini-hide">
         <div class="sidebar-user-avatar">
             <a href="page_ready_user_profile.html">
-                <img src="/admin/img/placeholders/avatars/avatar2.jpg" alt="avatar">
+                <img src="/adminn/img/placeholders/avatars/avatar2.jpg" alt="avatar">
             </a>
         </div>
         <div class="sidebar-user-name">Ndi Cedric</div>
@@ -36,7 +36,7 @@
 
     <!-- Sidebar Navigation -->
     <ul class="sidebar-nav">
-        <li>
+        <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
             <a href="{{ route('dashboard') }}">
                 <i class="gi gi-stopwatch sidebar-nav-icon"></i>
                 <span class="sidebar-nav-mini-hide">Dashboard</span>
@@ -51,13 +51,13 @@
             <span class="sidebar-header-options clearfix">
                 <a href="javascript:void(0)" data-toggle="tooltip"
                     title="Create and Manage Categories and Brands">
-                    <i class="gi gi-show_big_thumbnail sidebar-header-title"></i>
+                    <i class="gi gi-show_big_thumbnails sidebar-header-title"></i>
                 </a>
             </span>
             <span class="sidebar-header-title">Categories/Brands</span>
         </li>
 
-        <li>
+        <li class="{{ Request::is('categories') ? 'active' : '' }}">
             <a href="{{ route('categories') }}">
                 <i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i>
                 <span class="sidebar-nav-mini-hide">Categories</span>
@@ -93,6 +93,41 @@
             </ul>
         </li>
 
+        <li class="sidebar-header">
+            <span class="sidebar-header-options clearfix">
+                <a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings">
+                    <i class="gi gi-settings"></i>
+                </a>
+                <a href="javascript:void(0)" data-toggle="tooltip"
+                title="Create the most amazing pages with the widget kit!">
+                <i class="gi gi-lightbulb"></i></a></span>
+            <span class="sidebar-header-title">Products</span>
+        </li>
+
+        <li class="{{ Request::is('/admin/product/create') ? 'active' : '' }}">
+            <a href="{{ route('product.create') }}">
+                <i class="fa fa-plus sidebar-nav-icon"></i>
+                <span class="sidebar-nav-mini-hide">Add Product</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('products') }}">
+                <i class="gi gi-stopwatch sidebar-nav-icon"></i>
+                <span class="sidebar-nav-mini-hide">View Products</span>
+            </a>
+        </li>
+
+        <li class="sidebar-header">
+            <span class="sidebar-header-options clearfix">
+                <a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings">
+                    <i class="gi gi-settings"></i>
+                </a>
+                <a href="javascript:void(0)" data-toggle="tooltip"
+                title="Create the most amazing pages with the widget kit!">
+                <i class="gi gi-lightbulb"></i></a></span>
+            <span class="sidebar-header-title">Orders</span>
+        </li>
 
         <li>
             <a href="#" class="sidebar-nav-menu">
@@ -212,7 +247,7 @@
                 </li>
             </ul>
         </li>
-        <li class="active">
+        <li>
             <a href="#" class="sidebar-nav-menu"><i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i><i class="gi gi-show_big_thumbnails sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Page Layouts</span></a>
             <ul>
                 <li>
@@ -225,7 +260,7 @@
                     <a href="page_layout_fixed_top.html">Fixed Top Header</a>
                 </li>
                 <li>
-                    <a href="page_layout_fixed_top_footer.html" class=" active">Fixed Top Header + Footer</a>
+                    <a href="page_layout_fixed_top_footer.html">Fixed Top Header + Footer</a>
                 </li>
                 <li>
                     <a href="page_layout_fixed_bottom.html">Fixed Bottom Header</a>

@@ -80,7 +80,7 @@
             <div class="modal-header text-center">
                 <h2 class="modal-title">
                     <i class="gi gi-show_big_thumbnails"></i>
-                    Add New Category
+                    Add New Brand
                 </h2>
             </div>
             <!-- END Modal Header -->
@@ -91,7 +91,7 @@
                     class="form-horizontal form-bordered">
                     @csrf
                     <fieldset>
-                        <legend>Category Info</legend>
+                        <legend>Brand Info</legend>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label"

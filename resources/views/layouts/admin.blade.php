@@ -8,7 +8,7 @@
     <!-- END Stylesheets -->
 
     <!-- Modernizr (browser feature detection library) -->
-    <script src="/admin/js/vendor/modernizr.min.js"></script>
+    <script src="/adminn/js/vendor/modernizr.min.js"></script>
 </head>
 
     <body>
@@ -68,7 +68,7 @@
         </div>
         <!-- END Page Wrapper -->
 
-        <!-- Scroll to top link, initialized in /admin/js/app.js - scrollToTop() -->
+        <!-- Scroll to top link, initialized in /adminn/js/app.js - scrollToTop() -->
         <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
 
         <!-- User Settings, modal which opens from Settings link (found in top right user menu) and the Cog link (found in sidebar user info) -->

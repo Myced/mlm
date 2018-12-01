@@ -23,4 +23,22 @@ Route::group(['prefix' => 'admin'], function(){
         Route::get('/manage', 'BrandController@manage')->name('brands.manage');
         Route::post('/store', 'BrandController@store')->name('brand.store');
     });
+
+    //manage products here
+    Route::group(['prefix' => 'product'], function(){
+        Route::get('/', 'ProductsController@index')->name('products');
+        Route::get('/create', 'ProductsController@create')->name('product.create');
+        Route::post('/store', 'ProductsController@store')->name('product.store');
+        Route::get('/manage', 'ProductsController@manage')->name('products.manage');
+    });
+});
+
+//register simple api routes
+Route::group(['prefix' => 'api'], function(){
+
+    //products apic
+    // Route::get('/products')
+
+    //brands controller
+    Route::get('/getbrands/{$cat}', 'ApiBrandController@getCatBrands')->name('api.getCategoryBrands');
 });

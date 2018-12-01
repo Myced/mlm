@@ -4,7 +4,7 @@
         <!-- Sidebar Content -->
         <div class="sidebar-content">
             <!-- Chat -->
-            <!-- Chat demo functionality initialized in /admin/js/app.js -> chatUi() -->
+            <!-- Chat demo functionality initialized in /adminn/js/app.js -> chatUi() -->
             <a href="page_ready_chat.html" class="sidebar-title">
                 <i class="gi gi-comments pull-right"></i> <strong>Chat</strong>UI
             </a>
@@ -13,73 +13,73 @@
                 <li>
                     <a href="javascript:void(0)" class="chat-user-online">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar12.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar12.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" class="chat-user-online">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar15.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar15.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" class="chat-user-online">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar10.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar10.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" class="chat-user-online">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar4.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar4.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" class="chat-user-away">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar7.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar7.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" class="chat-user-away">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar9.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar9.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)" class="chat-user-busy">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar16.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar16.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar1.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar1.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar4.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar4.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar3.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar3.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar13.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar13.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)">
                         <span></span>
-                        <img src="/admin/img/placeholders/avatars/avatar5.jpg" alt="avatar" class="img-circle">
+                        <img src="/adminn/img/placeholders/avatars/avatar5.jpg" alt="avatar" class="img-circle">
                     </a>
                 </li>
             </ul>
@@ -92,7 +92,7 @@
                     <button id="chat-talk-close-btn" class="btn btn-xs btn-default pull-right">
                         <i class="fa fa-times"></i>
                     </button>
-                    <img src="/admin/img/placeholders/avatars/avatar5.jpg" alt="avatar" class="img-circle pull-left">
+                    <img src="/adminn/img/placeholders/avatars/avatar5.jpg" alt="avatar" class="img-circle pull-left">
                     <strong>John</strong> Doe
                 </div>
                 <!-- END Chat Info -->
