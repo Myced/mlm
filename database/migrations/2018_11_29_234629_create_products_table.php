@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->string('price');
             $table->string('quantity');
+            $table->int('views')->default(0);
             $table->boolean('published')->defalt(false);
             $table->text('description')->nullable();
             $table->text('description_long')->nullable();

@@ -14,6 +14,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->composer('site.*', function($view){
+            //pass the view with data
+            $view->with('categories', \App\Admin\Category::all());
+        });
     }
 
     /**

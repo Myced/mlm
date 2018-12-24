@@ -5,13 +5,13 @@
             <div class="col-lg-3 footer_col">
                 <div class="footer_column footer_contact">
                     <div class="logo_container">
-                        <div class="logo"><a href="#">OneTech</a></div>
+                        <div class="logo"><a href="#">{{ config('app.name', 'MLM') }}</a></div>
                     </div>
                     <div class="footer_title">Got Question? Call Us 24/7</div>
-                    <div class="footer_phone">+38 068 005 3570</div>
+                    <div class="footer_phone">+237 673901939</div>
                     <div class="footer_contact_text">
-                        <p>17 Princess Road, London</p>
-                        <p>Grester London NW18JR, UK</p>
+                        <p>Akwa, Douala</p>
+                        <p>At Rue Frankville, Cameroon</p>
                     </div>
                     <div class="footer_social">
                         <ul>
@@ -35,22 +35,6 @@
                         <li><a href="#">Smartphones & Tablets</a></li>
                         <li><a href="#">TV & Audio</a></li>
                     </ul>
-                    <div class="footer_subtitle">Gadgets</div>
-                    <ul class="footer_list">
-                        <li><a href="#">Car Electronics</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-2">
-                <div class="footer_column">
-                    <ul class="footer_list footer_list_2">
-                        <li><a href="#">Video Games & Consoles</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Cameras & Photos</a></li>
-                        <li><a href="#">Hardware</a></li>
-                        <li><a href="#">Computers & Laptops</a></li>
-                    </ul>
                 </div>
             </div>
 
@@ -64,7 +48,17 @@
                         <li><a href="#">Customer Services</a></li>
                         <li><a href="#">Returns / Exchange</a></li>
                         <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Product Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <div class="footer_column">
+                    <div class="footer_title">Privacy</div>
+                    <ul class="footer_list">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms and Conditions</a></li>
+                        <li><a href="#">About Us</a></li>
                     </ul>
                 </div>
             </div>

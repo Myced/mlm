@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('title')
+    {{ __('Add Brand') }}
+@endsection
+
 @section('content')
 <!-- Fixed Top Header + Footer Header -->
 <div class="content-header">
@@ -7,7 +11,7 @@
     <div class="header-section">
         <h1>
             <i class="gi gi-show_big_thumbnails"></i>
-            Category Brands
+            Category Brands ({{count($brands)}})
             <br>
             <small>View and Add Brands</small>
         </h1>
@@ -38,7 +42,11 @@
                         <div class="col-xs-4">
                             <h3>
                                 <strong>
-                                    {{ $brand->category->name }}
+                                    @if($brand->category_id != -1)
+                                        {{ $brand->category->name }}
+                                    @else
+                                        {{ 'None/Mult' }}
+                                    @endif
                                 </strong><br>
                                 <small>Category</small>
                             </h3>
@@ -101,7 +109,7 @@
                             </label>
                             <div class="col-md-8">
                                 <input type="text" id="name" name="name"
-                                class="form-control" value="" placeholder="Eg Phones" required>
+                                class="form-control" value="" placeholder="Eg Samsung" required>
                             </div>
                         </div>
 
@@ -114,6 +122,7 @@
                             <div class="col-md-8">
                                 <select class="form-control select-chosen" name="category">
                                     <option value="">--Select Category --</option>
+                                    <option value="-1">None (or Multiple Categories)</option>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">
                                             {{ $category->name }}

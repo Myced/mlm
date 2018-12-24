@@ -44,3 +44,11 @@ Route::group(['prefix' => 'api'], function(){
     //brands controller
     Route::get('/getbrands/{id}', 'ApiBrandController@getCatBrands');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//product view routes
+Route::get('/products', 'ShoppingController@index')->name('products');
+Route::get('/{$category}', 'ShoppingController@productsCategory')->name('products.category');

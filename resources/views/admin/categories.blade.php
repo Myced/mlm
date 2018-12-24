@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('title')
+    {{ __('Add Category') }}
+@endsection
+
 @section('content')
 <!-- Fixed Top Header + Footer Header -->
 <div class="content-header">
@@ -7,7 +11,7 @@
     <div class="header-section">
         <h1>
             <i class="gi gi-show_big_thumbnails"></i>
-            Product Categories
+            Product Categories ({{count($categories)}})
             <br>
             <small>View and Add Categories</small>
         </h1>

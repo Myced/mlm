@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('title')
+    {{ 'Home' }}
+@endsection
+
 @section('content')
 <div class="banner">
     <div class="banner_background" style="background-image:url(/site/images/banner_background.jpg)"></div>
@@ -17,7 +21,6 @@
         </div>
     </div>
 </div>
-
 <!-- Characteristics -->
 
 <div class="characteristics">
