@@ -112,7 +112,7 @@
         </li>
 
         <li>
-            <a href="{{ route('products') }}">
+            <a href="{{ route('admin.products') }}">
                 <i class="gi gi-stopwatch sidebar-nav-icon"></i>
                 <span class="sidebar-nav-mini-hide">View Products</span>
             </a>

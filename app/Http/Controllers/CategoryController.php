@@ -44,6 +44,7 @@ class CategoryController extends Controller
             else {
                 //stor the category
                 $category->name = $request->name;
+                $category->slug = str_slug($request->name);
                 $category->description = $request->description;
                 $category->save();
 

@@ -26,7 +26,7 @@ Route::group(['prefix' => 'admin'], function(){
 
     //manage products here
     Route::group(['prefix' => 'product'], function(){
-        Route::get('/', 'ProductsController@index')->name('products');
+        Route::get('/', 'ProductsController@index')->name('admin.products');
         Route::get('/create', 'ProductsController@create')->name('product.create');
         Route::post('/store', 'ProductsController@store')->name('product.store');
         Route::get('/manage', 'ProductsController@manage')->name('products.manage');
@@ -51,4 +51,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //product view routes
 Route::get('/products', 'ShoppingController@index')->name('products');
-Route::get('/{$category}', 'ShoppingController@productsCategory')->name('products.category');
+Route::get('/products/{slug}', 'ShoppingController@view')->name('product.detail');
+Route::get('/category/{category}', 'ShoppingController@productsCategory')->name('products.category');

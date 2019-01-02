@@ -7,5 +7,4 @@
 <script src="/site/plugins/greensock/animation.gsap.min.js"></script>
 <script src="/site/plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="/site/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="/site/plugins/slick-1.8.0/slick.js"></script>
 <script src="/site/plugins/easing/easing.js"></script>

@@ -31,13 +31,14 @@ class BrandController extends Controller
 
         if(count($query) != 0)
         {
-            session()->flash('error', 'This Brand of this Category already exist');
+            session()->flash('error', 'This Brand already exist');
             return back();
         }
         else {
             $brand = new Brand;
             $brand->category_id = $request->category;
             $brand->name = $request->name;
+            $brand->slug = str_slug($request->name);
             $brand->description = $request->description;
 
             $brand->save();

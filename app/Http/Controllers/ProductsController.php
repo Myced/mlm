@@ -12,7 +12,9 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        return view('admin.products');
+        $products = Product::all();
+        $out = Product::outOfStock()->count();
+        return view('admin.products', compact('products', 'out'));
     }
 
     public function create()

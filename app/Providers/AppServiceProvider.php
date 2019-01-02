@@ -18,6 +18,13 @@ class AppServiceProvider extends ServiceProvider
             //pass the view with data
             $view->with('categories', \App\Admin\Category::all());
         });
+
+        view()->composer(
+            ['site.products', 'site.product_category', 'site.product_brand']
+            , function($view){
+            //pass the view with data
+            $view->with('brands', \App\Admin\Brand::all());
+        });
     }
 
     /**
