@@ -4,6 +4,12 @@
     {{ 'Home' }}
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="/site/plugins/slick-1.8.0/slick.css">
+    <link rel="stylesheet" type="text/css" href="/site/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="/site/styles/responsive.css">
+@endsection
+
 @section('content')
 <div class="banner">
     <div class="banner_background" style="background-image:url(/site/images/banner_background.jpg)"></div>
@@ -4072,4 +4078,9 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="/site/plugins/slick-1.8.0/slick.js"></script>
+    <script src="/site/js/custom.js"></script>
 @endsection
