@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer(
-            ['site.products', 'site.product_category', 'site.product_brand']
+            ['site.products', 'site.product_categories', 'site.product_brands']
             , function($view){
             //pass the view with data
             $view->with('brands', \App\Admin\Brand::all());

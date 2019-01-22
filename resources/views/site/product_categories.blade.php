@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
 @section('title')
-    {{ __('Products') }}
+    {{ __(' Category - ') }} {{ $category->name }}
 @endsection
 
 @section('styles')
@@ -18,7 +18,7 @@
             data-image-src="/site/images/shop_background.jpg"></div>
         <div class="home_overlay"></div>
         <div class="home_content d-flex flex-column align-items-center justify-content-center">
-            <h2 class="home_title">All Products</h2>
+            <h2 class="home_title"> {{ $category->name }} </h2>
         </div>
     </div>
     <!-- end page title  -->
@@ -36,7 +36,7 @@
                                 <li><a href="{{ route('products') }}">All Products</a></li>
 
                                 @foreach($categories as $category)
-                                    <li>
+                                    <li class="active">
                                         <a href="{{ route('products.category', ['category' => $category->slug]) }}">
                                             {{ $category->name }}
                                         </a>
@@ -91,7 +91,9 @@
 					<div class="shop_content">
 						<div class="shop_bar clearfix">
 							<div class="shop_product_count">
-                                <span> {{ count($products) }} </span>
+                                <span class="text-bold">
+                                    {{ count($products) }}
+                                </span>
                                 Products
                             </div>
 
@@ -145,17 +147,6 @@
 
 						<!-- Shop Page Navigation -->
 
-						<div class="shop_page_nav d-flex flex-row">
-							<div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>
-							<ul class="page_nav d-flex flex-row">
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">...</a></li>
-								<li><a href="#">21</a></li>
-							</ul>
-							<div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
-						</div>
 
 					</div>
 
