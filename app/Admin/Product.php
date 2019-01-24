@@ -12,6 +12,11 @@ class Product extends Model
         return SELF::where('quantity', '=', 0)->get();
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Admin\Category');
+    }
+
     public function isNew()
     {
         return true;
@@ -20,5 +25,10 @@ class Product extends Model
     public function isOnPromotion()
     {
         return true;
+    }
+
+    public function addView()
+    {
+        $this->increment('views');
     }
 }

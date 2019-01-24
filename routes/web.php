@@ -50,6 +50,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //product view routes
+Route::get('/cart', 'ShoppingController@cart')->name('cart');
 Route::get('/products', 'ShoppingController@index')->name('products');
-Route::get('/products/{slug}', 'ShoppingController@view')->name('product.detail');
+Route::get('/product/{slug}', 'ShoppingController@view')->name('product.detail');
 Route::get('/category/{category}', 'ShoppingController@productsCategory')->name('products.category');
+Route::get('/brand/{brand}', 'ShoppingController@productBrand')->name('products.brand');

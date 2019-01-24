@@ -70,7 +70,6 @@
                             <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
                             <li class="hassubs">
                                 <a href="#">
-                                    <i class="fa fa-user "></i>
                                     My Account
                                     <i class="fas fa-chevron-down"></i></a>
                                 <ul>
