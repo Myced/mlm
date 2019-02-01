@@ -8,7 +8,11 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('layouts.admin');
-        return view('admin.template');
+        return view('admin.index');
+    }
+
+    public function orders()
+    {
+        return view('admin.orders');
     }
 }

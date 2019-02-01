@@ -12,6 +12,7 @@ class ShoppingController extends Controller
 {
     public function index()
     {
+        // composer require hardevine/shoppingcart
         $products = $this->getProducts();
 
 
@@ -63,16 +64,4 @@ class ShoppingController extends Controller
         return view('site.cart');
     }
 
-    public function getProducts()
-    {
-        $products = Product::where('published', '=', true)
-                            ->paginate();
-
-        return $products;
-    }
-
-    public function view($slug)
-    {
-
-    }
 }

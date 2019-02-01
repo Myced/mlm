@@ -1,7 +1,11 @@
 <div class="sidebar-content">
     <!-- Brand -->
     <a href="index.html" class="sidebar-brand">
-        <i class="gi gi-flash"></i><span class="sidebar-nav-mini-hide"><strong>Pro</strong>UI</span>
+        <i class="gi gi-flash"></i>
+        <span class="sidebar-nav-mini-hide">
+            <strong>{{ config('app.name', 'MLM') }}</strong>
+
+        </span>
     </a>
     <!-- END Brand -->
 

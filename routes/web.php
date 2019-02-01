@@ -7,6 +7,7 @@ Route::get('/', function () {
 //admin routes
 Route::group(['prefix' => 'admin'], function(){
     Route::get('/', 'AdminController@index')->name('dashboard');
+    Route::get('/orders', 'AdminController@orders')->name('orders');
 
     //category routes
     Route::group(['prefix' => 'category'], function(){
