@@ -4,70 +4,117 @@
     Cart
 @endsection
 
-@section('styles')
-<link rel="stylesheet" type="text/css" href="/site/styles/cart_styles.css">
-<link rel="stylesheet" type="text/css" href="/site/styles/cart_responsive.css">
-@endsection
-
 @section('content')
-<!-- Cart -->
 
-	<div class="cart_section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<div class="cart_container">
-						<div class="cart_title">Shopping Cart</div>
-						<div class="cart_items">
-							<ul class="cart_list">
-								<li class="cart_item clearfix">
-									<div class="cart_item_image"><img src="/site/images/shopping_cart.jpg" alt=""></div>
-									<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-										<div class="cart_item_name cart_info_col">
-											<div class="cart_item_title">Name</div>
-											<div class="cart_item_text">MacBook Air 13</div>
-										</div>
-										<div class="cart_item_color cart_info_col">
-											<div class="cart_item_title">Color</div>
-											<div class="cart_item_text"><span style="background-color:#999999;"></span>Silver</div>
-										</div>
-										<div class="cart_item_quantity cart_info_col">
-											<div class="cart_item_title">Quantity</div>
-											<div class="cart_item_text">1</div>
-										</div>
-										<div class="cart_item_price cart_info_col">
-											<div class="cart_item_title">Price</div>
-											<div class="cart_item_text">$2000</div>
-										</div>
-										<div class="cart_item_total cart_info_col">
-											<div class="cart_item_title">Total</div>
-											<div class="cart_item_text">$2000</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
+<div class="main-content shop-page shoppingcart-content">
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="#">Home</a> \ <span class="current">SHOPPING CART</span>
+        </div>
+        <div class="row content-form">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 content-offset">
+                <div class="cart-content">
+                    <table class="shopping-cart-content">
+                        <tr class="title">
+                            <td class="product-thumb"></td>
+                            <td class="product-name">Product Name</td>
+                            <td class="price">Unit Price</td>
+                            <td class="quantity-item">Qty</td>
+                            <td class="total">SubTotal</td>
+                            <td class="delete-item"></td>
+                        </tr>
 
-						<!-- Order Total -->
-						<div class="order_total">
-							<div class="order_total_content text-md-right">
-								<div class="order_total_title">Order Total:</div>
-								<div class="order_total_amount">$2000</div>
-							</div>
-						</div>
+                        @if(Cart::count() == 0)
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                <strong>
+                                    <h3 class="text-bold"> Your Cart is empty </h3>
+                                </strong>
+                            </td>
+                        </tr>
+                        @else
+                            @foreach(Cart::content() as $cartItem)
+                            <tr class="each-item">
+                                <td class="product-thumb">
+                                    <a href="{{ route('product.detail', ['slug' => $cartItem->model->slug]) }}">
+                                        <img src="{{ $cartItem->model->thumbnail }}" alt="">
+                                    </a>
+                                </td>
+                                <td class="product-name" data-title="Product Name">
+                                    <a href="{{ route('product.detail', ['slug' => $cartItem->model->slug]) }}"
+                                        class="product-name text-bold">
+                                        {{ $cartItem->name }}
+                                    </a>
+                                </td>
+                                <td class="price" data-title="Unit Price">
+                                    FCFA {{ number_format($cartItem->price) }}
+                                </td>
+                                <td class="quantity-item" data-title="Qty">
+                                    <div class="quantity">
 
-						<div class="cart_buttons">
-							<button type="button" class="button cart_button_clear">Add to Cart</button>
-							<button type="button" class="button cart_button_checkout">Add to Cart</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                        <div class="group-quantity-button">
+                                            <a class="minus" href="#"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                                            <input class="input-text qty text" type="text" size="4" title="Qty"
+                                            value="{{ $cartItem->qty }}" name="quantity">
+                                            <a class="plus" href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="total" data-title="SubTotal">FCFA {{ $cartItem->total }}</td>
+                                <td class="delete-item" data-title="Remove"><a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
+                            </tr>
+                            @endforeach
+                        @endif
 
-@endsection
 
-@section('scripts')
-<script src="js/cart_custom.js"></script>
+                        <tr class="checkout-cart group-button">
+                            <td colspan="6" class="left">
+                                <div class="left">
+                                    <a href="{{ session()->get('_previous')['url'] }}" class="continue-shopping submit">
+                                        <i class="fa fa-arrow-left"></i>
+                                        Continue Shopping
+                                    </a>
+                                </div>
+                                <div class="right">
+                                    @if(\Cart::count() > 0)
+                                    <a href="{{ route('cart.destroy') }}" class="submit update">Clear Shopping Cart</a>
+                                    <a href="#" class="submit update">Update Shopping Cart</a>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3 ">
+                <div class="proceed-checkout">
+                    <h4 class="main-title">Proceed to Checkout</h4>
+                    <div class="content">
+                        <h5 class="title">cart Total</h5>
+                        <div class="info-checkout">
+                            <span class="text">Cart subtotal: </span>
+                            <span class="item">FCFA {{ \Cart::subTotal() }}</span>
+                        </div>
+                        <div class="info-checkout shipping">
+                            <span class="text">Shipping:</span><span class="item">Free shipping</span>
+                        </div>
+                        <div class="total-checkout">
+                            <span class="text">Grand Total </span><span class="price">
+                                 FCFA {{ \Cart::total() }}
+                             </span>
+                        </div>
+                        <div class="group-button">
+                            @if(\Cart::count() > 0)
+                                <a href="{{ route('checkout') }}" class="button submit">Checkout</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @include('site_includes.brands')
+</div>
+
 @endsection

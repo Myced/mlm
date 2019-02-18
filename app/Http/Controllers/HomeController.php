@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Classes\CookieManager;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +24,25 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $this->validateCookie();
+
         return view('home');
+    }
+
+    private function validateCookie()
+    {
+        $cookieManager = new CookieManager;
+        $cookieManager->setCookie();
+        return;
+    }
+
+    public function contact()
+    {
+        return view('site.contact');
+    }
+
+    public function about()
+    {
+        return view('site.about_us');
     }
 }

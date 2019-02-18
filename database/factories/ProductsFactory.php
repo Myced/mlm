@@ -14,7 +14,7 @@ $factory->define(App\Admin\Product::class, function (Faker $faker) {
         'published' => $faker->boolean,
         'description' => $faker->text(400),
         'description_long' => $faker->paragraph(8),
-        'thumbnail' => '/uploads/products/images/product.png',
+        'thumbnail' => '/uploads/products/thumbnails/product.png',
         'image' => '/uploads/products/images/product.png',
     ];
 });

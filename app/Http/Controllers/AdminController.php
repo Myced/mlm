@@ -15,4 +15,14 @@ class AdminController extends Controller
     {
         return view('admin.orders');
     }
+
+    public function customer()
+    {
+        return view('admin.customer');
+    }
+
+    public function orderDetail()
+    {
+        return view('admin.order_detail');
+    }
 }

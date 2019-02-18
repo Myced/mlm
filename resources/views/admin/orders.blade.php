@@ -83,8 +83,13 @@
         </thead>
         <tbody>
             <tr>
-                <td class="text-center"><a href="page_ecom_order_view.html"><strong>ORD.685199</strong></a></td>
-                <td class="visible-lg"><a href="javascript:void(0)">Ryan Hopkins</a></td>
+                <td class="text-center">
+                    <a href="{{ route('order.detail') }}">
+                        <strong>ORD.685199</strong></a>
+                    </td>
+                <td class="visible-lg">
+                    <a href="{{ route('customer') }}">Cedric Glothelo</a>
+                </td>
                 <td class="text-center visible-lg"><a href="javascript:void(0)">4</a></td>
                 <td class="hidden-xs">Credit Card</td>
                 <td class="text-right hidden-xs"><strong>$1776,00</strong></td>

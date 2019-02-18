@@ -1,122 +1,146 @@
-<nav class="main_nav">
-    <div class="container">
-        <div class="row">
-            <div class="col">
+<div class="header-nav-inner">
+    <div class="box-header-nav">
+        <div class=" container-wapper">
+            <a class="menu-bar mobile-navigation" href="#">
+                <span class="icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="text">Main Menu</span>
+            </a>
+            <a href="#" class="header-top-menu-mobile"><span class="fa fa-cog" aria-hidden="true"></span></a>
+            <ul id="menu-main-menu" class="main-menu clone-main-menu ovic-clone-mobile-menu box-has-content">
+                <li class="menu-item">
+                    <a href="/" class="kt-item-title ovic-menu-item-title" title="Home">HOME</a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('products') }}" class="kt-item-title ovic-menu-item-title" title="Demos">
+                        Products
+                    </a>
 
-                <div class="main_nav_content d-flex flex-row">
-
-                    <!-- Categories Menu -->
-
-                    <div class="cat_menu_container">
-                        <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-                            <div class="cat_burger"><span></span><span></span><span></span></div>
-                            <div class="cat_menu_text">categories</div>
+                </li>
+                <li class="menu-item menu-item-has-children">
+                    <a href="#" class="kt-item-title ovic-menu-item-title" title="Megamenu">Megamenu </a>
+                    <div class="sub-menu mega-menu mega-menu1">
+                        <div class="row">
+                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                                <h5 class="title widgettitle">Laptop & Tablet</h5>
+                                <ul>
+                                    <li><a href="#">Laptops, Desktops & Monitors</a></li>
+                                    <li><a href="#">Printers & Ink</a></li>
+                                    <li><a href="#">Computer Accessories</a></li>
+                                    <li><a href="#">Software</a></li>
+                                    <li><a href="#">Macbook</a></li>
+                                    <li><a href="#">Macbook Air</a></li>
+                                    <li><a href="#">Laptop Pro</a></li>
+                                </ul>
+                            </div>
+                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                                <h5 class="title widgettitle">TV & Audio</h5>
+                                <ul>
+                                    <li><a href="#">Mouse</a></li>
+                                    <li><a href="#">Printer and Accessories</a></li>
+                                    <li><a href="#">Network Equipment</a></li>
+                                    <li><a href="#">Computer Components</a></li>
+                                    <li><a href="#">Memory Stick</a></li>
+                                    <li><a href="#">Selfie Stick</a></li>
+                                    <li><a href="#">Binoculars</a></li>
+                                </ul>
+                            </div>
+                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                                <h5 class="title widgettitle">Smartphone</h5>
+                                <ul>
+                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="#">Phone Batteries</a></li>
+                                    <li><a href="#">Phone Charger</a></li>
+                                    <li><a href="#">Phone Screen</a></li>
+                                    <li><a href="#">Head Set</a></li>
+                                    <li><a href="#">Software</a></li>
+                                </ul>
+                            </div>
                         </div>
-
-                        <ul class="cat_menu">
-                            @foreach($categories as $category)
-                                <li>
-                                    <a href="{{ route('products.category', ['category' => $category->name]) }}">
-                                        {{ $category->name }}
-                                        <i class="fas fa-chevron-right ml-auto"></i>
-                                    </a>
-                                </li>
-                            @endforeach
-
-                            <li class="hassubs">
-                                <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
+                        <div class="row">
+                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                                <h5 class="title widgettitle">Headphone</h5>
                                 <ul>
-                                    <li class="hassubs">
-                                        <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                        <ul>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="#">Phone Batteries</a></li>
+                                    <li><a href="#">Phone Charger</a></li>
+                                    <li><a href="#">Phone Screen</a></li>
+                                    <li><a href="#">Head Set</a></li>
+                                    <li><a href="#">Software</a></li>
                                 </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Main Nav Menu -->
-
-                    <div class="main_nav_menu ml-auto">
-                        <ul class="standard_dropdown main_nav_dropdown">
-                            <li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
-                            <li>
-                                <a href="{{ route('products') }}">
-                                    Products
-                                </a>
-                            </li>
-
-                            <li class="hassubs">
-                                <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
+                            </div>
+                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                                <h5 class="title widgettitle">Camera</h5>
                                 <ul>
-                                    <li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
+                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="#">Phone Batteries</a></li>
+                                    <li><a href="#">Phone Charger</a></li>
+                                    <li><a href="#">Phone Screen</a></li>
+                                    <li><a href="#">Head Set</a></li>
+                                    <li><a href="#">Software</a></li>
                                 </ul>
-                            </li>
-                            <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                            <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                            <li class="hassubs">
-                                <a href="#">
-                                    My Account
-                                    <i class="fas fa-chevron-down"></i></a>
+                            </div>
+                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                                <h5 class="title widgettitle">Printer & ink</h5>
                                 <ul>
-                                    <li>
-                                        <a href="#">
-                                            Carter
-                                            <i class="fas fa-chevron-down"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            My Order
-                                            <i class="fas fa-chevron-down"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            My Dashboard
-                                            <i class="fas fa-chevron-down"></i>
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            Logout<i class="fas fa-chevron-down"></i>
-                                        </a>
-                                    </li>
+                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="#">Phone Batteries</a></li>
+                                    <li><a href="#">Phone Charger</a></li>
+                                    <li><a href="#">Phone Screen</a></li>
+                                    <li><a href="#">Head Set</a></li>
+                                    <li><a href="#">Software</a></li>
                                 </ul>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Menu Trigger -->
-
-                    <div class="menu_trigger_container ml-auto">
-                        <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
-                            <div class="menu_burger">
-                                <div class="menu_trigger_text">menu</div>
-                                <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
                             </div>
                         </div>
                     </div>
+                </li>
 
-                </div>
-            </div>
+                <li class="">
+                    <a href="{{ route('contact') }}"
+                    class="kt-item-title ovic-menu-item-title" title="Contact Us">
+                    Contact Us
+                </a>
+
+                </li>
+                <li class="">
+                    <a href="{{ route('about-us') }}"
+                        class="kt-item-title ovic-menu-item-title" title="Sub Menu">
+                        About Us
+                    </a>
+
+                </li>
+
+                <li class="">
+                    <a href="{{ route('blog') }}"
+                    class="kt-item-title ovic-menu-item-title" title="Blog">
+                    Blog
+                </a>
+                @auth()
+                <li class="menu-item menu-item-has-children">
+                    <a href="javascript:void(0)"
+                        class="kt-item-title ovic-menu-item-title" title="Blog">
+                        My Account
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a href="ourblog.html">Dashboard</a></li>
+                        <li><a href="blogpost.html">Cart</a></li>
+                        <li><a href="blogpost.htm">Orders</a></li>
+                        <li><a href="blogpost.html">Logout </a></li>
+                    </ul>
+                </li>
+                @else
+                <li class="">
+                    <a href="{{ route('login') }}"
+                    class="kt-item-title ovic-menu-item-title" title="Login">
+                    Login
+                </a>
+
+                </li>
+                @endauth
+            </ul>
         </div>
     </div>
-</nav>
+</div>

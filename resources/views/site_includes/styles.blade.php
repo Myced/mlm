@@ -1,5 +1,10 @@
-<link rel="stylesheet" type="text/css" href="/site/styles/bootstrap4/bootstrap.min.css">
-<link href="/site/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/site/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="/site/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="/site/plugins/OwlCarousel2-2.2.1/animate.css">
+<link href="/site/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/site/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+<link href="/site/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/site/css/animate.min.css" rel="stylesheet">
+<link href="/site/css/magnific-popup.min.css" rel="stylesheet">
+<link href="/site/css/jquery-ui.min.css" rel="stylesheet">
+<link href="/site/css/jquery.scrollbar.min.css" rel="stylesheet">
+<link href="/site/css/chosen.min.css" rel="stylesheet">
+<link href="/site/css/ovic-mobile-menu.css" rel="stylesheet">
+<link href="/site/css/style.css" rel="stylesheet">
