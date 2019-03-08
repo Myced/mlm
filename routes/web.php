@@ -37,8 +37,21 @@ Route::group(['prefix' => 'admin'], function(){
 });
 
 //user account routes
-Route::group(['prefix' => "user"], function(){
+Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
     Route::get('/', 'UserPanelController@index')->name('user.dashboard');
+    Route::get('/orders', 'UserPanelController@orders')->name('user.orders');
+    Route::get('/order/{code}', 'UserPanelController@orderDetail')->name('user.order.detail');
+    Route::get('/order/{code}/payment', 'OrderController@payment')->name('order.payment');
+    Route::get('/order/{code}/confirm', 'OrderController@confirm')->name('order.confirm');
+    Route::get('/order/{code}/cancel', 'OrderController@cancel')->name('order.cancel');
+    Route::get('/profile', 'UserPanelController@profile')->name("user.profile");
+    Route::get('/geneology/tree', 'UserGeneologyController@index')->name('user.geneology');
+    Route::get('/geneology/tabular', 'UserGeneologyController@tabular')->name('user.geneology.tabular');
+    Route::get('/geneology/statistics', 'UserGeneologyController@statistics')->name('user.geneology.statistics');
+    Route::get('/password/change', 'UserAccountController@changePassword')->name('user.password.change');
+    Route::post('/password/change/store', 'UserAccountController@updatePassword')->name('user.password.update');
+
+
 });
 
 //register simple api routes
@@ -49,11 +62,13 @@ Route::group(['prefix' => 'api'], function(){
         return 'Unauthorized Access';
     });
 
+
     Route::group(['prefix' => 'verify'], function(){
         Route::get('/', function(){
             return 'Unknow Action';
         });
 
+        Route::get('/email/{email}', 'VerifyController@email');
         Route::post('/verifyref', 'VerifyController@verifyRef')->name('verify.ref');
     });
 
@@ -73,8 +88,22 @@ Route::get('/post/{slug}', 'PostController@post')->name('blog.post');
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::post('/cart/add', 'CartController@add')->name('cart.add');
 Route::get('/cart/destroy', 'CartController@destroy')->name('cart.destroy');
-Route::get('/checkout', 'ShoppingController@checkOut')->name('checkout');
-Route::post('/checkout/store', 'CheckoutController@checkout')->name('checkout.store');
+Route::get('/checkout', 'CheckoutController@index')->name('checkout');
+Route::post('/checkout/login', 'CheckoutController@login')->name('checkout.login');
+
+//new unathenticated user
+Route::get('/checkout/full', 'CheckoutController@createFull')->name('checkout.full.create');
+Route::post('/checkout/full/store', 'CheckoutController@fullCheckout')->name('checkout.full.store');
+
+//authenticated user, simple checkout
+Route::get('/checkout/simple', 'CheckoutController@simple')->name('checkout.simple.create');
+Route::post('/checkout/simple/store', 'CheckoutController@checkoutSimple')->name('checkout.simple.store');
+
+//authenticated user // registering new user
+Route::get('/checkout/register', 'CheckoutController@createRegister')->name('checkout.user.register');
+Route::post('/checkout/register/store', 'CheckoutController@registerNewUser')->name('checkout.user.store');
+
+Route::get('/checkout/confirmation', 'CheckoutController@confirmation')->name('checkout.confirmation');
 Route::get('/products', 'ShoppingController@index')->name('products');
 Route::get('/product/{slug}', 'ShoppingController@view')->name('product.detail');
 Route::get('/category/{category}', 'ShoppingController@productsCategory')->name('products.category');

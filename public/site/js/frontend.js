@@ -1,3 +1,20 @@
+//function for notty js
+function notify(text, type){
+
+    new Noty({
+       type: type,
+       layout: 'topRight',
+       text: text,
+       timeout: 5000,
+       modal: false,
+       theme : "nest",
+       animation: {
+         open: " animated bounceInRight ",
+         close: "animated bounceOutRight"
+       }
+     }).show()
+}
+
 jQuery(document).ready(function ($) {
     "use strict";
 
@@ -413,6 +430,7 @@ jQuery(document).ready(function ($) {
         $('.header').find('.main-header .logo > a').clone().appendTo('.header-mobile .logo');
         $('.header').find('.main-header .box-minicart .minicart ').clone().appendTo('.header-mobile .box-minicart');
     }
+
 
     function click_function() {
         $(document).on('click', '.changed-button', function () {

@@ -2,16 +2,17 @@
 namespace App\Classes;
 
 use Cart;
+use Auth;
 use Cookie;
+use App\User;
 use App\UserLevel;
-use App\Models\User;
+use App\Functions;
 use App\OrderStatus;
 use App\Models\Order;
 use App\Models\UserData;
 use App\Models\OrderLog;
 use Illuminate\Http\Request;
 use App\Models\OrderContent;
-use App\Classes\CheckoutManager;
 use Illuminate\Support\Facades\Hash;
 
 class CheckoutManager
@@ -20,6 +21,9 @@ class CheckoutManager
     protected $request;
     protected $userLevel = UserLevel::USER;
     protected $user;
+
+    public $authenticate = false;
+    public $saveData = true;
 
     function __construct($request)
     {
@@ -30,12 +34,15 @@ class CheckoutManager
     {
         $request = $this->request;
 
-        $user = $this->createUserAccount($request);
-        // $user = User::find('1');
-        $this->user = $user;
+        if($this->saveData)
+        {
+            $user = $this->createUserAccount($request);
 
-        //save the user data
-        $userData = $this->saveUserData($user, $request);
+            $this->user = $user;
+
+            //save the user data
+            $userData = $this->saveUserData($user, $request);
+        }
 
         //place order
         $order = $this->placeOrder();
@@ -44,7 +51,9 @@ class CheckoutManager
         $this->emptyCart();
         $this->FireOrderPlacedEvent($order);
 
-        return back();
+        $this->finish();
+
+        return;
     }
 
     private function createUserAccount($request)
@@ -86,7 +95,7 @@ class CheckoutManager
 
             if(!is_null($referrer))
             {
-                $ref_code = $referrer->userData->referrer_code;
+                $ref_code = $referrer->userData->ref_code;
             }
             else {
                 $ref_code = null;
@@ -127,7 +136,8 @@ class CheckoutManager
 
         if($user == null)
         {
-            $userData = UserData::where('referrer_code', '=', $code)->first();
+            //get the person with this ref code
+            $userData = UserData::where('ref_code', '=', $code)->first();
 
             if($userData != null)
             {
@@ -202,9 +212,9 @@ class CheckoutManager
     {
         $order = new Order;
 
-        $order->user_id = $this->user->id;
+        $order->user_id = auth()->user()->id;
         $order->order_code = $orderCode;
-        $order->total = Cart::total();
+        $order->total = Functions::getMoney(Cart::total());
         $order->item_number = Cart::count();
         $order->status = OrderStatus::PENDING;
         $order->payment_method = $this->request->payment_method;
@@ -307,9 +317,9 @@ class CheckoutManager
         $orderLog = new OrderLog;
 
         $orderLog->order_id = $order->id;
-        $orderLog->user_id = $this->user->id;
+        $orderLog->user_id = auth()->user()->id;
         $orderLog->tag = "Order";
-        $orderLog->name = $this->user->name;
+        $orderLog->name = auth()->user()->name;
         $orderLog->description = "Order was Placed";
 
         $orderLog->save();
@@ -323,6 +333,27 @@ class CheckoutManager
     private function FireOrderPlacedEvent($order)
     {
         return;
+    }
+
+    private function finish()
+    {
+        if($this->authenticate)
+        {
+            $this->authenticateUser();
+        }
+    }
+
+    private function authenticateUser()
+    {
+        $email = $this->request->email;
+        $password = $this->request->password;
+
+        $remember = true;
+
+        Auth::attempt([
+            'email' => $email,
+            'password' => $password
+        ], $remember);
     }
 }
 

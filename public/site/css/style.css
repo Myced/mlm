@@ -4615,7 +4615,7 @@ body.home5 {
   line-height: 40px;
   border: solid 1px #e6e6e6;
   background-color: #f8f8f8;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   padding: 0 20px;
   outline: 0;
 }
@@ -7345,6 +7345,19 @@ AUTO CLEAR
     box-shadow: none;
 }
 
+.form-control.error-form
+{
+    border-color: #e61111;
+}
+
+.form-group.has-error .form-control,
+.form-group.has-error .input-group-addon
+{
+
+}
+
+.
+
 .middle
 {
     vertical-align: middle;
@@ -7386,4 +7399,15 @@ fieldset[disabled] .form-control {
 {
     border: none;
     border-radius: 0px;
+}
+
+input.input-info.input-error
+{
+    border: 1px solid #e31010;
+}
+
+.help-block
+{
+    color: #e31010;
+    margin-top: 0px;
 }

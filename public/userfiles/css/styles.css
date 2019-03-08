@@ -1,0 +1,85 @@
+.m-10
+{
+    margin: 10px;
+}
+
+.m-20
+{
+    margin: 20px;
+}
+
+.m-t-10
+{
+    margin-top: 10px;
+}
+
+.m-b-10
+{
+    margin-bottom: 10px;
+}
+
+.m-t-20
+{
+    margin-top: 20px;
+}
+
+.m-b-20
+{
+    margin-bottom: 20px;
+}
+
+.f-16
+{
+    font-size: 16px;
+}
+
+.f-18
+{
+    font-size: 18px;
+}
+
+.f-20
+{
+    font-size: 20px;
+}
+
+.f-24
+{
+    font-size: 24px;
+}
+
+.f-30
+{
+    font-size: 30px;
+}
+
+.f-32
+{
+    font-size: 32px;
+}
+
+.badge-shipped
+{
+    color: white;
+    background-color: #32cae4;
+}
+
+.text-dark
+{
+    color: #000;
+}
+
+.text-black
+{
+    color: #000;
+}
+
+.text-gray-custom
+{
+    color: #888;
+}
+
+.help-block
+{
+    margin-bottom: 25px;
+}

@@ -8,3 +8,8 @@
 <link href="/site/css/chosen.min.css" rel="stylesheet">
 <link href="/site/css/ovic-mobile-menu.css" rel="stylesheet">
 <link href="/site/css/style.css" rel="stylesheet">
+
+<!-- //notty plugin -->
+<!-- notty -->
+<link rel="stylesheet" href="/site/plugins/notty/lib/noty.css">
+<link rel="stylesheet" href="/site/plugins/notty/lib/themes/nest.css">

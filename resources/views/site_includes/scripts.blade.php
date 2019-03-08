@@ -10,4 +10,5 @@
 <script src="/site/js/jquery-ui.min.js"></script>
 <script src="/site/js/jquery.scrollbar.min.js"></script>
 <script src="/site/js/chosen.min.js"></script>
+<script src="/site/plugins/notty/lib/noty.min.js"></script>
 <script src="/site/js/frontend.js"></script>

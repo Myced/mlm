@@ -31,13 +31,7 @@
       </a>
     </li>
     <!-- END User avatar toggle-->
-    <!-- START lock screen-->
-    <li class="nav-item d-none d-md-block">
-      <a class="nav-link" href="lock.html" title="Lock screen">
-        <em class="icon-lock"></em>
-      </a>
-    </li>
-    <!-- END lock screen-->
+    
   </ul>
   <!-- END Left navbar-->
   <!-- START Right Navbar-->

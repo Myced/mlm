@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $this->validateCookie();
 
-        return view('home');
+        return view('site.index');
     }
 
     private function validateCookie()

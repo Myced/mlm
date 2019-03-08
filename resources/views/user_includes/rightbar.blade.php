@@ -217,7 +217,7 @@
           <!-- END list title-->
           <div class="list-group-item list-group-item-action border-0">
             <div class="media">
-              <img class="align-self-center mr-3 rounded-circle thumb48" src="img/user/05.jpg" alt="Image">
+              <img class="align-self-center mr-3 rounded-circle thumb48" src="/userfiles/img/user/05.jpg" alt="Image">
               <div class="media-body text-truncate">
                 <a href="#">
                   <strong>Juan Sims</strong>
@@ -232,7 +232,7 @@
           </div>
           <div class="list-group-item list-group-item-action border-0">
             <div class="media">
-              <img class="align-self-center mr-3 rounded-circle thumb48" src="img/user/06.jpg" alt="Image">
+              <img class="align-self-center mr-3 rounded-circle thumb48" src="/userfiles/img/user/06.jpg" alt="Image">
               <div class="media-body text-truncate">
                 <a href="#">
                   <strong>Maureen Jenkins</strong>
@@ -247,7 +247,7 @@
           </div>
           <div class="list-group-item list-group-item-action border-0">
             <div class="media">
-              <img class="align-self-center mr-3 rounded-circle thumb48" src="img/user/07.jpg" alt="Image">
+              <img class="align-self-center mr-3 rounded-circle thumb48" src="/userfiles/img/user/07.jpg" alt="Image">
               <div class="media-body text-truncate">
                 <a href="#">
                   <strong>Billie Dunn</strong>
@@ -262,7 +262,7 @@
           </div>
           <div class="list-group-item list-group-item-action border-0">
             <div class="media">
-              <img class="align-self-center mr-3 rounded-circle thumb48" src="img/user/08.jpg" alt="Image">
+              <img class="align-self-center mr-3 rounded-circle thumb48" src="/userfiles/img/user/08.jpg" alt="Image">
               <div class="media-body text-truncate">
                 <a href="#">
                   <strong>Tomothy Roberts</strong>
@@ -282,7 +282,7 @@
           <!-- END list title-->
           <div class="list-group-item list-group-item-action border-0">
             <div class="media">
-              <img class="align-self-center mr-3 rounded-circle thumb48" src="img/user/09.jpg" alt="Image">
+              <img class="align-self-center mr-3 rounded-circle thumb48" src="/userfiles/img/user/09.jpg" alt="Image">
               <div class="media-body text-truncate">
                 <a href="#">
                   <strong>Lawrence Robinson</strong>
@@ -297,7 +297,7 @@
           </div>
           <div class="list-group-item list-group-item-action border-0">
             <div class="media">
-              <img class="align-self-center mr-3 rounded-circle thumb48" src="img/user/10.jpg" alt="Image">
+              <img class="align-self-center mr-3 rounded-circle thumb48" src="/userfiles/img/user/10.jpg" alt="Image">
               <div class="media-body text-truncate">
                 <a href="#">
                   <strong>Tyrone Owens</strong>

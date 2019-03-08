@@ -5,10 +5,11 @@
 @endsection
 
 @section('style')
-<link rel="stylesheet" href="/site/css/all.css">
+    <link rel="stylesheet" href="/site/css/all.css">
     <link rel="stylesheet" href="/site/css/smart_wizard.min.css">
     <link rel="stylesheet" href="/site/css/smart_wizard_theme_arrows.min.css">
     <link rel="stylesheet" href="/site/css/smart_wizard_theme_dots.min.css">
+
 @endsection
 
 @section('content')
@@ -101,12 +102,13 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <input type="text" name="ref_id" value="" class="form-control"
+                                                                        <input type="text" name="ref_id" value="" class="form-control "
                                                                         placeholder="Referrer id or email" id="ref_id">
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <input type="text" name="ref_name" value="" id="ref_name" class="form-control"
+                                                                        <input type="text" name="ref_name" value=""
+                                                                        id="ref_name" class="form-control"
                                                                         placeholder="Referrer Full Name (Automatically filled)" disabled>
                                                                     </div>
 
@@ -128,19 +130,23 @@
                                 </div>
                             </div>
                             <div id="step-2" class="">
-                                <div class="row">
+                                <div class="row" id="info">
                                     <div class="col-md-12">
                                         <div class="checkout-form content-form">
                                             <h4 class="main-title">User Information</h4>
 
                                             <div class="row">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
                                                     <span class="label-text">First Name <span>*</span></span>
-                                                    <input type="text" class="input-info" name="first_name">
+                                                    <input type="text" class="input-info"
+                                                    name="first_name" id="fname" required>
+                                                    <span class="help-block"></span>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <span class="label-text">Last Name <span>*</span></span>
-                                                    <input type="text" class="input-info" name="last_name">
+                                                    <input type="text" class="input-info"
+                                                        name="last_name" id="lname" required>
+                                                    <span class="help-block"></span>
                                                 </div>
                                             </div>
 
@@ -155,20 +161,27 @@
                                                         </option>
                                                         @endforeach
                                                     </select>
+                                                    <span class="help-block"></span>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <span class="label-text">Address <span>*</span></span>
-                                                    <input type="text" class="input-info" name="address">
+                                                    <input type="text" class="input-info" name="address"
+                                                        id="address" required>
+                                                    <span class="help-block"></span>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <span class="label-text">Email Address <span>*</span></span>
-                                                    <input type="text" class="input-info" id="email" name="email">
+                                                    <input type="text" class="input-info" id="email"
+                                                        name="email" required>
+                                                    <span class="help-block"></span>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <span class="label-text">Phone Number <span>*</span></span>
-                                                    <input type="text" class="input-info" id="tel" name="tel">
+                                                    <input type="text" class="input-info" id="tel" name="tel"
+                                                        required>
+                                                    <span class="help-block"></span>
                                                 </div>
                                             </div>
 
@@ -188,18 +201,22 @@
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <span class="label-text">Email <span>*</span></span>
-                                                    <input type="text" class="input-info" disabled name="email_account">
+                                                    <input type="text" class="input-info" disabled name="email_account"
+                                                        id="userEmail">
+                                                    <span class="help-block"></span>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <span class="label-text">Password <span>*</span></span>
-                                                    <input type="text" class="input-info" name="password" id="password">
+                                                    <input type="password" class="input-info" name="password" id="password">
+                                                    <span class="help-block"></span>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <span class="label-text">Repeat Password <span>*</span></span>
-                                                    <input type="text" class="input-info" name="password_confirmation" id="rpassword" >
+                                                    <input type="password" class="input-info" name="password_confirmation" id="rpassword" >
+                                                    <span class="help-block"></span>
                                                 </div>
                                             </div>
 
@@ -290,7 +307,7 @@
                                                     @foreach(\App\PaymentMethods::all() as $method)
                                                     <div class="form-group">
                                                         <input type="radio" name="payment_method" id="{{ $method }}"
-                                                        class="flat-red ref_radio" value="{{ $method }}"  >
+                                                        class="flat-red momo_class" value="{{ $method }}"  >
                                                         <label for="{{ $method }}" class="control-label my-label">
                                                             {{ \App\PaymentMethods::format($method) }}
                                                         </label>
@@ -320,7 +337,7 @@
                                                 <div class="m-l-20">
 
                                                     <p>
-                                                        <strong>Click below to complete your registration.</strong>
+                                                        <strong>Click below to complete your registration and place order.</strong>
                                                     </p>
 
                                                     <div class="group-button">
@@ -356,154 +373,6 @@
 @section('scripts')
 <script src="/site/js/icheck.min.js"></script>
 <script src="/site/js/jquery.smartWizard.min.js"></script>
-<script src="/site/js/jquery.validate.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        var cookie = $("#cookie").val();
-        var token = $("#token").val();
-
-        //check out javascript time
-        $(".ref_radio").click(function(){
-            alert('changed');
-        });
-
-        $('.ref_radio').on('ifChecked', function(event){
-            var value = $(this).val();
-            $refInfo = $("#refInfo");
-
-            if(value == "yes")
-            {
-                //then show the referrer info box
-                if($refInfo.hasClass('hide'))
-                {
-                    $refInfo.removeClass('hide');
-                }
-
-                $refInfo.addClass('show');
-            }
-            else {
-                //hide it
-                if($refInfo.hasClass('show'))
-                {
-                    $refInfo.removeClass('show');
-                }
-
-                $refInfo.addClass('hide');
-            }
-        });
-
-        $("#verifyRefBtn").click(function(){
-            var refId = $("#ref_id").val();
-
-            if(refId == "")
-            {
-                alert("The Ref Id or email is required");
-            }
-            else {
-                //verfify ref id
-                verifyRef(refId);
-            }
-        });
-
-        function verifyRef(ref)
-        {
-            //make an ajax request
-            var ajax =  $.ajax({
-                url : "/api/verify/verifyref",
-                method : "post",
-                dataType : "text",
-                data : { _token:token, cookie:cookie, ref:ref },
-                error : function(e)
-                {
-                    alert("encountered an error");
-                    console.log(e);
-                },
-                success : function(data)
-                {
-                    var object = $.parseJSON(data);
-
-                    if(object.status == true)
-                    {
-                        //grab the name and
-                        var name = object.message;
-                        $("#ref_name").val(name);
-                    }
-                    else {
-                        alert('Ref not found');
-                    }
-
-                }
-            });
-
-            var result = ajax.responseText;
-            console.log(ajax.status);
-            ced = "ced";
-            // return $.parseJSON(result);
-            return ced;
-        }
-
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-          checkboxClass: 'icheckbox_flat-green',
-          radioClass   : 'iradio_flat-green'
-        })
-
-        // Step show event
-        $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
-           //alert("You are on step "+stepNumber+" now");
-           if(stepPosition === 'first'){
-               $("#prev-btn").addClass('disabled');
-           }else if(stepPosition === 'final'){
-               $("#next-btn").addClass('disabled');
-           }else{
-               $("#prev-btn").removeClass('disabled');
-               $("#next-btn").removeClass('disabled');
-           }
-        });
-
-        // Toolbar extra buttons
-        var btnFinish = $('<button></button>').text('Finish')
-                                         .addClass('btn btn-info')
-                                         .on('click', function(){ alert('Finish Clicked'); });
-        var btnCancel = $('<button></button>').text('Cancel')
-                                         .addClass('btn btn-danger')
-                                         .on('click', function(){ $('#smartwizard').smartWizard("reset"); });
-
-
-        // Smart Wizard
-        $('#smartwizard').smartWizard({
-                selected: 0,
-                theme: 'dots',
-                transitionEffect:'fade',
-                showStepURLhash: true,
-                toolbarSettings: {toolbarPosition: 'end',
-                                  toolbarButtonPosition: 'end',
-                                  toolbarExtraButtons: [btnFinish, btnCancel]
-                                }
-        });
-
-
-        // External Button Events
-        $("#reset-btn").on("click", function() {
-            // Reset wizard
-            $('#smartwizard').smartWizard("reset");
-            return true;
-        });
-
-        $("#prev-btn").on("click", function() {
-            // Navigate previous
-            $('#smartwizard').smartWizard("prev");
-            return true;
-        });
-
-        $("#next-btn").on("click", function() {
-            // Navigate next
-            $('#smartwizard').smartWizard("next");
-            return true;
-        });
-
-    });
-</script>
+<script src="/site/js/checkout.js"></script>
 
 @endsection

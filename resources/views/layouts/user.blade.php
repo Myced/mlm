@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Multi level marketing">
     <meta name="keywords" content="MLM, MultiLevel Marketing Cameroon, Glothelo">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <title>User Panel - @yield('title')</title>
 
     @include('user_includes.styles')
@@ -16,6 +16,7 @@
 
     <!-- =============== APP STYLES ===============-->
     <link rel="stylesheet" href="/userfiles/css/app.css" id="maincss">
+    <link rel="stylesheet" href="/userfiles/css/styles.css">
   </head>
 
   <body>
@@ -67,6 +68,7 @@
     @yield('scripts')
 
     <script src="/userfiles/js/app.js"></script>
+    @include('user_includes.notification')
 
 </body>
 

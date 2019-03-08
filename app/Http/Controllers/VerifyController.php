@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\User;
 use App\Models\UserData;
 use Illuminate\Http\Request;
 
@@ -45,5 +45,27 @@ class VerifyController extends Controller
         ];
 
         return json_encode($response);
+    }
+
+    public function email($email)
+    {
+        $response = [
+            'status' => true,
+            "message" => ""
+        ];
+
+        //check the email
+        $user = User::where('email', '=', $email)->first();
+
+        if(is_null($user))
+        {
+            $response['message'] = "Email Valid";
+        }
+        else {
+            $response['status'] = false;
+            $response['message'] = "Email already taken";
+        }
+
+        return response()->json($response);
     }
 }

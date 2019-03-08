@@ -22,7 +22,9 @@ class CreateOrdersTable extends Migration
             $table->string('status');
             $table->string('coupon')->nullable();
             $table->string('payment_method')->nullable();
+            $table->boolean('payment_status')->default(false);
             $table->boolean('products_available')->default(false);
+            $table->timestamp('delivered_at')->nullable();
             $table->timestamps();
         });
     }

@@ -125,10 +125,20 @@
                         My Account
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="ourblog.html">Dashboard</a></li>
-                        <li><a href="blogpost.html">Cart</a></li>
-                        <li><a href="blogpost.htm">Orders</a></li>
-                        <li><a href="blogpost.html">Logout </a></li>
+                        <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ route('cart') }}">Cart</a></li>
+                        <li><a href="{{ route('user.orders') }}">Orders</a></li>
+                        <li>
+                            <form class="" action="{{ route('logout') }}"
+                             method="post" id="logout">
+                                @csrf
+                            </form>
+                            <a href="javascript:void(0)"
+                            onclick="event.preventDefault();
+                                          document.getElementById('logout').submit();">
+                                Logout
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 @else
