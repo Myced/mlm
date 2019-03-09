@@ -1,10 +1,12 @@
 //function for notty js
 function notify(text, type){
 
+    var mytext = "<strong>" + text + "</strong>";
+
     new Noty({
        type: type,
        layout: 'topRight',
-       text: text,
+       text: mytext,
        timeout: 5000,
        modal: false,
        theme : "nest",

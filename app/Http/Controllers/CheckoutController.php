@@ -48,7 +48,7 @@ class CheckoutController extends Controller
 
         session()->flash('success', 'Registration successful');
 
-        return view("site.checkout_confirmation");
+        return redirect()->route('checkout.confirmation');
 
     }
 

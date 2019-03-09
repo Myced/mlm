@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12  left-content">
                 <div class="logo">
-                    <a href="index-2.html"><img src="/site/images/main-logo.png" alt=""></a>
+                    <a href="/"><img src="/site/images/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-5 col-sm-6 col-xs-12 midle-content">

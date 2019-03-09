@@ -1,8 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    return view('site.index');
-});
+Route::get('/', 'HomeController@index')->name('index');
 
 //admin routes
 Route::group(['prefix' => 'admin'], function(){

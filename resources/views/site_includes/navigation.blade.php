@@ -9,7 +9,9 @@
                 </span>
                 <span class="text">Main Menu</span>
             </a>
-            <a href="#" class="header-top-menu-mobile"><span class="fa fa-cog" aria-hidden="true"></span></a>
+            <a href="#" class="header-top-menu-mobile">
+                <span class="fa fa-cog" aria-hidden="true"></span>
+            </a>
             <ul id="menu-main-menu" class="main-menu clone-main-menu ovic-clone-mobile-menu box-has-content">
                 <li class="menu-item">
                     <a href="/" class="kt-item-title ovic-menu-item-title" title="Home">HOME</a>
@@ -98,19 +100,28 @@
                     </div>
                 </li>
 
-                <li class="">
-                    <a href="{{ route('contact') }}"
-                    class="kt-item-title ovic-menu-item-title" title="Contact Us">
-                    Contact Us
-                </a>
 
-                </li>
-                <li class="">
-                    <a href="{{ route('about-us') }}"
-                        class="kt-item-title ovic-menu-item-title" title="Sub Menu">
-                        About Us
+
+                <li class="menu-item menu-item-has-children">
+                    <a href="javascript:void(0)"
+                        class="kt-item-title ovic-menu-item-title" title="Blog">
+                        ABOUT US
                     </a>
-
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="{{ route('about-us') }}"
+                                class="kt-item-title ovic-menu-item-title" title="Sub Menu">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('contact') }}"
+                            class="kt-item-title ovic-menu-item-title" title="Contact Us">
+                                Contact Us
+                            </a>
+                        </li>
+                        
+                    </ul>
                 </li>
 
                 <li class="">

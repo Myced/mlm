@@ -100,7 +100,7 @@ $(document).ready(function(){
 
     function placeError($element, name)
     {
-        var message = "<strong>" + name + " is required" + "</strong>";
+        var message =  name + " is required";
         notify(message, "error");
 
         $element.addClass("input-error");
