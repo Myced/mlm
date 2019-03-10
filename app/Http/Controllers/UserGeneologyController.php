@@ -37,6 +37,14 @@ class UserGeneologyController extends Controller
         return view('user.geneology_tabular', compact('data'));
     }
 
+    public function statistics()
+    {
+        $manager = new \App\Classes\GeneologyManager($this->getUser());
+        $stats = new \App\Classes\GeneologyStatistics($manager);
+
+        return view('user.geneology_statistics', compact('stats'));
+    }
+
     public function getUser()
     {
         if(!is_null($this->user))

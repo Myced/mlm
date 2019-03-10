@@ -94,20 +94,6 @@
       </a>
     </li>
 
-    <li class=" ">
-      <a href="#layout" title="Layouts" data-toggle="collapse">
-        <em class="icon-layers"></em>
-        <span>Layouts</span>
-      </a>
-      <ul class="sidebar-nav sidebar-subnav collapse" id="layout">
-        <li class="sidebar-subnav-header">Layouts</li>
-        <li class=" ">
-          <a href="dashboard_h.html" title="Horizontal">
-            <span>Horizontal</span>
-          </a>
-        </li>
-      </ul>
-    </li>
     <li class="nav-heading ">
       <span data-localize="sidebar.heading.COMPONENTS">Account Information</span>
     </li>
