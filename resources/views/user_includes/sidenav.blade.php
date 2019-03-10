@@ -25,15 +25,25 @@
     <!-- END user info-->
     <!-- Iterates over all sidebar items-->
     <li class="nav-heading ">
-      <span data-localize="sidebar.heading.HEADER">Main Navigation</span>
+      <span data-localize="sidebar.heading.HEADER">Main WEBSITE</span>
+    </li>
+
+    <li class="">
+      <a href="{{ route('home') }}" title="To Website">
+        <em class="fa fa-arrow-left"></em>
+        <span >To Home</span>
+      </a>
     </li>
 
     <li class="">
       <a href="{{ route('products') }}" title="To Website">
-        <em class="fa fa-arrow-left"></em>
-        <span >To Site</span>
+        <em class="fa fa-cubes"></em>
+        <span >To Products</span>
       </a>
+    </li>
 
+    <li class="nav-heading ">
+      <span data-localize="sidebar.heading.HEADER">DASHBOARD</span>
     </li>
 
     <li class="">
@@ -41,7 +51,10 @@
         <em class="icon-speedometer"></em>
         <span >Dashboard</span>
       </a>
+    </li>
 
+    <li class="nav-heading ">
+      <span data-localize="sidebar.heading.HEADER">NAVIGATION</span>
     </li>
 
     <li class=" ">
@@ -130,58 +143,6 @@
 
     </li>
 
-    <li class="nav-heading ">
-      <span data-localize="sidebar.heading.MORE">More</span>
-    </li>
-    <li class=" ">
-      <a href="#pages" title="Pages" data-toggle="collapse">
-        <em class="icon-doc"></em>
-        <span data-localize="sidebar.nav.pages.PAGES">Pages</span>
-      </a>
-      <ul class="sidebar-nav sidebar-subnav collapse" id="pages">
-        <li class="sidebar-subnav-header">Pages</li>
-        <li class=" ">
-          <a href="login.html" title="Login">
-            <span data-localize="sidebar.nav.pages.LOGIN">Login</span>
-          </a>
-        </li>
-        <li class=" ">
-          <a href="register.html" title="Sign up">
-            <span data-localize="sidebar.nav.pages.REGISTER">Sign up</span>
-          </a>
-        </li>
-        <li class=" ">
-          <a href="recover.html" title="Recover Password">
-            <span data-localize="sidebar.nav.pages.RECOVER">Recover Password</span>
-          </a>
-        </li>
-        <li class=" ">
-          <a href="lock.html" title="Lock">
-            <span data-localize="sidebar.nav.pages.LOCK">Lock</span>
-          </a>
-        </li>
-        <li class=" ">
-          <a href="template.html" title="Starter Template">
-            <span data-localize="sidebar.nav.pages.STARTER">Starter Template</span>
-          </a>
-        </li>
-        <li class=" ">
-          <a href="404.html" title="404">
-            <span>404</span>
-          </a>
-        </li>
-        <li class=" ">
-          <a href="500.html" title="500">
-            <span>500</span>
-          </a>
-        </li>
-        <li class=" ">
-          <a href="maintenance.html" title="Maintenance">
-            <span>Maintenance</span>
-          </a>
-        </li>
-      </ul>
-    </li>
   </ul>
   <!-- END sidebar nav-->
 </nav>

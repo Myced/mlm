@@ -31,7 +31,7 @@
       </a>
     </li>
     <!-- END User avatar toggle-->
-    
+
   </ul>
   <!-- END Left navbar-->
   <!-- START Right Navbar-->
@@ -111,9 +111,9 @@
     <!-- END Alert menu-->
     <!-- START Offsidebar button-->
     <li class="nav-item">
-      <a class="nav-link" href="#" data-toggle-state="offsidebar-open" data-no-persist="true">
-        <em class="icon-notebook"></em>
-      </a>
+        <div class="" style="width: 40px;">
+            <!-- /empty space -->
+        </div>
     </li>
     <!-- END Offsidebar menu-->
   </ul>

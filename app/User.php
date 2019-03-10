@@ -29,6 +29,7 @@ class User extends Authenticatable
     ];
 
     const DEFAULT_AVATAR = '/site/images/user.png';
+    const AVATAR_PATH = 'uploads/avatars/';
 
     public function userData()
     {

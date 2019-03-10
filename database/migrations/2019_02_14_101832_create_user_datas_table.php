@@ -23,7 +23,7 @@ class CreateUserDatasTable extends Migration
             $table->string('ref_code')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('region')->nullable();
+            $table->string('region_id')->nullable();
             $table->text("address")->nullable();
             $table->string('email')->nullable()->unique();
             $table->string('tel')->nullable();

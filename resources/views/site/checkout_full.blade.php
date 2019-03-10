@@ -223,7 +223,7 @@
                                                     <span class="label-text">Email Address <span>*</span></span>
                                                     <input type="text" class="input-info" id="email"
                                                         name="email" required>
-                                                    <span class="help-block"></span>
+                                                    <span class="help-block">Note that you will not be able to change this later!</span>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                     <span class="label-text">Phone Number <span>*</span></span>

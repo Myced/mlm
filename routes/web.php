@@ -43,6 +43,8 @@ Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
     Route::get('/order/{code}/confirm', 'OrderController@confirm')->name('order.confirm');
     Route::get('/order/{code}/cancel', 'OrderController@cancel')->name('order.cancel');
     Route::get('/profile', 'UserPanelController@profile')->name("user.profile");
+    Route::get('/profile/edit', 'UserPanelController@profileEdit')->name('profile.edit');
+    Route::post('/profile/update', 'UserPanelController@profileUpdate')->name('profile.update');
     Route::get('/geneology/tree', 'UserGeneologyController@index')->name('user.geneology');
     Route::get('/geneology/tabular', 'UserGeneologyController@tabular')->name('user.geneology.tabular');
     Route::get('/geneology/statistics', 'UserGeneologyController@statistics')->name('user.geneology.statistics');

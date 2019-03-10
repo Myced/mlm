@@ -15,9 +15,21 @@ class UserData extends Model
         return $this->belongsTo('App\User');
     }
 
-    private function getGeneologyTree()
+    public function recruiterName()
     {
+        if($this->referrer_code == null)
+        {
+            return "No Body";
+        }
+        else {
+            $recruiter = $this->where('ref_code', '=', $this->referrer_code)->first();
+            return $recruiter->user->name;
+        }
+    }
 
+    public function region()
+    {
+        return $this->belongsTo('App\Models\Region');
     }
 
     private function initChildren()
