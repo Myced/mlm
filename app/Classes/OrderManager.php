@@ -23,5 +23,17 @@ class OrderManager
 
         $this->order = $order;
     }
+
+    public static function latestUserOrders()
+    {
+        $userId = auth()->user()->id;
+
+        $orders = Order::where('user_id', '=', $userId)
+                            ->orderBy('id', 'desc')
+                            ->limit(5)
+                            ->get();
+
+        return $orders;
+    }
 }
 ?>

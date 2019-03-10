@@ -43,10 +43,10 @@
     </li>
 
     <li class="nav-heading ">
-      <span data-localize="sidebar.heading.HEADER">DASHBOARD</span>
+      <span >DASHBOARD</span>
     </li>
 
-    <li class="">
+    <li class="{{ Request::is('user') ? 'active' : '' }}">
       <a href="{{ route('user.dashboard') }}" title="Dashboard">
         <em class="icon-speedometer"></em>
         <span >Dashboard</span>
@@ -67,18 +67,18 @@
       </a>
       <ul class="sidebar-nav sidebar-subnav collapse" id="geneology">
         <li class="sidebar-subnav-header">Geneology</li>
-        <li class=" active">
+        <li class="{{ Request::is('user/geneology/tree') ? 'active' : '' }} ">
           <a href="{{ route('user.geneology') }}" title="Geneology Tree">
             <span>Tree</span>
           </a>
         </li>
-        <li class=" ">
+        <li class="{{ Request::is('user/geneology/tabular') ? 'active' : '' }}">
           <a href="{{ route('user.geneology.tabular') }}" title="Tabular Genology">
             <span>Tabular</span>
           </a>
         </li>
 
-        <li class=" ">
+        <li class="{{ Request::is('user/geneology/statistics') ? 'active' : '' }}">
           <a href="{{ route('user.geneology.statistics') }}" title="Tabular Genology">
             <span>Statistics</span>
           </a>
@@ -87,7 +87,7 @@
       </ul>
     </li>
 
-    <li class=" ">
+    <li class="{{ Request::is('user/orders') || Request::is('user/order/*') ? 'active' : '' }}">
       <a href="{{ route('user.orders') }}" title="Widgets">
         <em class=" icon-present"></em>
         <span>My Orders</span>
@@ -95,16 +95,16 @@
     </li>
 
     <li class="nav-heading ">
-      <span data-localize="sidebar.heading.COMPONENTS">Account Information</span>
+      <span >Account Information</span>
     </li>
-    <li class=" ">
+    <li class="{{ Request::is('user/profile') ? 'active' : '' }}">
       <a href="{{ route('user.profile') }}" title="My Profile" >
         <em class="icon-user"></em>
         <span data-localize="sidebar.nav.element.ELEMENTS">My Profile</span>
       </a>
 
     </li>
-    <li class=" ">
+    <li class="{{ Request::is('user/password/change') ? 'active' : '' }}">
       <a href="{{ route('user.password.change') }}"  title="Change Password" >
         <em class="icon-lock"></em>
         <span >Change Password</span>

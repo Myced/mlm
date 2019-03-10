@@ -70,10 +70,7 @@ class GeneologyStatistics
         return $recruits;
     }
 
-    public function recruits()
-    {
-
-    }
+    
 }
 
 ?>

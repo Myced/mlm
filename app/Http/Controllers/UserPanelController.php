@@ -11,7 +11,10 @@ class UserPanelController extends Controller
 {
     public function index()
     {
-        return view('user.index');
+        $user = auth()->user()->userData;
+        $orders = OrderManager::latestUserOrders();
+
+        return view('user.index', compact('user', 'orders'));
     }
 
     public function orders()
@@ -31,9 +34,11 @@ class UserPanelController extends Controller
 
     private function getOrders()
     {
-        $user = $this->getUser();
+        $orders = Order::where('user_id', '=', auth()->user()->id)
+                    ->orderBy('id', 'desc')
+                    ->get();
 
-        return $orders = $user->orders;
+        return $orders;
     }
 
     private function getUser()

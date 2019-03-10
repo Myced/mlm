@@ -1,7 +1,7 @@
 <nav class="navbar topnavbar">
   <!-- START navbar header-->
   <div class="navbar-header">
-    <a class="navbar-brand" href="#/">
+    <a class="navbar-brand" href="{{ route('user.dashboard') }}">
       <div class="brand-logo">
         <img class="img-fluid" src="/userfiles/img/logo.png" alt="App Logo">
       </div>
