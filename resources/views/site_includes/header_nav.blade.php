@@ -137,7 +137,7 @@
                     </div>
                     <div class="content">
                         <span class="text">Call us now</span>
-                        <span class="number">(080)123 4567 891</span>
+                        <span class="number">(+237) 6 73 90 19 39</span>
                     </div>
                 </div>
             </div>

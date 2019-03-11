@@ -9,11 +9,11 @@
                             <h3 class="widgettitle">Contact information</h3>
                             <div class="content">
                                 <h5 class="subtitle">Address</h5>
-                                <p class="des">218 Fifth Avenue, HeavenTower NewYork City</p>
+                                <p class="des">Opposite CCA, Akwa</p>
                                 <h5 class="subtitle">Phone</h5>
-                                <p class="des">(+68) 123 456 7890</p>
+                                <p class="des">(+237) 6 73 90 19 39 </p>
                                 <h5 class="subtitle">Email</h5>
-                                <p class="des">Support@techone.com <br> Hot-Support@techone.com</p>
+                                <p class="des">tncedric@yahoo.com <br> support@glothelo.com</p>
                             </div>
                         </div>
                         <ul class="list-socials">
@@ -50,7 +50,7 @@
                                         <li><a href="{{ route('login') }}">Sign In</a></li>
                                         <li><a href="{{ route('cart') }}">View Cart</a></li>
                                         <li><a href="#">My Wishlist</a></li>
-                                        <li><a href="#">Track My Order</a></li>
+                                        <li><a href="{{ route('user.orders') }}">My Orders</a></li>
                                         <li><a href="#">Helps</a></li>
                                     </ul>
                                 </div>
@@ -62,7 +62,7 @@
                                         <li><a href="#">Delivery information</a></li>
                                         <li><a href="#">Privacy Policy</a></li>
                                         <li><a href="#">Terms & Conditions</a></li>
-                                        <li><a href="contact.html">Contact us</a></li>
+                                        <li><a href="{{ route('contact') }}">Contact us</a></li>
                                         <li><a href="#">Sitemap</a></li>
                                     </ul>
                                 </div>
@@ -73,7 +73,7 @@
                                     <ul >
                                         <li><a href="#">Shipping & Returns</a></li>
                                         <li><a href="#">Secure Shopping</a></li>
-                                        <li><a href="#"> International Shipping</a></li>
+                                        <li><a href="#">International Shipping</a></li>
                                         <li><a href="#">Affiliates</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
@@ -99,15 +99,17 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 left-content">
                         <div class="coppy-right">
-                            <h3 class="content">© Copyright 2018 <span class="site-name"> TechOne</span> <span class="text"> Multipurpose PSD. </span>All rights reserved</h3>
+                            <h3 class="content">© Copyright {{ date("Y") }}
+                                <span class="site-name">{{ config('app.name', 'Glothelo') }}</span>
+                                All rights reserved</h3>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 right-content">
                         <ul class="list-payment">
-                            <li><a href="#"><img src="/site/images/payment1.png" alt=""></a></li>
-                            <li><a href="#"><img src="/site/images/payment2.png" alt=""></a></li>
-                            <li><a href="#"><img src="/site/images/payment3.png" alt=""></a></li>
-                            <li><a href="#"><img src="/site/images/payment4.png" alt=""></a></li>
+                            <li><img src="/site/images/momo.jpg" alt=""></li>
+                            <li><img src="/site/images/orange.jpg" alt=""></li>
+                            <li><img src="/site/images/payment2.png" alt=""></li>
+                            <li><img src="/site/images/payment4.png" alt=""></li>
                         </ul>
                     </div>
                 </div>

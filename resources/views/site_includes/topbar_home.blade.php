@@ -38,9 +38,13 @@
             <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
         </ul>
         <ul class="menu-topbar top-links">
-            <li><a href="login.html">Register / Sign in</a></li>
-            <li><a href="#">Newsletter</a></li>
-            <li><a href="about.html">About</a></li>
+            @auth
+            <li><a href="{{ route('user.dashboard') }}">My Account</a></li>
+            @else
+            <li><a href="{{ route('register') }}">Register</a></li>
+            <li><a href="{{ route('login') }}">Sign in</a></li>
+            @endauth
+            <li><a href="{{ route('about-us') }}">About</a></li>
         </ul>
     </div>
 </div>
