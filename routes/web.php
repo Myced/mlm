@@ -3,8 +3,10 @@
 Route::get('/', 'HomeController@index')->name('index');
 
 //admin routes
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
     Route::get('/', 'AdminController@index')->name('dashboard');
+    Route::get('/login', 'AdminAccountController@showLogin')->name('admin.login');
+    Route::post('/login', 'AdminAccountController@login')->name('admin.login.store');
     Route::get('/orders', 'AdminController@orders')->name('orders');
     Route::get('/customer', 'AdminController@customer')->name('customer');
     Route::get('/order/detail', 'AdminController@orderDetail')->name('order.detail');
@@ -93,7 +95,7 @@ Route::post('/checkout/login', 'CheckoutController@login')->name('checkout.login
 
 //new unathenticated user
 Route::get('/checkout/full', 'CheckoutController@createFull')->name('checkout.full.create');
-Route::post('/checkout/full/store', 'CheckoutController@fullCheckout')->name('checkout.full.store');
+Route::post('/checkout/full/store', 'CheckoutController@checkoutFull')->name('checkout.full.store');
 
 //authenticated user, simple checkout
 Route::get('/checkout/simple', 'CheckoutController@simple')->name('checkout.simple.create');
@@ -108,3 +110,8 @@ Route::get('/products', 'ShoppingController@index')->name('products');
 Route::get('/product/{slug}', 'ShoppingController@view')->name('product.detail');
 Route::get('/category/{category}', 'ShoppingController@productsCategory')->name('products.category');
 Route::get('/brand/{brand}', 'ShoppingController@productBrand')->name('products.brand');
+
+Route::group(['prefix' => 'error'], function(){
+    Route::get('/', 'ErrorsController@index')->name('error.index');
+    Route::get('/401', 'ErrorsController@error401')->name('error.401');
+});

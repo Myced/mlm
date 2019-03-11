@@ -96,7 +96,7 @@
                                 <div class="form-group">
                                     <label>Date of Birth:</label>
                                     <input class="form-control" type="text"
-                                        name="dob" required
+                                        name="dob" 
                                         placeholder="E.g. 22/12/1990" value="{{ $user->dob }}">
                                 </div>
 

@@ -34,15 +34,17 @@ class CheckoutManager
     {
         $request = $this->request;
 
+        $user = null;
+
         if($this->saveData)
         {
             $user = $this->createUserAccount($request);
 
-            $this->user = $user;
-
             //save the user data
             $userData = $this->saveUserData($user, $request);
         }
+
+        $this->setUser($user);
 
         //place order
         $order = $this->placeOrder();
@@ -54,6 +56,19 @@ class CheckoutManager
         $this->finish();
 
         return;
+    }
+
+    private function setUser($user)
+    {
+
+        if(auth()->user())
+        {
+            //meaning a new user account was not created
+            $this->user = auth()->user();
+        }
+        else {
+            $this->user = $user;
+        }
     }
 
     private function createUserAccount($request)
@@ -114,7 +129,7 @@ class CheckoutManager
         $userData->referred = $referred;
         $userData->referrer_code = $ref_code;
         $userData->ref_code = $this->generateRefCode();
-        $userData->region = $request->region;
+        $userData->region_id = $request->region;
         $userData->address = $request->address;
         $userData->email = $request->email;
         $userData->tel = $request->tel;
@@ -212,7 +227,7 @@ class CheckoutManager
     {
         $order = new Order;
 
-        $order->user_id = auth()->user()->id;
+        $order->user_id = $this->user->id;
         $order->order_code = $orderCode;
         $order->total = Functions::getMoney(Cart::total());
         $order->item_number = Cart::count();
@@ -317,9 +332,9 @@ class CheckoutManager
         $orderLog = new OrderLog;
 
         $orderLog->order_id = $order->id;
-        $orderLog->user_id = auth()->user()->id;
+        $orderLog->user_id = $this->user->id;
         $orderLog->tag = "Order";
-        $orderLog->name = auth()->user()->name;
+        $orderLog->name = $this->user->name;
         $orderLog->description = "Order was Placed";
 
         $orderLog->save();

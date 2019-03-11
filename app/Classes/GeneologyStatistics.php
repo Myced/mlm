@@ -39,7 +39,8 @@ class GeneologyStatistics
 
         for($i = 1; $i <= $this->depth; $i++)
         {
-            $total += count($this->manager->levelData[$i]);
+            if(array_key_exists($i, $this->manager->levelData))
+                $total += count($this->manager->levelData[$i]);
         }
 
         return $total;
@@ -70,7 +71,7 @@ class GeneologyStatistics
         return $recruits;
     }
 
-    
+
 }
 
 ?>
