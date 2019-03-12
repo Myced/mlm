@@ -19,7 +19,7 @@ class AdminMiddleware
         // admin login
         if(is_null(auth()->user()))
         {
-            return route('admin.login');
+            return redirect()->route('admin.login');
         }
         else {
             $user = auth()->user();

@@ -2,11 +2,15 @@
 
 Route::get('/', 'HomeController@index')->name('index');
 
+//admin login routes
+//need to be out of the admin middleware to avoid
+//an infinite redirect
+Route::get('/login/admin', 'AdminAccountController@showLogin')->name('admin.login');
+Route::post('/login/admin', 'AdminAccountController@login')->name('admin.login.store');
+
 //admin routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
     Route::get('/', 'AdminController@index')->name('dashboard');
-    Route::get('/login', 'AdminAccountController@showLogin')->name('admin.login');
-    Route::post('/login', 'AdminAccountController@login')->name('admin.login.store');
     Route::get('/orders', 'AdminController@orders')->name('orders');
     Route::get('/customer', 'AdminController@customer')->name('customer');
     Route::get('/order/detail', 'AdminController@orderDetail')->name('order.detail');
