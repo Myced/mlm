@@ -3,9 +3,8 @@
 namespace App\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-use Gloudemans\Shoppingcart\Contracts\Buyable;
 
-class Product extends Model implements Buyable
+class Product extends Model
 {
     //get the product out of stock
     protected $percetage;
@@ -20,6 +19,21 @@ class Product extends Model implements Buyable
     public function category()
     {
         return $this->belongsTo('App\Admin\Category');
+    }
+
+    public function orders()
+    {
+        $results = \App\Models\OrderContent::where('product_id', '=', $this->id)
+                        ->groupBy('order_id', 'id')
+                        ->orderBy('id')
+                        ->get();
+
+        if(!empty($results))
+        {
+            return $results->count();
+        }
+
+        return 0;
     }
 
     public function isNew()
@@ -73,16 +87,5 @@ class Product extends Model implements Buyable
         $this->increment('views');
     }
 
-    //implemented methods
-    public function getBuyableIdentifier($options = null) {
-       return $this->id;
-   }
 
-   public function getBuyableDescription($options = null) {
-       return $this->name;
-   }
-
-   public function getBuyablePrice($options = null) {
-       return $this->price;
-   }
 }

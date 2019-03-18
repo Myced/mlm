@@ -84,6 +84,13 @@ class UserPanelController extends Controller
 
         $user->save();
 
+        //update the name too in users table
+        $name = $request->first_name . ' ' . $request->last_name;
+
+        $user = $this->getUser();
+        $user->name = $name;
+        $user->save();
+
         Session::flash('success', 'Profile Updated');
 
         return redirect()->route('user.profile');

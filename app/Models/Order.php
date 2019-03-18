@@ -21,4 +21,9 @@ class Order extends Model
         $this->status = $status;
         $this->save();
     }
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\OrderLog');
+    }
 }

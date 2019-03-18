@@ -32,15 +32,19 @@
             <div class="widget-extra themed-background">
                 <h4 class="widget-content-light"><strong>Pending</strong> Orders</h4>
             </div>
-            <div class="widget-extra-full"><span class="h2 animation-expandOpen">3</span></div>
+            <div class="widget-extra-full">
+                <span class="h2 animation-expandOpen">{{ $dashboard->pendingOrders }}</span>
+            </div>
         </a>
     </div>
     <div class="col-sm-6 col-lg-3">
         <a href="javascript:void(0)" class="widget widget-hover-effect2">
             <div class="widget-extra themed-background-dark">
-                <h4 class="widget-content-light"><strong>Conversion</strong> Rate</h4>
+                <h4 class="widget-content-light"><strong>Total Members</strong> </h4>
             </div>
-            <div class="widget-extra-full"><span class="h2 themed-color-dark animation-expandOpen">4.7%</span></div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">{{ $dashboard->totalMembers }}</span>
+            </div>
         </a>
     </div>
     <div class="col-sm-6 col-lg-3">
@@ -48,7 +52,9 @@
             <div class="widget-extra themed-background-dark">
                 <h4 class="widget-content-light"><strong>Orders</strong> Today</h4>
             </div>
-            <div class="widget-extra-full"><span class="h2 themed-color-dark animation-expandOpen">120</span></div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">{{ $dashboard->ordersToday }}</span>
+            </div>
         </a>
     </div>
     <div class="col-sm-6 col-lg-3">
@@ -56,7 +62,11 @@
             <div class="widget-extra themed-background-dark">
                 <h4 class="widget-content-light"><strong>Earnings</strong> Today</h4>
             </div>
-            <div class="widget-extra-full"><span class="h2 themed-color-dark animation-expandOpen">$ 4.250</span></div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">
+                    {{ number_format($dashboard->earningsToday) }} F
+                </span>
+            </div>
         </a>
     </div>
 </div>
@@ -147,76 +157,36 @@
             <!-- Latest Orders Content -->
             <table class="table table-borderless table-striped table-vcenter table-bordered">
                 <tbody>
+
+                    @foreach($dashboard::latestOrders() as $order)
+
                     <tr>
-                        <td class="text-center" style="width: 100px;"><a href="javascript:void(0)"><strong>ORD.685116</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Gerald Berry</a></td>
-                        <td class="hidden-xs">Paypal</td>
-                        <td class="text-right"><strong>$65,00</strong></td>
-                        <td class="text-right"><span class="label label-success">Delivered</span></td>
+                        <td class="text-center" style="width: 100px;">
+                            <a href="javascript:void(0)">
+                                <strong>{{ $order->order_code }}</strong>
+                            </a>
+                        </td>
+                        <td class="hidden-xs">
+                            <a href="javascript:void(0)">
+                                @if(!is_null($order->user))
+                                    {{ $order->user->name }}
+                                @else
+                                    Unknown
+                                @endif
+                            </a>
+                        </td>
+                        <td class="hidden-xs">{{ \App\PaymentMethods::format($order->payment_method) }}</td>
+                        <td class="text-right">
+                            <strong>{{ number_format($order->total) }}</strong>
+                        </td>
+                        <td class="text-right">
+                            <span class="label label-{{ \App\OrderStatus::getClass($order->status) }}">
+                                {{ $order->status }}
+                            </span>
+                        </td>
                     </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685115</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Patrick Bates</a></td>
-                        <td class="hidden-xs">Bank wire</td>
-                        <td class="text-right"><strong>$268,00</strong></td>
-                        <td class="text-right"><span class="label label-danger">Canceled</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685114</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Ethan Greene</a></td>
-                        <td class="hidden-xs">Paypal</td>
-                        <td class="text-right"><strong>$362,00</strong></td>
-                        <td class="text-right"><span class="label label-success">Delivered</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685113</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Bruce Hicks</a></td>
-                        <td class="hidden-xs">Paypal</td>
-                        <td class="text-right"><strong>$23,00</strong></td>
-                        <td class="text-right"><span class="label label-warning">Processing</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685112</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Harry Burke</a></td>
-                        <td class="hidden-xs">Bank wire</td>
-                        <td class="text-right"><strong>$1360,00</strong></td>
-                        <td class="text-right"><span class="label label-success">Delivered</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685111</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Nancy Rose</a></td>
-                        <td class="hidden-xs">Bank wire</td>
-                        <td class="text-right"><strong>$2685,00</strong></td>
-                        <td class="text-right"><span class="label label-warning">Processing</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685110</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Helen Jensen</a></td>
-                        <td class="hidden-xs">Paypal</td>
-                        <td class="text-right"><strong>$128,00</strong></td>
-                        <td class="text-right"><span class="label label-success">Delivered</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685109</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Harry Medina</a></td>
-                        <td class="hidden-xs">Check</td>
-                        <td class="text-right"><strong>$3150,00</strong></td>
-                        <td class="text-right"><span class="label label-warning">Processing</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685108</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Ryan Hopkins</a></td>
-                        <td class="hidden-xs">Check</td>
-                        <td class="text-right"><strong>$750,00</strong></td>
-                        <td class="text-right"><span class="label label-success">Delivered</span></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="javascript:void(0)"><strong>ORD.685107</strong></a></td>
-                        <td class="hidden-xs"><a href="javascript:void(0)">Anthony Franklin</a></td>
-                        <td class="hidden-xs">Paypal</td>
-                        <td class="text-right"><strong>$630,00</strong></td>
-                        <td class="text-right"><span class="label label-danger">Canceled</span></td>
-                    </tr>
+                    @endforeach
+
                 </tbody>
             </table>
             <!-- END Latest Orders Content -->
@@ -229,8 +199,8 @@
             <!-- Top Products Title -->
             <div class="block-title">
                 <div class="block-options pull-right">
-                    <a href="page_ecom_products.html" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Show All"><i class="fa fa-eye"></i></a>
-                    <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
+                    <a href="{{ route('admin.products') }}" class="btn btn-alt btn-sm btn-default"
+                    data-toggle="tooltip" title="Show All"><i class="fa fa-eye"></i></a>
                 </div>
                 <h2><strong>Top</strong> Products</h2>
             </div>
@@ -239,10 +209,22 @@
             <!-- Top Products Content -->
             <table class="table table-borderless table-striped table-vcenter table-bordered">
                 <tbody>
+
+
+                    @foreach($dashboard::topProducts() as $product)
                     <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8765</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">iPhone 6 Plus 32GB</a></td>
-                        <td class="text-center"><strong>435</strong> orders</td>
+                        <td class="text-center" style="width: 100px;">
+                            <a href="page_ecom_product_edit.html">
+                                <strong>{{ $product->code }}</strong>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="page_ecom_product_edit.html">
+                                {{ $product->name }}
+                            </a>
+                        </td>
+
+                        <td class="text-center"><strong>{{ $product->orders() }}</strong> orders</td>
                         <td class="hidden-xs text-center">
                             <div class="text-warning">
                                 <i class="fa fa-star"></i>
@@ -253,132 +235,8 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8764</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">Wii U</a></td>
-                        <td class="text-center"><strong>502</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8763</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">Samsung Galaxy Note 4 32GB</a></td>
-                        <td class="text-center"><strong>440</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8762</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">Playstation 4</a></td>
-                        <td class="text-center"><strong>750</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8761</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">HTC One 32GB</a></td>
-                        <td class="text-center"><strong>420</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8760</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">Xbox One</a></td>
-                        <td class="text-center"><strong>650</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8762</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">iPad Mini Retina 64GB</a></td>
-                        <td class="text-center"><strong>521</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8761</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">LG Tab 10.1</a></td>
-                        <td class="text-center"><strong>427</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8760</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">Macbook Pro 15' Retina</a></td>
-                        <td class="text-center"><strong>392</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8760</strong></a></td>
-                        <td><a href="page_ecom_product_edit.html">PS Vita</a></td>
-                        <td class="text-center"><strong>380</strong> orders</td>
-                        <td class="hidden-xs text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-half-o"></i>
-                            </div>
-                        </td>
-                    </tr>
+                    @endforeach
+
                 </tbody>
             </table>
             <!-- END Top Products Content -->

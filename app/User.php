@@ -40,4 +40,14 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Models\Order");
     }
+
+    public function orderValue()
+    {
+        if(count($this->orders) == 0)
+        {
+            return 0;
+        }
+
+        return number_format($this->orders->sum('total'));
+    }
 }

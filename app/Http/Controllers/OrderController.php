@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\OrderStatus;
 use App\Models\Order;
+use App\Models\OrderLog;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -31,6 +32,9 @@ class OrderController extends Controller
 
             $order->updateStatus($status);
 
+            //place a log
+            $this->logConfirmation($order);
+
             session()->flash('success', 'Your order has been confirmed');
 
         }
@@ -55,6 +59,8 @@ class OrderController extends Controller
 
         $order->updateStatus($status);
 
+        $this->logCancellation($order);
+
         session()->flash('info', 'Your order has been canceled');
         return back();
     }
@@ -62,6 +68,36 @@ class OrderController extends Controller
     private function getOrder($code)
     {
         return Order::where('order_code', '=', $code)->first();
+    }
+
+    private function logConfirmation($order)
+    {
+        $orderLog = new OrderLog;
+
+        $orderLog->order_id = $order->id;
+        $orderLog->user_id = auth()->user()->id;
+        $orderLog->tag = "Confirmation";
+        $orderLog->name = auth()->user()->name;
+        $orderLog->description = "The Order was confirmed";
+        $orderLog->class = "success";
+        $orderLog->icon = 'check';
+
+        $orderLog->save();
+    }
+
+    private function logCancellation($order)
+    {
+        $orderLog = new OrderLog;
+
+        $orderLog->order_id = $order->id;
+        $orderLog->user_id = auth()->user()->id;
+        $orderLog->tag = "Cancellation";
+        $orderLog->name = auth()->user()->name;
+        $orderLog->description = "Order was cancelled!";
+        $orderLog->class = "danger";
+        $orderLog->icon = 'times';
+
+        $orderLog->save();
     }
 
     private function checkPermission($order)

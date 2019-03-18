@@ -8,6 +8,7 @@ class Functions
 {
 
     const DATE_FORMAT = "j M, Y";
+    const DATE_TIME_FORMAT = "D, d M, Y - h:i a";
 
 
     public static function getMoney($money)

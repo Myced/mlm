@@ -1,8 +1,3 @@
-/*
- *  Document   : ecomOrders.js
- *  Author     : pixelcave
- *  Description: Custom javascript code used in eCommerce Orders page
- */
 
 var EcomOrders = function() {
 
@@ -33,9 +28,9 @@ var EcomOrders = function() {
                     { type: 'date-custom', targets: [6] },
                     { orderable: false, targets: [7] }
                 ],
-                order: [[ 0, "desc" ]],
+                order: [[ 0, "asc" ]],
                 pageLength: 20,
-                lengthMenu: [[10, 20, 30, -1], [10, 20, 30, 'All']]
+                lengthMenu: [[10, 20, 30, -1], [20, 30, 50, 100, 'All']]
             });
 
             /* Add placeholder attribute to the search input */

@@ -20,7 +20,7 @@ class CreateOrderLogsTable extends Migration
             $table->string('tag');
             $table->string('name');
             $table->string('description');
-            $table->string('class')->default('info');
+            $table->string('class')->default('primary');
             $table->string('icon')->nullable();
             $table->timestamps();
         });

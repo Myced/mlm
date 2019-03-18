@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\Dashboard;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $dashboard = new Dashboard;
+
+        return view('admin.index', compact('dashboard'));
     }
 
     public function orders()

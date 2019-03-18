@@ -11,8 +11,6 @@ Route::post('/login/admin', 'AdminAccountController@login')->name('admin.login.s
 //admin routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
     Route::get('/', 'AdminController@index')->name('dashboard');
-    Route::get('/orders', 'AdminController@orders')->name('orders');
-    Route::get('/customer', 'AdminController@customer')->name('customer');
     Route::get('/order/detail', 'AdminController@orderDetail')->name('order.detail');
 
     //category routes
@@ -37,6 +35,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/create', 'ProductsController@create')->name('product.create');
         Route::post('/store', 'ProductsController@store')->name('product.store');
         Route::get('/manage', 'ProductsController@manage')->name('products.manage');
+    });
+
+    Route::group(['prefix' => 'order'], function(){
+        Route::get('/', 'AdminOrderController@index')->name('orders');
+        Route::get('/{code}', 'AdminOrderController@view')->name('order.details');
+        Route::post('/{code}/log', 'AdminOrderController@log')->name('order.log');
+    });
+
+    Route::group(['prefix' => 'customer'], function(){
+        Route::get('/', 'CustomerController@index')->name('customers');
+        Route::get('/{user}', 'CustomerController@view')->name('customer');
     });
 });
 

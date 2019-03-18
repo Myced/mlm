@@ -152,7 +152,9 @@
         <!-- end of order confirmation -->
 
         <!-- order payment -->
-        @if($order->payment_status == false && $order->status == \App\OrderStatus::CONFIRMED)
+        @if($order->payment_status == false
+            && $order->status == \App\OrderStatus::CONFIRMED
+            && $order->payment_method != \App\PaymentMethods::CASH_ON_DELIVERY)
         <div class="row animated slideInUp">
             <div class="col-md-12">
 
@@ -303,6 +305,11 @@
 
                                     <li class="list-group-item">
                                         Order Total: <strong>{{ number_format($order->total) }} FCFA</strong>
+                                    </li>
+
+                                    <li class="list-group-item">
+                                        Payment Method:
+                                        <strong>{{ \App\PaymentMethods::format($order->payment_method) }}</strong>
                                     </li>
 
                                     <li class="list-group-item">
