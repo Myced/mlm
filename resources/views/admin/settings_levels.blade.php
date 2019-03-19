@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{ __("Geneology Depth Setting") }}
+    {{ __("Geneology Level Benefits") }}
 @endsection
 
 @section('content')
@@ -54,13 +54,18 @@
                 @for($i = 1; $i <= $depth;  $i++)
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="product-name">
-                        Level{{ $i }}:
+                        Level {{ $i }}:
                         <span class="required">*</span>
                     </label>
                     <div class="col-md-9">
-                        <input type="number" name="level{{ $i }}"
-                        class="form-control" placeholder="Enter % benefit. E.g 5" required
-                        value="{{ \App\Models\GeneologyLevel::getLevelBenefit($i) }}">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-percent"></i></div>
+
+                            <input type="number" name="level{{ $i }}"
+                            class="form-control" placeholder="Enter % benefit. E.g 5" required
+                            value="{{ \App\Models\GeneologyLevel::getLevelBenefit($i) }}">
+                        </div>
+
                     </div>
                 </div>
                 @endfor

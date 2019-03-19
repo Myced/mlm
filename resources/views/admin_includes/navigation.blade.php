@@ -199,14 +199,15 @@
             </a>
             <ul>
                 <li>
+                    <a href="{{ route('settings.company') }}">Company Information</a>
+                </li>
+                <li>
                     <a href="{{ route('settings.geneology.depth') }}">Geneology Depth</a>
                 </li>
                 <li>
                     <a href="{{ route('settings.geneology.levels') }}">Geneology Levels</a>
                 </li>
-                <li>
-                    <a href="page_ecom_order_view.html">This Month</a>
-                </li>
+
             </ul>
         </li>
 
