@@ -52,6 +52,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/geneology/depth', 'GeneologySettingsController@showDepth')->name('settings.geneology.depth');
         Route::post('/geneology/depth', 'GeneologySettingsController@saveDepth')->name('settings.geneology.depth.store');
 
+        Route::get('/geneology/levels', 'GeneologySettingsController@levels')->name('settings.geneology.levels');
+        Route::post('/geneology/levels', 'GeneologySettingsController@saveLevels')->name('settings.geneology.levels.store');
+        
     });
 });
 

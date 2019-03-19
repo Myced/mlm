@@ -156,7 +156,7 @@
                     <a href="{{ route('orders') }}">Orders Today</a>
                 </li>
                 <li>
-                    <a href="page_ecom_orders.html">This Week</a>
+                    <a href="{{ route('settings.geneology.levels') }}">Geneology Levels</a>
                 </li>
                 <li>
                     <a href="page_ecom_order_view.html">This Month</a>
@@ -202,7 +202,7 @@
                     <a href="{{ route('settings.geneology.depth') }}">Geneology Depth</a>
                 </li>
                 <li>
-                    <a href="page_ecom_orders.html">Level Benefits</a>
+                    <a href="{{ route('settings.geneology.levels') }}">Geneology Levels</a>
                 </li>
                 <li>
                     <a href="page_ecom_order_view.html">This Month</a>

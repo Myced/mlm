@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GeneologyDepth;
+use App\Models\GeneologyLevel;
 
 class GeneologySettingsController extends Controller
 {
@@ -42,5 +43,48 @@ class GeneologySettingsController extends Controller
 
         session()->flash('success', 'Geneology depth saved');
         return back();
+    }
+
+    public function levels()
+    {
+        $levels = GeneologyLevel::all()->toArray();
+        $depth = GeneologyDepth::find(1)->depth;
+
+        return view('admin.settings_levels', compact('levels', 'depth'));
+    }
+
+    public function saveLevels(Request $request)
+    {
+        // dd($request);
+        $depth = GeneologyDepth::find(1)->depth;
+
+        for($i = 1; $i <= $depth; $i++)
+        {
+            $name = "level" . $i;
+
+            $value = $request->$name;
+
+            $this->saveUniqueLevel($i, $value);
+        }
+
+        session()->flash('success', 'Level Benefits Saved');
+
+        return back();
+    }
+
+    private function saveUniqueLevel($level, $value)
+    {
+        $level = GeneologyLevel::where('level', '=', $level)->first();
+
+        if(is_null($level))
+        {
+            $level = new GeneologyLevel;
+
+            $level->level = $level;
+        }
+
+        $level->benefit = $value;
+
+        $level->save();
     }
 }
