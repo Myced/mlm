@@ -181,6 +181,35 @@
             </a>
         </li>
 
+        <li class="sidebar-header">
+            <span class="sidebar-header-options clearfix">
+                <a href="javascript:void(0)" data-toggle="tooltip"
+                title="sITE Settings">
+                    <i class="gi gi-users"></i>
+                </a>
+            </span>
+            <span class="sidebar-header-title">SETTINGS</span>
+        </li>
+
+        <li>
+            <a href="javascript:void(0)" class="sidebar-nav-menu">
+                <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+                <i class="fa fa-wrench sidebar-nav-icon"></i>
+                <span class="sidebar-nav-mini-hide">General Settings</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('settings.geneology.depth') }}">Geneology Depth</a>
+                </li>
+                <li>
+                    <a href="page_ecom_orders.html">Level Benefits</a>
+                </li>
+                <li>
+                    <a href="page_ecom_order_view.html">This Month</a>
+                </li>
+            </ul>
+        </li>
+
 
     </ul>
     <!-- END Sidebar Navigation -->

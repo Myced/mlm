@@ -1,6 +1,7 @@
 <?php
 namespace App\Classes;
 
+use App\Models\GeneologyDepth;
 
 class GeneologyStatistics
 {
@@ -19,7 +20,7 @@ class GeneologyStatistics
 
     private function initDepth()
     {
-        $this->depth = 5;
+        $this->depth = GeneologyDepth::find(1)->depth;
     }
 
     public function directRecruitsCount()

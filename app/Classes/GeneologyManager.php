@@ -3,13 +3,14 @@ namespace App\Classes;
 
 use App\User;
 use App\Models\UserData;
+use App\Models\GeneologyDepth;
 
 
 class GeneologyManager
 {
     protected $user;
 
-    protected $depth = 5;
+    protected $depth;
 
     protected $count = 2;
 
@@ -21,6 +22,11 @@ class GeneologyManager
     function __construct($user)
     {
         $this->user = $user;
+
+        //initialise the geneology depth
+        $depth = GeneologyDepth::find(1)->depth;
+
+        $this->depth = $depth;
     }
 
     public function getGeneologyTree()

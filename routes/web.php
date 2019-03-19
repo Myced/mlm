@@ -47,6 +47,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/', 'CustomerController@index')->name('customers');
         Route::get('/{user}', 'CustomerController@view')->name('customer');
     });
+
+    Route::group(['prefix' => 'settings'], function(){
+        Route::get('/geneology/depth', 'GeneologySettingsController@showDepth')->name('settings.geneology.depth');
+        Route::post('/geneology/depth', 'GeneologySettingsController@saveDepth')->name('settings.geneology.depth.store');
+
+    });
 });
 
 //user account routes
