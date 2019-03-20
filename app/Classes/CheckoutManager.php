@@ -11,6 +11,7 @@ use App\OrderStatus;
 use App\Models\Order;
 use App\Models\UserData;
 use App\Models\OrderLog;
+use App\Events\OrderPlaced;
 use Illuminate\Http\Request;
 use App\Models\OrderContent;
 use Illuminate\Support\Facades\Hash;
@@ -220,6 +221,10 @@ class CheckoutManager
 
         //save the order Contents
         $this->saveOrderContent($order);
+
+        //raise an order placed event
+        event(new OrderPlaced($order));
+
         return $order;
     }
 

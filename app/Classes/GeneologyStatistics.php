@@ -34,6 +34,11 @@ class GeneologyStatistics
         }
     }
 
+    public function getCommissionsCount()
+    {
+        return auth()->user()->commissions->count();
+    }
+
     public function totalRecruitsCount()
     {
         $total = 0;

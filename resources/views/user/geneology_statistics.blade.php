@@ -11,7 +11,7 @@
       <div class="card bg-success-dark border-0">
          <div class="row align-items-center mx-0">
             <div class="col-4 text-center">
-               <em class="icon-share fa-3x"></em>
+               <em class="icon-people fa-3x"></em>
             </div>
             <div class="col-8 py-4 bg-success rounded-right">
                <div class="h1 m-0 text-bold">{{ $stats->directRecruitsCount() }}</div>
@@ -39,11 +39,11 @@
       <div class="card bg-warning-dark border-0">
          <div class="row align-items-center mx-0">
             <div class="col-4 text-center">
-               <em class="icon-trophy fa-3x"></em>
+               <em class="icon-wallet fa-3x"></em>
             </div>
             <div class="col-8 py-4 bg-warning rounded-right">
-               <div class="h1 m-0 text-bold">10</div>
-               <div class="text-uppercase">Benefits</div>
+               <div class="h1 m-0 text-bold">{{ $stats->getCommissionsCount() }}</div>
+               <div class="text-uppercase">Commissions Received</div>
             </div>
          </div>
       </div>
@@ -68,6 +68,28 @@
                     </li>
                     @endfor
                 </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body d-flex align-items-center">
+                <div class="row">
+                    <div class="col-md-12 f-16" style="color: #333;">
+                        Your referral code is
+                        <br>
+                        <strong class="f-24 text-black">
+                            {{ auth()->user()->userData->ref_code }}
+                        </strong>
+                        <br>
+                        Or Your email address
+                        <br>
+                        <strong class="f-24 text-black">
+                            {{ auth()->user()->email }}
+                        </strong>
+                        <br><br>
+                        Give this to anyone you want to register under you.
+                    </div>
+                </div>
             </div>
         </div>
     </div>

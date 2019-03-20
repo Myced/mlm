@@ -55,7 +55,7 @@ class UserPanelController extends Controller
     public function notifications()
     {
         $notifications = auth()->user()->notifications;
-        
+
         return view('user.notifications', compact('notifications'));
     }
 

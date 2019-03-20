@@ -6,6 +6,7 @@ use App\OrderStatus;
 use App\Models\Order;
 use App\Models\OrderLog;
 use Illuminate\Http\Request;
+use App\Events\OrderCancelled;
 
 class OrderController extends Controller
 {
@@ -35,6 +36,8 @@ class OrderController extends Controller
             //place a log
             $this->logConfirmation($order);
 
+            //raise an event.
+
             session()->flash('success', 'Your order has been confirmed');
 
         }
@@ -52,16 +55,27 @@ class OrderController extends Controller
 
         //check that the user has the permission
         //to update this order
-        $this->checkPermission($order);
+        $perm = $this->checkPermission($order);
 
-        //confirm the order
-        $status  = OrderStatus::CANCELED;
+        if($perm['status'] == true)
+        {
+            //cancel the order
+            $status  = OrderStatus::CANCELED;
 
-        $order->updateStatus($status);
+            $order->updateStatus($status);
 
-        $this->logCancellation($order);
+            $this->logCancellation($order);
 
-        session()->flash('info', 'Your order has been canceled');
+            //fire order cancelled event
+            event(new OrderCancelled($order));
+
+            session()->flash('info', 'Your order has been canceled');
+
+        }
+        else {
+            session()->flash('error', $perm['message']);
+        }
+
         return back();
     }
 
