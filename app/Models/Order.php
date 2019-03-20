@@ -26,4 +26,21 @@ class Order extends Model
     {
         return $this->hasMany('App\Models\OrderLog');
     }
+
+    public static function getBeneficiary($user, $level)
+    {
+        $userData = $user->UserData;
+
+        for($i = 1; $i <= $level; $i++)
+        {
+            if(is_null($userData))
+            {
+                break;
+            }
+
+            $userData = $userData->parent();
+        }
+
+        return $userData;
+    }
 }

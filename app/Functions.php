@@ -25,6 +25,12 @@ class Functions
 
         return $filter;
     }
+
+    public static function getGeneologyDepth()
+    {
+        return $depth = \App\Models\GeneologyDepth::find(1)->depth;
+    }
+
 }
 
 ?>

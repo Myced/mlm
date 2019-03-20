@@ -15,6 +15,11 @@ class UserData extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function parent()
+    {
+        return static::where('ref_code', '=', $this->referrer_code)->first();
+    }
+
     public function recruiterName()
     {
         if($this->referrer_code == null)
