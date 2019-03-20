@@ -52,6 +52,13 @@ class UserPanelController extends Controller
         }
     }
 
+    public function notifications()
+    {
+        $notifications = auth()->user()->notifications;
+        
+        return view('user.notifications', compact('notifications'));
+    }
+
     public function profile()
     {
         //just pass the user along

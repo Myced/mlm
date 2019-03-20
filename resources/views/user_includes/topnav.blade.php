@@ -50,9 +50,17 @@
     </li>
     <!-- START Alert menu-->
     <li class="nav-item dropdown dropdown-list">
-      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-toggle="dropdown">
+      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret"
+        href="#" data-toggle="dropdown">
         <em class="icon-bell"></em>
-        <span class="badge badge-danger">11</span>
+
+        <?php
+        $notifications = auth()->user()->unreadNotifications;
+         ?>
+
+        @if( $notifications->count() > 0)
+            <span class="badge badge-danger">{{ $notifications->count() }}</span>
+        @endif
       </a>
       <!-- START Dropdown menu-->
       <div class="dropdown-menu dropdown-menu-right animated flipInX">
@@ -60,48 +68,40 @@
           <!-- START list group-->
           <div class="list-group">
             <!-- list item-->
+
+            @foreach($notifications as $notification)
+            <?php
+            $data = $notification->data;
+
+             ?>
             <div class="list-group-item list-group-item-action">
               <div class="media">
                 <div class="align-self-start mr-2">
-                  <em class="fab fa-twitter fa-2x text-info"></em>
+                  <em class="{{ $data['icon'] }} fa-2x text-{{ $data['class'] }}"></em>
                 </div>
                 <div class="media-body">
-                  <p class="m-0">New followers</p>
-                  <p class="m-0 text-muted text-sm">1 new follower</p>
+                  <p class="m-0">{{ $data['heading'] }}</p>
+                  <p class="m-0 text-muted text-sm">{{ $data['title'] }}</p>
                 </div>
               </div>
             </div>
-            <!-- list item-->
-            <div class="list-group-item list-group-item-action">
-              <div class="media">
-                <div class="align-self-start mr-2">
-                  <em class="fas fa-envelope fa-2x text-warning"></em>
-                </div>
-                <div class="media-body">
-                  <p class="m-0">New e-mails</p>
-                  <p class="m-0 text-muted text-sm">You have 10 new emails</p>
-                </div>
-              </div>
-            </div>
-            <!-- list item-->
-            <div class="list-group-item list-group-item-action">
-              <div class="media">
-                <div class="align-self-start mr-2">
-                  <em class="fas fa-tasks fa-2x text-success"></em>
-                </div>
-                <div class="media-body">
-                  <p class="m-0">Pending Tasks</p>
-                  <p class="m-0 text-muted text-sm">11 pending task</p>
-                </div>
-              </div>
-            </div>
+            @endforeach
+
+
             <!-- last list item-->
-            <div class="list-group-item list-group-item-action">
-              <span class="d-flex align-items-center">
-                         <span class="text-sm">More notifications</span>
-              <span class="badge badge-danger ml-auto">14</span>
-              </span>
-            </div>
+
+              <a href="{{ route('user.notifications') }}"
+                title="View all notifications">
+                    <div class="list-group-item list-group-item-action">
+                          <span class="d-flex align-items-center">
+                              <span class="text-sm">All notifications</span>
+                              <span class="badge badge-danger ml-auto">
+                                  <i class="fa fa-arrow-right"></i>
+                              </span>
+                          </span>
+                      </div>
+              </a>
+
           </div>
           <!-- END list group-->
         </div>

@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
     Route::group(['prefix' => 'settings'], function(){
         Route::get('/company', 'SettingsController@index')->name('settings.company');
         Route::post('/company', 'SettingsController@saveCompany')->name('settings.company.store');
-        
+
         Route::get('/geneology/depth', 'GeneologySettingsController@showDepth')->name('settings.geneology.depth');
         Route::post('/geneology/depth', 'GeneologySettingsController@saveDepth')->name('settings.geneology.depth.store');
 
@@ -78,7 +78,9 @@ Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
     Route::get('/password/change', 'UserAccountController@changePassword')->name('user.password.change');
     Route::post('/password/change/store', 'UserAccountController@updatePassword')->name('user.password.update');
 
+    Route::get('/notifications', 'UserPanelController@notifications')->name('user.notifications');
 
+    Route::get('/commissions', 'UserCommissionsController@index')->name('user.commissions');
 });
 
 //register simple api routes

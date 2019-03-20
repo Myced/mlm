@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->hasMany("App\Models\Order");
     }
 
+    public function commissions()
+    {
+        return $this->hasMany('App\Models\OrderCommission');
+    }
+
     public function orderValue()
     {
         if(count($this->orders) == 0)

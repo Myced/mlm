@@ -88,9 +88,16 @@
     </li>
 
     <li class="{{ Request::is('user/orders') || Request::is('user/order/*') ? 'active' : '' }}">
-      <a href="{{ route('user.orders') }}" title="Widgets">
+      <a href="{{ route('user.orders') }}" title="My Orders">
         <em class=" icon-present"></em>
         <span>My Orders</span>
+      </a>
+    </li>
+
+    <li class="{{ Request::is('user/commissions') ? 'active' : '' }}">
+      <a href="{{ route('user.commissions') }}" title="My Commissions">
+        <em class=" icon-wallet"></em>
+        <span>Commissions</span>
       </a>
     </li>
 

@@ -83,3 +83,14 @@
 {
     margin-bottom: 25px;
 }
+
+.notification
+{
+    box-shadow: 3px 3px 5px #999;
+}
+
+.notification:hover,
+.nofitication:focus
+{
+    box-shadow: 6px 6px 7px #666;
+}

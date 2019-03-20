@@ -62,12 +62,12 @@ class CommissionReceived extends Notification
                     . " From an order made by <strong>"
                     . $this->commission->order->user->name
                     . " </strong>"
-                    . "<br> <br>"
+                    . "<br>"
                     . "You are receiving this commission because this person "
                     . "is on your geneology tree Level " . $this->commission->level;
 
         return [
-            'icon' => 'fa fa-dollar',
+            'icon' => 'fa fa-dollar-sign',
             'class' => 'info',
             'heading' => 'Received Commission',
             'title' => 'You have a received a commission',
