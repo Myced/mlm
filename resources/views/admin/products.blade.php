@@ -24,7 +24,6 @@
     <!-- END Fixed Top Header + Footer Header -->
 
 
-
     <!-- Dummy Content -->
     @include('admin_includes.notification')
 
@@ -101,12 +100,12 @@
                 @foreach($products as $product)
                     <tr>
                         <td class="text-center">
-                            <a href="page_ecom_product_edit.html">
+                            <a href="{{ route('admin.product.detail', ['id' => $product->id]) }}">
                                 <strong> {{ $product->code }} </strong>
                             </a>
                         </td>
                         <td>
-                            <a href="page_ecom_product_edit.html">
+                            <a href="{{ route('admin.product.detail', ['id' => $product->id]) }}">
                                 {{ $product->name }}
                             </a>
                         </td>
@@ -122,13 +121,14 @@
                         </td>
                         <td class="hidden-xs text-center">{{ $product->created_at->diffForHumans() }}</td>
                         <td class="text-center">
-                            <div class="btn-group btn-group-xs">
-                                <a href="page_ecom_product_edit.html" data-toggle="tooltip"
+                            <div class="">
+                                <a href="{{ route('product.edit', ['id' => $product->id]) }}" data-toggle="tooltip"
                                     title="Edit" class="btn btn-default">
                                     <i class="fa fa-pencil"></i>
                                 </a>
                                 <a href="javascript:void(0)" data-toggle="tooltip"
-                                    title="Delete" class="btn  btn-danger">
+                                    data-id1="{{ $product->id }}"
+                                    title="Delete" class="btn  btn-danger delete">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </div>
@@ -145,5 +145,20 @@
 
 @section('scripts')
     <script src="/adminn/js/pages/ecomProducts.js"></script>
-    <script>$(function(){ EcomProducts.init(); });</script>
+    <script>
+        $(function()
+        {
+            EcomProducts.init();
+            $('.delete').click(function(){
+                var id = $(this).data('id1');
+
+                if(confirm('Do you want to delete this product ?'))
+                {
+                    url = '/admin/product/' + id + '/destroy';
+
+                    window.location.href = url;
+                }
+            });
+        });
+    </script>
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{ __('Add Product') }}
+    Edit Product - {{ $product->name }}
 @endsection
 
 @section('content')
@@ -10,10 +10,10 @@
 
     <div class="header-section">
         <h1>
-            <i class="gi gi-plus"></i>
-            Add New Product
+            <i class="gi gi-pencil"></i>
+            Edit Product ({{ $product->name }})
             <br>
-            <small>New Product</small>
+            <small>{{ $product->name }}</small>
         </h1>
     </div>
 </div>
@@ -32,7 +32,7 @@
 
 <br>
 
-<form action="{{ route('product.store') }}" method="post"
+<form action="{{ route('product.update', ['id' => $product->id]) }}" method="post"
     enctype="multipart/form-data"
     class="form-horizontal " >
     @csrf
@@ -54,7 +54,7 @@
                         <label class="col-md-3 control-label" for="product-id">Product Code</label>
                         <div class="col-md-9">
                             <input type="text" id="product-id" name="product_code"
-                            class="form-control" value="">
+                            class="form-control" value="{{ $product->code }}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -64,7 +64,8 @@
                         </label>
                         <div class="col-md-9">
                             <input type="text" id="product-name" name="name"
-                            class="form-control" placeholder="Enter product name.." required>
+                            class="form-control" placeholder="Enter product name.."
+                            required value="{{ $product->name }}">
                         </div>
                     </div>
 
@@ -75,7 +76,8 @@
                         </label>
                         <div class="col-md-9">
                             <textarea id="product-short-description" name="description"
-                            class="form-control" rows="5" required></textarea>
+                            class="form-control" rows="5"
+                            required>{{ $product->description }}</textarea>
                         </div>
                     </div>
 
@@ -85,7 +87,7 @@
                         </label>
                         <div class="col-md-9">
                             <textarea id="product-description" name="description_long"
-                            class="ckeditor"></textarea>
+                            class="ckeditor">{!! $product->description_long !!}</textarea>
                         </div>
                     </div>
 
@@ -99,7 +101,8 @@
                                 data-placeholder="Choose Category.." style="width: 250px;">
                                 <option value=""> -- Category --</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">
+                                    <option value="{{ $category->id }}"
+                                        {{ $product->category_id == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}
                                     </option>
                                 @endforeach
@@ -117,7 +120,8 @@
                                 data-placeholder="Choose Category.." style="width: 250px;">
                                 <option value=""> -- Select Brand --</option>
                                 @foreach($brands as $brand)
-                                    <option value="{{ $brand->id }}">
+                                    <option value="{{ $brand->id }}"
+                                        {{ $product->brand_id == $brand->id ? 'selected' : '' }}>
                                         {{ $brand->name }}
                                     </option>
                                 @endforeach
@@ -134,7 +138,8 @@
                             <div class="input-group">
                                 <div class="input-group-addon">FCFA</div>
                                 <input type="text" id="cost-price" name="cost_price"
-                                    class="form-control" placeholder="3,000">
+                                    class="form-control" placeholder="3,000"
+                                    value="{{ $product->cost_price }}" required>
                             </div>
                         </div>
                     </div>
@@ -148,7 +153,8 @@
                             <div class="input-group">
                                 <div class="input-group-addon">FCFA</div>
                                 <input type="text" id="product-price" name="price"
-                                    class="form-control" placeholder="3.000">
+                                    class="form-control" placeholder="3.000"
+                                    value="{{ $product->price }}" required>
                             </div>
                         </div>
                     </div>
@@ -160,17 +166,20 @@
                         </label>
                         <div class="col-md-8">
                             <input type="text" id="quantity" name="quantity"
-                                class="form-control" placeholder="eg 34">
+                                class="form-control" placeholder="eg 34"
+                                value="{{ $product->quantity }}" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Condition</label>
                         <div class="col-md-9">
                             <label class="radio-inline" for="product-condition-new">
-                                <input type="radio" id="product-condition-new" name="product-condition" value="condition_new" checked> New
+                                <input type="radio" id="product-condition-new"
+                                name="product-condition" value="condition_new" checked> New
                             </label>
                             <label class="radio-inline" for="product-condition-used">
-                                <input type="radio" id="product-condition-used" name="product-condition" value="condition_used"> Used
+                                <input type="radio" id="product-condition-used"
+                                name="product-condition" value="condition_used"> Used
                             </label>
                         </div>
                     </div>
@@ -179,7 +188,7 @@
                         <div class="col-md-9">
                             <label class="switch switch-primary">
                                 <input type="checkbox" id="product-status" name="published"
-                                checked><span></span>
+                                {{ $product->published == true ? 'checked' : '' }}><span></span>
                             </label>
                         </div>
                     </div>
@@ -209,22 +218,21 @@
                     </label>
                     <div class="col-md-9">
                         <input type="text" id="example-tags" name="tags"
-                        class="input-tags" value="">
+                        class="input-tags" value="{{ $product->tags }}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-md-3 control-label">
                         Tiny Image
-                        <span class="required">*</span>
                         <br>
                         (80 x 80)
                     </label>
                     <div class="col-md-9">
                         <input type="file" name="tiny" value="" class="form-control"
-                            required id="image1">
+                             id="image1">
                             <br>
-                            <img src="" alt="" id="img1"
+                            <img src="{{ $product->tiny_image }}" alt="" id="img1"
                                 width="100px" height="100px">
                     </div>
                 </div>
@@ -237,9 +245,9 @@
                     </label>
                     <div class="col-md-9">
                         <input type="file" name="thumbnail" value="" class="form-control"
-                            required id="image2">
+                             id="image2">
                             <br>
-                            <img src="" alt="" id="img2"
+                            <img src="{{ $product->thumbnail }}" alt="" id="img2"
                                 width="100px" height="100px">
                     </div>
                 </div>
@@ -252,9 +260,9 @@
                     </label>
                     <div class="col-md-9">
                         <input type="file" name="image" value="" class="form-control"
-                            required id="image3">
+                             id="image3">
                             <br>
-                            <img src="" alt="" id="img3"
+                            <img src="{{ $product->image }}" alt="" id="img3"
                                 width="100px" height="100px">
                     </div>
                 </div>
@@ -280,7 +288,7 @@
                     </label>
                     <div class="col-md-9">
                         <textarea name="specifications"
-                        class="ckeditor"></textarea>
+                        class="ckeditor">{!! $product->specifications !!}</textarea>
                     </div>
                 </div>
 

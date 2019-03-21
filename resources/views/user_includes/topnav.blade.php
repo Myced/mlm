@@ -36,18 +36,8 @@
   <!-- END Left navbar-->
   <!-- START Right Navbar-->
   <ul class="navbar-nav flex-row">
-    <!-- Search icon-->
-    <li class="nav-item">
-      <a class="nav-link" href="#" data-search-open="">
-        <em class="icon-magnifier"></em>
-      </a>
-    </li>
-    <!-- Fullscreen (only desktops)-->
-    <li class="nav-item d-none d-md-block">
-      <a class="nav-link" href="#" data-toggle-fullscreen="">
-        <em class="fas fa-expand"></em>
-      </a>
-    </li>
+    
+
     <!-- START Alert menu-->
     <li class="nav-item dropdown dropdown-list">
       <a class="nav-link dropdown-toggle dropdown-toggle-nocaret"
@@ -118,13 +108,4 @@
     <!-- END Offsidebar menu-->
   </ul>
   <!-- END Right Navbar-->
-  <!-- START Search form-->
-  <form class="navbar-form" role="search" action="http://themicon.co/theme/angle/v4.2.1/static-html/app/search.html">
-    <div class="form-group">
-      <input class="form-control" type="text" placeholder="Type and hit enter ...">
-      <div class="fas fa-times navbar-form-close" data-search-dismiss=""></div>
-    </div>
-    <button class="d-none" type="submit">Submit</button>
-  </form>
-  <!-- END Search form-->
 </nav>

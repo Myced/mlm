@@ -54,7 +54,7 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-header">
-                <h4>You Level Stats</h4>
+                <h4>Your Level Stats</h4>
             </div>
 
             <div class="card-body">
@@ -95,51 +95,87 @@
     </div>
 
     <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h4>Your recent recruits</h4>
 
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Geneology Level Benefits (Commission Percentages)</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-condensed">
+                                <tr>
+                                    <th class="p-8">S/N</th>
+                                    <th class="p-8">Level</th>
+                                    <th class="p-8">Percentage</th>
+                                </tr>
+
+                                @for($i = 1; $i <= $stats->depth; $i++)
+                                <tr>
+                                    <th class="p-8">{{ $i }}</th>
+                                    <th class="p-8">Level {{ $i }}</th>
+                                    <th class="p-8">{{ \App\Models\GeneologyLevel::getLevelBenefit($i) }} %</th>
+                                </tr>
+                                @endfor
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="card-body">
-                <div class="table-responsive table-bordered">
-                    <table class="table table-bordered table-hover">
-                       <thead>
-                          <tr>
-                             <th>S/N</th>
-                             <th>Full Name</th>
-                             <th>Level</th>
-                             <th>Join Date</th>
-                             <th>N<sup>o</sup> of Recruits</th>
-                          </tr>
-                       </thead>
-                       <tbody>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Your recent recruits</h4>
 
-                           @if(empty($stats->latestRecruits()))
-                           <tr>
-                               <th class="text-center" colspan="6">
-                                   <strong>
-                                       You do not have any recruits
-                                   </strong>
-                               </th>
-                           </tr>
-                           @else
-                             <?php $count = 1; ?>
-                             @foreach($stats->latestRecruits() as $user)
-                             <tr>
-                                 <td> {{ $count++ }} </td>
-                                 <td> {{ $user->first_name . ' ' . $user->last_name }} </td>
-                                 <td> Level 1 </td>
-                                 <td>
-                                     {{ $user->created_at->toFormattedDateString() }}
-                                 </td>
-                                 <td> {{ $user->getChildrenCount() }} </td>
-                             </tr>
-                             @endforeach
-                           @endif
+                    </div>
 
-                       </tbody>
-                    </table>
+                    <div class="card-body">
+                        <div class="table-responsive table-bordered">
+                            <table class="table table-bordered table-hover">
+                               <thead>
+                                  <tr>
+                                     <th>S/N</th>
+                                     <th>Full Name</th>
+                                     <th>Level</th>
+                                     <th>Join Date</th>
+                                     <th>N<sup>o</sup> of Recruits</th>
+                                  </tr>
+                               </thead>
+                               <tbody>
+
+                                   @if(empty($stats->latestRecruits()))
+                                   <tr>
+                                       <th class="text-center" colspan="6">
+                                           <strong>
+                                               You do not have any recruits
+                                           </strong>
+                                       </th>
+                                   </tr>
+                                   @else
+                                     <?php $count = 1; ?>
+                                     @foreach($stats->latestRecruits() as $user)
+                                     <tr>
+                                         <td> {{ $count++ }} </td>
+                                         <td> {{ $user->first_name . ' ' . $user->last_name }} </td>
+                                         <td> Level 1 </td>
+                                         <td>
+                                             {{ $user->created_at->toFormattedDateString() }}
+                                         </td>
+                                         <td> {{ $user->getChildrenCount() }} </td>
+                                     </tr>
+                                     @endforeach
+                                   @endif
+
+                               </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

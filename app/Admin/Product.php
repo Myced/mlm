@@ -10,6 +10,10 @@ class Product extends Model
     protected $percetage;
     protected $onPromotion;
 
+    const IMAGE_PATH = 'uploads/products/images/';
+    const THUMBNAIL_PATH  = 'uploads/products/thumbnails/';
+    const TINY_IMAGE_PATH = 'uploads/products/tiny/';
+
 
     public static function outOfStock()
     {
@@ -19,6 +23,16 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo('App\Admin\Category');
+    }
+
+    public function movements()
+    {
+        return $this->hasMany('App\Models\ProductMovement');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Models\ProductImage');
     }
 
     public function orders()

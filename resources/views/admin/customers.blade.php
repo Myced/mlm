@@ -40,8 +40,8 @@
                 <tr>
                     <th class="text-center" style="width: 100px;">S/N</th>
                     <th class="">Customer Name</th>
-                    <th class="text-center ">Email</th>
-                    <th class="text-center">Telephone</th>
+                    <th class="">Email</th>
+                    <th class="">Telephone</th>
                     <th class="text-center ">Orders</th>
                     <th class="text-center">Recruits</th>
                     <th class="text-center">Joined On</th>
@@ -64,10 +64,10 @@
                                 </a>
                             </strong>
                         </td>
-                        <td class="text-center">
+                        <td class="">
                             <strong>{{ $customer->email }}</strong>
                         </td>
-                        <td class="text-center">
+                        <td class="">
                             <strong>{{ $customer->userData->tel }}</strong>
                         </td>
                         <td class="text-center">

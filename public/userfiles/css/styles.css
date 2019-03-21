@@ -58,6 +58,22 @@
     font-size: 32px;
 }
 
+.p-8
+{
+    padding: 8px;
+}
+
+.p-10
+{
+    padding: 10px;
+}
+
+tr>th.p-8,
+tr>td.p-8
+{
+    padding: 8px;
+}
+
 .badge-shipped
 {
     color: white;

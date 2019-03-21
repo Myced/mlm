@@ -4215,3 +4215,18 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .callout.callout-success{
   background-color: #00a65a !important;
 }
+
+.table.f-16
+{
+    font-size: 16px;
+}
+
+.f-16
+{
+    font-size: 16px;
+}
+
+.m-b-20
+{
+    margin-bottom: 20px;
+}

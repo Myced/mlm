@@ -46,6 +46,7 @@ class CheckoutManager
             $userData = $this->saveUserData($user, $request);
 
             //raise an event for the registered user
+            $user->refresh();
             event(new UserRegistered($user));
         }
 

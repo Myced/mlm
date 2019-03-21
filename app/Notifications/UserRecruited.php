@@ -62,7 +62,8 @@ class UserRecruited extends Notification
                     . $this->newUser->created_at->format(\App\Functions::DATE_FORMAT)
                     . "<br>"
                     . "You will be receiving commissions for every purchase "
-                    . " made by this person";
+                    . " made by this person. "
+                    . " <strong> Congratulations!! </strong>";
         return [
             'icon' => 'icon-user',
             'class' => 'success',

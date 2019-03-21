@@ -1,8 +1,9 @@
 <footer class="clearfix">
     <div class="pull-right">
-        Created by TN CED <i class="fa fa-heart text-danger"></i>
+        Created with <i class="fa fa-heart text-danger"></i> by TN CED 
     </div>
     <div class="pull-left">
-        <span id="year-copy"></span> &copy; <a href="http://goo.gl/TDOSuC" target="_blank">ProUI 3.8</a>
+        &copy; {{ date("Y") }}
+
     </div>
 </footer>

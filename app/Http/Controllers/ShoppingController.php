@@ -23,7 +23,7 @@ class ShoppingController extends Controller
             $perPage = $request->per_page;
         }
         else {
-            $perPage = 15;
+            $perPage = 155;
         }
         // composer require hardevine/shoppingcart
         $products = $this->getProducts($perPage);

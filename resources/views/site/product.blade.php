@@ -76,7 +76,7 @@
                             <strong>Availability:</strong>
                             @if($product->quantity < 1)
                                 <span class="text-danger">
-                                    <strong>Out of Stock</strong>
+                                    <strong class="f-20">Out of Stock</strong>
                                 </span>
                             @else
                                 <span class="text-success text-bold">
