@@ -14,6 +14,7 @@ use App\Models\OrderLog;
 use App\Events\OrderPlaced;
 use Illuminate\Http\Request;
 use App\Models\OrderContent;
+use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Hash;
 
 class CheckoutManager
@@ -43,6 +44,9 @@ class CheckoutManager
 
             //save the user data
             $userData = $this->saveUserData($user, $request);
+
+            //raise an event for the registered user
+            event(new UserRegistered($user));
         }
 
         $this->setUser($user);

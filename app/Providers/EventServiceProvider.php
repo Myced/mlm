@@ -33,6 +33,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\OrderPaid' => [
             'App\Listeners\OrderPaidListener'
         ],
+        'App\Events\UserRegistered' => [
+            'App\Listeners\UserRegisteredListener'
+        ],
     ];
 
     /**

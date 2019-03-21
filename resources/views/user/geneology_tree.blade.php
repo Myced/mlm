@@ -93,6 +93,7 @@
             primaryFields: ["name", "joined"],
             photoFields: ["image"],
             renderNodeEvent: renderNodHandler,
+            expandToLevel: 6,
 
             dataSource: <?php echo $geneologyJSON; ?>
         });

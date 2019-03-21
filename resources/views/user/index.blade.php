@@ -44,6 +44,20 @@
       </div>
     </div>
   </div>
+
+  <div class="col-xl-3 col-lg-6 col-md-12">
+    <!-- START card-->
+    <div class="card flex-row align-items-center align-items-stretch border-0">
+      <div class="col-4 d-flex align-items-center bg-warning-dark justify-content-center rounded-left">
+        <em class="icon-vector fa-3x"></em>
+      </div>
+      <div class="col-8 py-3 bg-warning rounded-right">
+        <div class="h2 mt-0">{{ $user->ref_code }}</div>
+        <div class="text-uppercase">Referral Code</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 <!-- END cards box-->
 <div class="row">
