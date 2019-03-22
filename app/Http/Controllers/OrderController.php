@@ -143,4 +143,18 @@ class OrderController extends Controller
         }
 
     }
+
+    public function momoPayment($code)
+    {
+        $order = $this->getOrder($code);
+
+        return view('user.order_payment_mtn', compact('order'));
+    }
+
+    public function orangePayment($code)
+    {
+        $order = $this->getOrder($code);
+
+        return view('user.order_payment_orange', compact('order'));
+    }
 }

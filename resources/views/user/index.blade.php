@@ -76,7 +76,7 @@
           <div class="card-wrapper">
             <div class="card-body">
 
-                <div class="table-responsive">
+                <div class="table-responsive table-bordered">
                     <table class="table table-bordered table-hover">
                        <thead>
                           <tr>

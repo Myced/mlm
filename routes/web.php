@@ -79,6 +79,8 @@ Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
     Route::get('/orders', 'UserPanelController@orders')->name('user.orders');
     Route::get('/order/{code}', 'UserPanelController@orderDetail')->name('user.order.detail');
     Route::get('/order/{code}/payment', 'OrderController@payment')->name('order.payment');
+    Route::get('/order/{code}/payment/momo', 'OrderController@momoPayment')->name(\App\PaymentMethods::MTN_MOMO);
+    Route::get('/order/{code}/payment/orange', 'OrderController@orangePayment')->name(\App\PaymentMethods::ORANGE_MONEY);
     Route::get('/order/{code}/confirm', 'OrderController@confirm')->name('order.confirm');
     Route::get('/order/{code}/cancel', 'OrderController@cancel')->name('order.cancel');
     Route::get('/profile', 'UserPanelController@profile')->name("user.profile");
@@ -112,6 +114,9 @@ Route::group(['prefix' => 'api'], function(){
         Route::get('/email/{email}', 'VerifyController@email');
         Route::post('/verifyref', 'VerifyController@verifyRef')->name('verify.ref');
     });
+
+    Route::post('/payment/momo', 'PaymentController@momo')->name('payment.momo');
+    Route::post('/payment/orange', 'PaymentController@orange')->name('payment.orange');
 
     //brands controller
     Route::get('/getbrands/{id}', 'ApiBrandController@getCatBrands');
