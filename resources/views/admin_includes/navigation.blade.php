@@ -102,7 +102,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('brands.manage') }}">
                         Manage Brands
                     </a>
                 </li>

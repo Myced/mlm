@@ -47,4 +47,45 @@ class BrandController extends Controller
             return back();
         }
     }
+
+    public function manage()
+    {
+        $brands  = Brand::all();
+
+        return view('admin.manage_brands', compact('brands'));
+    }
+
+    public function edit($id)
+    {
+        $brand = Brand::find($id);
+        $categories = Category::all();
+
+        return view('admin.edit_brand', compact('brand', 'categories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $brand = Brand::find($id);
+
+        $brand->name = $request->name;
+        $brand->description = $request->description;
+        $brand->category_id  = $request->category;
+
+        $brand->save();
+
+        session()->flash('success', 'Brand Updated');
+
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        $brand = Brand::find($id);
+
+        $brand->delete();
+
+        session()->flash("success", 'Brand Deleted');
+
+        return back();
+    }
 }

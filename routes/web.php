@@ -20,6 +20,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/create', 'CategoryController@create')->name('category.create');
         Route::post('/store', 'CategoryController@store')->name('category.store');
         Route::get('/{id}', 'CategoryController@view')->name('category.view');
+        Route::get('/{id}/edit', 'CategoryController@edit')->name('category.edit');
+        Route::post('/{id}/update', 'CategoryController@update')->name('category.update');
+        Route::get('/{id}/destroy', 'CategoryController@destroy')->name('category.destroy');
     });
 
     //brand routes
@@ -27,6 +30,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/', 'BrandController@index')->name('brands');
         Route::get('/manage', 'BrandController@manage')->name('brands.manage');
         Route::post('/store', 'BrandController@store')->name('brand.store');
+        Route::get('/{id}', 'BrandController@view')->name('brand.view');
+        Route::get('/{id}/edit', 'BrandController@edit')->name('brand.edit');
+        Route::post('/{id}/update', 'BrandController@update')->name('brand.update');
+        Route::get('/{id}/destroy', 'BrandController@destroy')->name('brand.destroy');
     });
 
     //manage products here

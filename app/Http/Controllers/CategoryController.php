@@ -53,4 +53,43 @@ class CategoryController extends Controller
             }
         }
     }
+
+    public function manage()
+    {
+        $categories = Category::all();
+
+        return view('admin.manage_categories', compact('categories'));
+    }
+
+    public function edit($id)
+    {
+        $category = Category::find($id);
+
+        return view('admin.edit_category')->with('category', $category);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = Category::find($id);
+
+        $category->name = $request->name;
+        $category->description = $request->description;
+
+        $category->save();
+
+        session()->flash('success', 'Category Updated');
+
+        return back();
+    }
+
+    public function destroy($id)
+    {
+        $category = Category::find($id);
+
+        $category->delete();
+
+        session()->flash('success', 'Category Deleted');
+
+        return back();
+    }
 }
