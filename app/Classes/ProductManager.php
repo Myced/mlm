@@ -4,6 +4,7 @@ namespace App\Classes;
 
 use App\Functions;
 use App\Admin\Product;
+use App\Models\ProductMovement;
 
 class ProductManager
 {
@@ -17,6 +18,15 @@ class ProductManager
     public function saveProduct($request)
     {
         $product  = $this->product;
+
+        if($product->quantity == null)
+        {
+            $created = true;
+        }
+        else {
+            $created = false;
+            $oldQuantity = $product->quantity;
+        }
 
         //save product properties
         $product->category_id = $request->category;
@@ -57,6 +67,19 @@ class ProductManager
         }
 
         $product->save();
+
+        //refresh the product and log it
+        $product->refresh();
+
+        if($created == true)
+        {
+            $this->LogProductCreated($product, 0, $request->quantity);
+        }
+        else {
+            //log only if the quantity has changed
+            if($product->quantity != $oldQuantity)
+                $this->LogProductQuantityChanged($product, $oldQuantity);
+        }
 
         return $product;
     }
@@ -127,6 +150,38 @@ class ProductManager
         $file->move($path, $name);
 
         return '/' . $path . $name;
+    }
+
+    private function LogProductCreated($product, $oldQuantity, $newQuantity)
+    {
+        $log = new ProductMovement;
+
+        $log->product_id = $product->id;
+        $log->old_quantity = $oldQuantity;
+        $log->difference = abs($newQuantity - $oldQuantity);
+        $log->new_quantity = $newQuantity;
+
+        $message = "Product was created";
+
+        $log->comment = $message;
+
+        $log->save();
+    }
+
+    private function LogProductQuantityChanged($product, $oldQuantity)
+    {
+        $log = new ProductMovement;
+
+        $log->product_id = $product->id;
+        $log->old_quantity = $oldQuantity;
+        $log->difference = abs($product->quantity - $oldQuantity);
+        $log->new_quantity = $product->quantity;
+
+        $message = "Product edit and quantity was changed";
+
+        $log->comment = $message;
+
+        $log->save();
     }
 }
 ?>

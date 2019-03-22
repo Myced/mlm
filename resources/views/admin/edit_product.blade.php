@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label" for="product-id">Product Code</label>
                         <div class="col-md-9">
-                            <input type="text" id="product-id" name="product_code"
+                            <input type="text" id="product-id" name="code"
                             class="form-control" value="{{ $product->code }}">
                         </div>
                     </div>

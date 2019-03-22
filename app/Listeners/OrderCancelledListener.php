@@ -58,7 +58,7 @@ class OrderCancelledListener
          $log->new_quantity = $newQuantity;
 
          $message = "Order " . $order->order_code . " By " . $order->user->name
-                             . " Cancelled.";;
+                             . " Cancelled.";
 
          $log->comment = $message;
 
