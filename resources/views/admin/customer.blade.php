@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{ __('Customer Detail') }}
+    {{ $user->name }}
 @endsection
 
 @section('content')
@@ -127,6 +127,26 @@
         </div>
         <!-- END Customer Info Block -->
 
+        <!-- address -->
+        <div class="block">
+            <!-- Billing Address Title -->
+            <div class="block-title">
+                <h2>Billing Address</h2>
+            </div>
+            <!-- END Billing Address Title -->
+
+            <!-- Billing Address Content -->
+            <h4><strong>{{ $user->name }}</strong></h4>
+            <address>
+                {{ $user->userData->address }}<br>
+                <i class="fa fa-phone"></i> {{ $user->userData->tel }}<br>
+                <i class="fa fa-envelope-o"></i>
+                <a href="javascript:void(0)">{{ $user->email }}</a>
+            </address>
+            <!-- END Billing Address Content -->
+        </div>
+        <!-- end address -->
+
         <!-- Quick Stats Block -->
         <div class="block">
             <!-- Quick Stats Title -->
@@ -160,7 +180,7 @@
                     </h4>
                 </div>
             </a>
-            <a href="javascript:void(0)" class="widget widget-hover-effect2 themed-background-muted-light">
+            <!-- <a href="javascript:void(0)" class="widget widget-hover-effect2 themed-background-muted-light">
                 <div class="widget-simple">
                     <div class="widget-icon pull-right themed-background-warning">
                         <i class="fa fa-shopping-cart"></i>
@@ -169,7 +189,7 @@
                         <strong>3</strong> (F 517,00)<br><small>Products in Cart</small>
                     </h4>
                 </div>
-            </a>
+            </a> -->
             <a href="javascript:void(0)" class="widget widget-hover-effect2 themed-background-muted-light">
                 <div class="widget-simple">
                     <div class="widget-icon pull-right themed-background-info">
@@ -203,7 +223,7 @@
                     @foreach($user->orders as $order)
                     <tr>
                         <td class="text-center" style="width: 100px;">
-                            <a href="page_ecom_order_view.html">
+                            <a href="{{ route('order.details', ['code' => $order->order_code]) }}">
                                 <strong>{{ $order->order_code }}</strong>
                             </a>
                         </td>
@@ -243,96 +263,37 @@
         </div>
         <!-- END Orders Block -->
 
-        <!-- Products in Cart Block -->
-        <div class="block">
-            <!-- Products in Cart Title -->
-            <div class="block-title">
-                <div class="block-options pull-right">
-                    <span class="label label-success"><strong>F 517,00</strong></span>
-                </div>
-                <h2><i class="fa fa-shopping-cart"></i> <strong>Products</strong> in Cart (3)</h2>
-            </div>
-            <!-- END Products in Cart Title -->
 
-            <!-- Products in Cart Content -->
-            <table class="table table-bordered table-striped table-vcenter">
-                <tbody>
-                    <tr>
-                        <td class="text-center" style="width: 100px;"><a href="page_ecom_product_edit.html"><strong>PID.8715</strong></a></td>
-                        <td class="hidden-xs" style="width: 15%;"><a href="page_ecom_product_edit.html">Product #98</a></td>
-                        <td class="text-right hidden-xs" style="width: 10%;"><strong>$399,00</strong></td>
-                        <td><span class="label label-success">Available (479)</span></td>
-                        <td class="text-center" style="width: 70px;">
-                            <a href="page_ecom_product_edit.html" data-toggle="tooltip" title="" class="btn btn-xs btn-default" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="page_ecom_product_edit.html"><strong>PID.8725</strong></a></td>
-                        <td class="hidden-xs"><a href="page_ecom_product_edit.html">Product #98</a></td>
-                        <td class="text-right hidden-xs"><strong>$59,00</strong></td>
-                        <td><span class="label label-success">Available (163)</span></td>
-                        <td class="text-center">
-                            <a href="page_ecom_product_edit.html" data-toggle="tooltip" title="" class="btn btn-xs btn-default" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-center"><a href="page_ecom_product_edit.html"><strong>PID.8798</strong></a></td>
-                        <td class="hidden-xs"><a href="page_ecom_product_edit.html">Product #98</a></td>
-                        <td class="text-right hidden-xs"><strong>$59,00</strong></td>
-                        <td><span class="label label-danger">Out of Stock</span></td>
-                        <td class="text-center">
-                            <a href="page_ecom_product_edit.html" data-toggle="tooltip" title="" class="btn btn-xs btn-default" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- END Products in Cart Content -->
-        </div>
-        <!-- END Products in Cart Block -->
 
-        <!-- Customer Addresses Block -->
-        <div class="block">
-            <!-- Customer Addresses Title -->
-            <div class="block-title">
-                <h2><i class="fa fa-building-o"></i> <strong>Customer</strong> Addresses (2)</h2>
-            </div>
-            <!-- END Customer Addresses Title -->
-
-            <!-- Customer Addresses Content -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- Billing Address Block -->
-                    <div class="block">
-                        <!-- Billing Address Title -->
-                        <div class="block-title">
-                            <h2>Billing Address</h2>
-                        </div>
-                        <!-- END Billing Address Title -->
-
-                        <!-- Billing Address Content -->
-                        <h4><strong>{{ $user->name }}</strong></h4>
-                        <address>
-                            {{ $user->userData->address }}<br>
-                            <i class="fa fa-phone"></i> {{ $user->userData->tel }}<br>
-                            <i class="fa fa-envelope-o"></i>
-                            <a href="javascript:void(0)">{{ $user->email }}</a>
-                        </address>
-                        <!-- END Billing Address Content -->
-                    </div>
-                    <!-- END Billing Address Block -->
-                </div>
-
-            </div>
-            <!-- END Customer Addresses Content -->
-        </div>
-        <!-- END Customer Addresses Block -->
 
         <!-- Referred Members Block -->
         <div class="block">
             <!-- Referred Members Title -->
             <div class="block-title">
-                <h2><i class="fa fa-group"></i>
-                    <strong>Referred</strong> Members {{ $user->userData->getChildrenCount() }}</h2>
+                <div class="block-options pull-right">
+                    <a href="javascript:void(0)"
+                        class="btn btn-alt btn-sm btn-default"
+                        data-toggle="tooltip" title="User Geneology Tree"
+                        onclick="window.open('{{ route('customer.tree', ['user' => $user->id]) }}',
+                                    'printing', 'width=1200,height=720')">
+                        <i class="fa fa-users"></i>
+                        Geneology Tree
+                    </a>
+
+                    <a href="javascript:void(0)"
+                        class="btn btn-alt btn-sm btn-default"
+                        data-toggle="tooltip"
+                        title="Show User Tabular Tree"
+                        onclick="window.open('{{ route('customer.table', ['user' => $user->id]) }}',
+                                    'printing', 'width=1200,height=720')">
+                        <i class="fa fa-list"></i>
+                        Tabular Geneology
+                    </a>
+                </div>
+                <h2>
+                    <i class="fa fa-group"></i>
+                    <strong>Referred</strong> Members {{ $user->userData->getChildrenCount() }}
+                </h2>
             </div>
             <!-- END Referred Members Title -->
 
@@ -362,11 +323,89 @@
         </div>
         <!-- END Referred Members Block -->
 
+
+        <div class="block">
+            <div class="block-title">
+
+                <div class="block-options pull-right">
+
+                    <a href="javascript:void(0)"
+                        class="btn btn-alt btn-sm btn-default"
+                        data-toggle="tooltip"
+                        title="See all commissions"
+                        onclick="window.open('{{ route('customer.commissions', ['user' => $user->id]) }}',
+                                    'Commissions', 'width=1200,height=720')">
+                        <i class="fa fa-list"></i>
+                        All Commissions
+                    </a>
+                </div>
+
+                <h2>
+                    <i class="fa fa-wallet"></i>
+                    <strong>Commissions Received</strong>
+                </h2>
+            </div>
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover">
+                   <thead>
+                      <tr>
+                         <th>Time Occured</th>
+                         <th>Order By</th>
+                         <th>Level</th>
+                         <th>Commission</th>
+                         <th>Collected</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+
+                       @if($user->latestCommissions()->count() == 0)
+                       <tr>
+                           <th class="text-center" colspan="10">
+                               <strong class="text-primary f-20" style="font-size: 20px" >
+                                   The customer does not have any commissions.
+                               </strong>
+                           </th>
+                       </tr>
+                       @else
+                         @foreach($user->latestCommissions() as $commission)
+
+                             <tr>
+                                 <td> {{ $commission->created_at->diffForHumans() }} </td>
+                                 <td> {{ $commission->order->user->name }} </td>
+                                 <td> Level {{ $commission->level }} </td>
+                                 <th> {{ number_format($commission->commission) }} FCFA </th>
+                                 <td>
+                                     @if($commission->collected == true)
+                                     <div class="label label-success">
+                                         <i class="fa fa-check"></i>
+                                         COLLECTED
+                                     </div>
+                                     @else
+                                     <div class="label label-warning">
+                                         <i class="fa fa-clock"></i>
+                                         PENDING
+                                     </div>
+                                     @endif
+                                 </td>
+                             </tr>
+                         @endforeach
+                       @endif
+
+                   </tbody>
+                </table>
+
+            </div>
+        </div>
+
         <!-- Private Notes Block -->
         <div class="block full">
             <!-- Private Notes Title -->
             <div class="block-title">
-                <h2><i class="fa fa-file-text-o"></i> <strong>Private</strong> Notes</h2>
+                <h2>
+                    <i class="fa fa-file-text-o"></i>
+                    <strong>Private</strong> Notes
+                </h2>
             </div>
             <!-- END Private Notes Title -->
 
@@ -374,7 +413,7 @@
             <div class="alert alert-info">
                 <i class="fa fa-fw fa-info-circle"></i> This note will be displayed to all employees but not to customers.
             </div>
-            <form action="page_ecom_customer_view.html" method="post" onsubmit="return false;">
+            <form action="#" method="post" onsubmit="return false;">
                 <textarea id="private-note" name="private-note" class="form-control" rows="4" placeholder="Your note.."></textarea>
                 <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add Note</button>
             </form>

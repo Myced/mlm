@@ -46,6 +46,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\OrderCommission');
     }
 
+    public function latestCommissions()
+    {
+        return \App\Models\OrderCommission::where('user_id', '=', $this->id)
+                                ->latest()
+                                ->limit(5)
+                                ->get();
+    }
+
     public function orderValue()
     {
         if(count($this->orders) == 0)

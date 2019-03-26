@@ -169,14 +169,16 @@
                                 <div class="col-md-12">
                                     <strong class="f-24 text-dark">
                                         In order for your order to be processed,
-                                        you have to pay for your order
+                                        you have to pay for your order.
+                                        <br>
+                                        ({{ \App\PaymentMethods::format($order->payment_method) }})
                                     </strong>
                                 </div>
                             </div>
 
                             <div class="row m-t-10">
                                 <div class="col-md-12">
-                                    <a href="{{ route('order.payment', ['code' => $order->order_code]) }}"
+                                    <a href="{{ route($order->payment_method, ['code' => $order->order_code]) }}"
                                         class="btn btn-info">
                                         <strong>Pay for Order</strong>
                                         <i class="fa fa-arrow-right"></i>
@@ -338,7 +340,7 @@
                                         <strong class="text-danger">NOT DELIVERED</strong>
                                         @else
                                         <strong>
-                                            {{ $order->delivered_at->format("j M, Y") }}
+                                            {{ \Carbon\Carbon::parse($order->delivered_at)->format("j M, Y") }}
                                         </strong>
                                         @endif
                                     </li>

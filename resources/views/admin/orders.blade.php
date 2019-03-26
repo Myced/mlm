@@ -8,11 +8,25 @@
 <!-- eCommerce Dashboard Header -->
 <div class="content-header">
     <ul class="nav-horizontal text-center">
-        <li>
-            <a href="{{ route('dashboard') }}"><i class="fa fa-bar-chart"></i> Dashboard</a>
+
+        <li class="{{ Request::is('admin/order') ? 'active' : '' }}">
+            <a href="{{ route('orders') }}"><i class="gi gi-shop_window"></i>All Orders</a>
         </li>
-        <li class="active">
-            <a href="{{ route('orders') }}"><i class="gi gi-shop_window"></i> Orders</a>
+
+        <li class="{{ Request::is('admin/order/period/today') ? 'active' : '' }}">
+            <a href="{{ route('orders.today') }}"><i class="gi gi-shop_window"></i> Today </a>
+        </li>
+
+        <li class="{{ Request::is('admin/order/period/yesterday') ? 'active' : '' }}">
+            <a href="{{ route('orders.yesterday') }}"><i class="gi gi-shop_window"></i> Yesterday </a>
+        </li>
+
+        <li class="{{ Request::is('admin/order/period/this-week') ? 'active' : '' }}">
+            <a href="{{ route('orders.thisweek') }}"><i class="gi gi-shop_window"></i> This Week</a>
+        </li>
+
+        <li class="{{ Request::is('admin/order/period/this-month') ? 'active' : '' }}">
+            <a href="{{ route('orders.thismonth') }}"><i class="gi gi-shop_window"></i> This Month</a>
         </li>
 
 
@@ -25,38 +39,93 @@
 
 <!-- Quick Stats -->
 <div class="row text-center">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-sm-6 col-lg-2">
         <a href="javascript:void(0)" class="widget widget-hover-effect2">
-            <div class="widget-extra themed-background">
-                <h4 class="widget-content-light"><strong>Pending</strong> Orders</h4>
+            <div class="widget-extra themed-background-danger">
+                <h4 class="widget-content-light">
+                    <strong> Cancelled <br> Orders </strong>
+                </h4>
             </div>
-            <div class="widget-extra-full"><span class="h2 animation-expandOpen">3</span></div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">
+                    {{ $stats->data[\App\OrderStatus::CANCELED] }}
+                </span>
+            </div>
         </a>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-sm-6 col-lg-2">
         <a href="javascript:void(0)" class="widget widget-hover-effect2">
-            <div class="widget-extra themed-background-dark">
-                <h4 class="widget-content-light"><strong>Orders</strong> Today</h4>
+            <div class="widget-extra themed-background-warning">
+                <h4 class="widget-content-light">
+                    <strong> Pending <br> Orders </strong>
+                </h4>
             </div>
-            <div class="widget-extra-full"><span class="h2 themed-color-dark animation-expandOpen">120</span></div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">
+                    {{ $stats->data[\App\OrderStatus::PENDING] }}
+                </span>
+            </div>
         </a>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-sm-6 col-lg-2">
         <a href="javascript:void(0)" class="widget widget-hover-effect2">
-            <div class="widget-extra themed-background-dark">
-                <h4 class="widget-content-light"><strong>Orders</strong> This Month</h4>
+            <div class="widget-extra themed-background-primary">
+                <h4 class="widget-content-light">
+                    <strong> Confirmed <br> Orders</strong>
+                </h4>
             </div>
-            <div class="widget-extra-full"><span class="h2 themed-color-dark animation-expandOpen">3.200</span></div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">
+                    {{ $stats->data[\App\OrderStatus::CONFIRMED] }}
+                </span>
+            </div>
         </a>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-sm-6 col-lg-2">
         <a href="javascript:void(0)" class="widget widget-hover-effect2">
-            <div class="widget-extra themed-background-dark">
-                <h4 class="widget-content-light"><strong>Orders</strong> Last Month</h4>
+            <div class="widget-extra themed-background-info">
+                <h4 class="widget-content-light">
+                    <strong> Processing <br> Orders</strong>
+                </h4>
             </div>
-            <div class="widget-extra-full"><span class="h2 themed-color-dark animation-expandOpen">2.850</span></div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">
+                    {{ $stats->data[\App\OrderStatus::PROCESSING] }}
+                </span>
+            </div>
         </a>
     </div>
+
+    <div class="col-sm-6 col-lg-2">
+        <a href="javascript:void(0)" class="widget widget-hover-effect2">
+            <div class="widget-extra themed-background-shipped">
+                <h4 class="widget-content-light">
+                    <strong> Shipped <br> Orders</strong>
+                </h4>
+            </div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">
+                    {{ $stats->data[\App\OrderStatus::SHIPPED] }}
+                </span>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-sm-6 col-lg-2">
+        <a href="javascript:void(0)" class="widget widget-hover-effect2">
+            <div class="widget-extra themed-background-success">
+                <h4 class="widget-content-light">
+                    <strong> Delivered <br> Orders</strong>
+                </h4>
+            </div>
+            <div class="widget-extra-full">
+                <span class="h2 themed-color-dark animation-expandOpen">
+                    {{ $stats->data[\App\OrderStatus::DELIVERED] }}
+                </span>
+            </div>
+        </a>
+    </div>
+
 </div>
 <!-- END Quick Stats -->
 
@@ -67,13 +136,16 @@
         <div class="block-options pull-right">
             <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
         </div>
-        <h2><strong>All</strong> Orders</h2>
+        <h2>
+            {{ $title }}
+            <strong> ({{ $orders->count() }}) </strong>
+        </h2>
     </div>
     <!-- END All Orders Title -->
 
     <!-- All Orders Content -->
     <div class="table-responsive">
-        <table id="ecom-orders" class="table table-bordered table-striped table-vcenter">
+        <table id="ecom-orders-desc" class="table table-bordered table-striped table-vcenter">
             <thead>
                 <tr>
                     <th class="text-center" style="width: 100px;">ID</th>
@@ -113,9 +185,12 @@
                         </td>
                         <td class="text-center">{{ $order->created_at->format(\App\Functions::DATE_FORMAT) }}</td>
                         <td class="text-center">
-                            <div class="btn-group-xs">
-                                <a href="page_ecom_order_view.html" data-toggle="tooltip" title="View" class="btn btn-default"><i class="fa fa-eye"></i></a>
-                                <a href="javascript:void(0)" data-toggle="tooltip" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>
+                            <div class="">
+                                <a href="{{ route('order.details', ['code' => $order->order_code]) }}"
+                                    data-toggle="tooltip" title="View Order Details"
+                                    class="btn btn-default">
+                                    <i class="fa fa-eye"></i>
+                                </a>
                             </div>
                         </td>
                     </tr>

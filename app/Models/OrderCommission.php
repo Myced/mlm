@@ -13,6 +13,7 @@ class OrderCommission extends Model
 
     public function beneficiary()
     {
-        return $this->belongsTo('App\User');
+        // return $this->belongsTo('App\User');
+        return \App\User::find($this->user_id);
     }
 }

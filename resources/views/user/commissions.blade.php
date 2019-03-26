@@ -31,7 +31,14 @@
                   </thead>
                   <tbody>
 
-                      @if(empty($commissions))
+                      <?php
+                          $count = 1;
+                          $total = 0;
+                          $totalPending = 0;
+                          $totalCollected = 0;
+                      ?>
+
+                      @if($commissions->count() == 0)
                       <tr>
                           <th class="text-center" colspan="10">
                               <strong class="text-primary f-20" style="font-size: 20px" >
@@ -40,12 +47,7 @@
                           </th>
                       </tr>
                       @else
-                        <?php
-                            $count = 1;
-                            $total = 0;
-                            $totalPending = 0;
-                            $totalCollected = 0;
-                        ?>
+
                         @foreach($commissions as $commission)
                         <?php
                             $total += $commission->commission;

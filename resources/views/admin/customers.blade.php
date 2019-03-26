@@ -10,7 +10,7 @@
     <div class="header-section">
         <h1>
             <i class="gi gi-cart"></i>
-            ALL CUSTOMERS
+            ALL CUSTOMERS <strong>({{ $customers->count() }})</strong>
             <br>
             <small> </small>
         </h1>

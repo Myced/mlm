@@ -1,3 +1,5 @@
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+
 <!-- FONT AWESOME-->
 <link rel="stylesheet" href="/userfiles/vendor/%40fortawesome/fontawesome-free/css/brands.css">
 <link rel="stylesheet" href="/userfiles/vendor/%40fortawesome/fontawesome-free/css/regular.css">

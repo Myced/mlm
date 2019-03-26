@@ -83,7 +83,7 @@
 
         <li>
             <a href="{{ route('brands') }}">
-                <i class="gi gi-stopwatch sidebar-nav-icon"></i>
+                <i class="gi gi-fire sidebar-nav-icon"></i>
                 <span class="sidebar-nav-mini-hide">Brands</span>
             </a>
         </li>
@@ -91,7 +91,7 @@
         <li >
             <a href="#" class="sidebar-nav-menu">
                 <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
-                <i class="gi gi-stopwatch sidebar-nav-icon"></i>
+                <i class="gi gi-edit sidebar-nav-icon"></i>
                 <span class="sidebar-nav-mini-hide">Manage </span>
             </a>
 
@@ -129,7 +129,7 @@
 
         <li>
             <a href="{{ route('admin.products') }}">
-                <i class="gi gi-stopwatch sidebar-nav-icon"></i>
+                <i class="gi gi-tags sidebar-nav-icon"></i>
                 <span class="sidebar-nav-mini-hide">View Products</span>
             </a>
         </li>
@@ -153,13 +153,19 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('orders') }}">Orders Today</a>
+                    <a href="{{ route('orders.today') }}">Orders Today</a>
                 </li>
                 <li>
-                    <a href="{{ route('settings.geneology.levels') }}">Geneology Levels</a>
+                    <a href="{{ route('orders.yesterday') }}">Orders Yesterday</a>
                 </li>
                 <li>
-                    <a href="page_ecom_order_view.html">This Month</a>
+                    <a href="{{ route('orders.thisweek') }}">Orders This Week</a>
+                </li>
+                <li>
+                    <a href="{{ route('orders.thismonth') }}">This Month</a>
+                </li>
+                <li>
+                    <a href="{{ route('orders') }}">All Orders</a>
                 </li>
             </ul>
         </li>

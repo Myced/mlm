@@ -40,7 +40,7 @@
                 Please fill in the values for the benefits for
                 each geneology level.
                 <br>
-                Please just enter the E.g 5 without the "%".
+                Please just enter the percentage E.g 5 without the "%".
             </strong>
         </div>
     </p>

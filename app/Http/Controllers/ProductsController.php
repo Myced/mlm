@@ -132,4 +132,11 @@ class ProductsController extends Controller
             unlink($name);
         }
     }
+
+    public function movements($id)
+    {
+        $product = Product::find($id);
+
+        return view('admin.product_movements', compact('product'));
+    }
 }

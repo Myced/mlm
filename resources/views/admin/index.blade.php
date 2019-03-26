@@ -12,8 +12,13 @@
         <li class="active">
             <a href="{{ route('dashboard') }}"><i class="fa fa-bar-chart"></i> Dashboard</a>
         </li>
+
         <li>
             <a href="{{ route('orders') }}"><i class="gi gi-shop_window"></i> Orders</a>
+        </li>
+
+        <li>
+            <a href="{{ route('customers') }}"><i class="gi gi-group"></i> Customers</a>
         </li>
     </ul>
 </div>
@@ -76,26 +81,7 @@
 <div class="block full">
     <!-- eShop Overview Title -->
     <div class="block-title">
-        <div class="block-options pull-right">
-            <div class="btn-group btn-group-sm">
-                <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default dropdown-toggle" data-toggle="dropdown">Last Year <span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <li class="active">
-                        <a href="javascript:void(0)">Last Year</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">Last Month</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">This Month</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">Today</a>
-                    </li>
-                </ul>
-            </div>
-            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
-        </div>
+
         <h2><strong>eShop</strong> Overview</h2>
     </div>
     <!-- END eShop Overview Title -->
@@ -147,7 +133,7 @@
             <!-- Latest Orders Title -->
             <div class="block-title">
                 <div class="block-options pull-right">
-                    <a href="page_ecom_orders.html" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Show All"><i class="fa fa-eye"></i></a>
+                    <a href="{{ route('orders') }}" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Show All"><i class="fa fa-eye"></i></a>
                     <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
                 </div>
                 <h2><strong>Latest</strong> Orders</h2>
@@ -162,12 +148,12 @@
 
                     <tr>
                         <td class="text-center" style="width: 100px;">
-                            <a href="javascript:void(0)">
+                            <a href="{{ route('order.details', ['code' => $order->order_code]) }}">
                                 <strong>{{ $order->order_code }}</strong>
                             </a>
                         </td>
                         <td class="hidden-xs">
-                            <a href="javascript:void(0)">
+                            <a href="{{ route('customer', ['id' => $order->user_id]) }}">
                                 @if(!is_null($order->user))
                                     {{ $order->user->name }}
                                 @else
@@ -214,12 +200,12 @@
                     @foreach($dashboard::topProducts() as $product)
                     <tr>
                         <td class="text-center" style="width: 100px;">
-                            <a href="page_ecom_product_edit.html">
+                            <a href="{{ route('admin.product.detail', ['id' => $product->id]) }}">
                                 <strong>{{ $product->code }}</strong>
                             </a>
                         </td>
                         <td>
-                            <a href="page_ecom_product_edit.html">
+                            <a href="{{ route('admin.product.detail', ['id' => $product->id]) }}">
                                 {{ $product->name }}
                             </a>
                         </td>

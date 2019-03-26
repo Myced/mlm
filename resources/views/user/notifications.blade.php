@@ -6,6 +6,18 @@
 
 @section('content')
 
+<div class="row animated slideInRight m-b-20">
+    <div class="col-md-12">
+        <a href="{{ url()->previous() }}"
+        class="mb-1 btn btn-outline-info">
+            <i class="fa fa-arrow-circle-left"></i>
+            <strong>
+                Go Back
+            </strong>
+        </a>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-8 offset-md-2">
 
@@ -22,7 +34,7 @@
         @else
             <!-- //show all notifications here -->
             @foreach($notifications as $notification)
-            <div class="card notification">
+            <div class="card notification animated slideInUp">
 
                 <div class="card-header bg-secondary">
                     <h4>

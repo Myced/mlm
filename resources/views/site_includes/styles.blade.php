@@ -1,3 +1,5 @@
+
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link href="/site/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/site/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
 <link href="/site/css/font-awesome.min.css" rel="stylesheet" type="text/css">

@@ -16,6 +16,11 @@ class Order extends Model
         return $this->hasMany("App\Models\OrderContent");
     }
 
+    public function commissions()
+    {
+        return $this->hasMany("App\Models\OrderCommission");
+    }
+
     public function updateStatus($status)
     {
         $this->status = $status;

@@ -320,6 +320,18 @@
         <div class="block">
             <!-- General Data Title -->
             <div class="block-title">
+                <div class="block-options pull-right">
+
+                    <a href="javascript:void(0)"
+                        class="btn btn-alt btn-sm btn-default"
+                        data-toggle="tooltip"
+                        title="See all product movements"
+                        onclick="window.open('{{ route('product.movements', ['is' => $product->id]) }}',
+                                    'Commissions', 'width=1200,height=720')">
+                        <i class="fa fa-exchange"></i>
+                        Full Product Movements
+                    </a>
+                </div>
                 <h2>
                     <i class="fa fa-luggage"></i>
                     <strong>Latest Product Movement</strong>

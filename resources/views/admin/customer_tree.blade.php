@@ -1,7 +1,7 @@
-@extends('layouts.user')
+@extends('layouts.admin_light')
 
-@section("title")
-    Geneology - Tree
+@section('title')
+    User Geneology Tree
 @endsection
 
 @section('styles')
@@ -49,14 +49,25 @@
 </style>
 @endsection
 
+
 @section('content')
+
 <div class="row">
-    <div class="col-md-12">
-        <div id="chart-container"></div>
+    <div class="col-lg-12">
+        <div class="block">
+
+            <div class="block-title">
+                <h2> Customer Geneology <strong> - {{ $user->name }} </strong> </h2>
+            </div>
+
+            <div id="chart-container"></div>
+
+
+        </div>
     </div>
+
 </div>
 @endsection
-
 
 @section('scripts')
 <script src="/userfiles/vendor/getOrgChart/getorgchart.js"></script>
@@ -104,5 +115,4 @@
             }
         }
 </script>
-
 @endsection

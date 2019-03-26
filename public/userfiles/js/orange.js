@@ -26,46 +26,11 @@ $(document).ready()
             //trigger the api to pay
             var token = $("#token").val();
             var order = $("#order").val();
-            var url  = "/api/payment/momo";
+            var url  = "/api/payment/orange";
 
             //do a jquery get on the link
             //indicate processing
-            page_loading_on();
-
-            $.ajax({
-                url : url,
-                method : 'post',
-                dataType : 'text',
-                data : { _token:token, order:order, number:numb },
-                error: function(error)
-                {
-                    show_error('Could not process Payment. Check your internet!');
-                    page_loading_off();
-                },
-                success: function(data)
-                {
-                    page_loading_off();
-
-
-                    $object = $.parseJSON(data);
-
-
-                    if($object.status === true)
-                    {
-                        show_success("Transaction Successful");
-                        showNotification('info', 'You will be redirected in a second');
-
-                        //then redirect the user;
-                        setTimeout(function(){
-                            window.location.href= '/user/order/' + order;
-                        }, 3000);
-
-                    }
-                    else {
-                        show_error($object.message);
-                    }
-                }
-            }); //end ajax request;
+            show_info("Orange Money will be supported soon!!");
 
 
         }
@@ -90,6 +55,11 @@ $(document).ready()
     function show_success(success)
     {
         showNotification('success', success);
+    }
+
+    function show_info(message)
+    {
+        showNotification('info', message);
     }
 
     function page_loading_on(){

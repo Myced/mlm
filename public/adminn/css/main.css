@@ -1,7 +1,5 @@
 /*
  *  Document   : main.css
- *  Author     : pixelcave
- *  Description: The main stylesheet of the template
  *
  *  Structure (with shortcodes):
  *      (#m01mls) MAIN LAYOUT
@@ -3134,18 +3132,18 @@ fieldset[disabled] .btn-warning.active:focus {
 }
 
 .btn-success {
-    background-color: #aad178;
+    background-color: #2dc66e;
     border-color: #7db831;
     color: #ffffff;
 }
 
 .btn-success.btn-alt {
     background-color: #ffffff;
-    color: #7db831;
+    color: #2dc66e;
 }
 
 .btn-success:hover {
-    background-color: #7db831;
+    background-color: #27ae60;
     border-color: #578022;
     color: #ffffff;
 }
@@ -3162,8 +3160,8 @@ fieldset[disabled] .btn-warning.active:focus {
 .open .btn-success.dropdown-toggle:hover,
 .open .btn-success.dropdown-toggle:focus,
 .open .btn-success.dropdown-toggle.focus {
-    background-color: #7db831;
-    border-color: #7db831;
+    background-color: #27ae60;
+    border-color: #27ae60;
     color: #ffffff;
 }
 
@@ -3463,6 +3461,10 @@ code {
     background-color: #27ae60;
 }
 
+.label-shipped {
+    background-color: #32cae4;
+}
+
 .label-success[href]:hover,
 .label-success[href]:focus {
     background-color: #2cc76c;
@@ -3719,6 +3721,15 @@ p, .table, .alert, .carousel {
 
 .themed-background-info {
     background-color: #3498db !important;
+}
+
+.themed-background-primary {
+    background-color: #2980b9 !important;
+}
+
+.themed-background-shipped
+{
+    background-color: #32cae4 !important;
 }
 
 .themed-background-success {
@@ -4229,4 +4240,28 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .m-b-20
 {
     margin-bottom: 20px;
+}
+
+.m-t-20
+{
+    margin-top: 20px;
+}
+
+.btn-flat
+{
+    border-radius: 0px;
+}
+
+.btn-ship
+{
+    background-color: #32cae4;
+    border-color: #24adc4;
+    color: #ffffff;
+}
+
+.btn-ship:hover
+{
+    background-color: #1eaec7;
+    border-color: #24adc4;
+    color: #ffffff;
 }

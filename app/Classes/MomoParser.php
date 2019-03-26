@@ -94,6 +94,10 @@ class MomoParser
 
         //save the log
         $log->save();
+
+        $log->refresh();
+
+        return $log;
     }
 }
 ?>

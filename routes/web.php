@@ -11,7 +11,6 @@ Route::post('/login/admin', 'AdminAccountController@login')->name('admin.login.s
 //admin routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
     Route::get('/', 'AdminController@index')->name('dashboard');
-    Route::get('/order/detail', 'AdminController@orderDetail')->name('order.detail');
 
     //category routes
     Route::group(['prefix' => 'category'], function(){
@@ -47,17 +46,26 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/{id}/destroy', 'ProductsController@destroy')->name('product.delete');
         Route::post('/{id}/upload/image', 'ProductsController@uploadImage')->name('product.image.upload');
         Route::get('/{id}/image/{image}/destroy', 'ProductsController@deleteImage');
+        Route::get('/{id}/movements', 'ProductsController@movements')->name('product.movements');
     });
 
     Route::group(['prefix' => 'order'], function(){
         Route::get('/', 'AdminOrderController@index')->name('orders');
         Route::get('/{code}', 'AdminOrderController@view')->name('order.details');
         Route::post('/{code}/log', 'AdminOrderController@log')->name('order.log');
+        Route::get('/{code}/status/{status}/update', 'AdminOrderController@updateStatus')->name('order.status.update');
+        Route::get('/period/today', 'AdminOrderController@today')->name('orders.today');
+        Route::get('/period/yesterday', 'AdminOrderController@yesterday')->name('orders.yesterday');
+        Route::get('/period/this-week', 'AdminOrderController@thisWeek')->name('orders.thisweek');
+        Route::get('/period/this-month', 'AdminOrderController@thisMonth')->name('orders.thismonth');
     });
 
     Route::group(['prefix' => 'customer'], function(){
         Route::get('/', 'CustomerController@index')->name('customers');
         Route::get('/{user}', 'CustomerController@view')->name('customer');
+        Route::get('/{user}/tree', 'CustomerController@tree')->name('customer.tree');
+        Route::get('/{user}/table', 'CustomerController@table')->name('customer.table');
+        Route::get('/{user}/commissions', 'CustomerController@commissions')->name('customer.commissions');
     });
 
     Route::group(['prefix' => 'settings'], function(){
@@ -81,6 +89,8 @@ Route::group(['prefix' => "user", 'middleware' => 'auth'], function(){
     Route::get('/order/{code}/payment', 'OrderController@payment')->name('order.payment');
     Route::get('/order/{code}/payment/momo', 'OrderController@momoPayment')->name(\App\PaymentMethods::MTN_MOMO);
     Route::get('/order/{code}/payment/orange', 'OrderController@orangePayment')->name(\App\PaymentMethods::ORANGE_MONEY);
+    Route::get('/order/{code}/payment/visa', 'OrderController@visaPayment')->name(\App\PaymentMethods::VISA);
+    Route::get('/order/{code}/payment/cash', 'OrderController@cashPayment')->name(\App\PaymentMethods::CASH_ON_DELIVERY);
     Route::get('/order/{code}/confirm', 'OrderController@confirm')->name('order.confirm');
     Route::get('/order/{code}/cancel', 'OrderController@cancel')->name('order.cancel');
     Route::get('/profile', 'UserPanelController@profile')->name("user.profile");

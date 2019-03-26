@@ -177,7 +177,7 @@ class ProductManager
         $log->difference = abs($product->quantity - $oldQuantity);
         $log->new_quantity = $product->quantity;
 
-        $message = "Product edit and quantity was changed";
+        $message = "Product edited and quantity was changed";
 
         $log->comment = $message;
 

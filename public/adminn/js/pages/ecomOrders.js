@@ -3,6 +3,7 @@ var EcomOrders = function() {
 
     return {
         init: function() {
+
             /* Extend with date sort plugin */
             $.extend($.fn.dataTableExt.oSort, {
                 "date-custom-pre": function ( a ) {
@@ -29,6 +30,16 @@ var EcomOrders = function() {
                     { orderable: false, targets: [7] }
                 ],
                 order: [[ 0, "asc" ]],
+                pageLength: 20,
+                lengthMenu: [[10, 20, 30, -1], [20, 30, 50, 100, 'All']]
+            });
+
+            $('#ecom-orders-desc').dataTable({
+                columnDefs: [
+                    { type: 'date-custom', targets: [6] },
+                    { orderable: false, targets: [7] }
+                ],
+                order: [[ 0, "desc" ]],
                 pageLength: 20,
                 lengthMenu: [[10, 20, 30, -1], [20, 30, 50, 100, 'All']]
             });
