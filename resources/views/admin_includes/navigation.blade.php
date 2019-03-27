@@ -181,6 +181,18 @@
         </li>
 
         <li>
+            <a href="{{ route('distributor.create') }}">
+                <i class="gi gi-user_add sidebar-nav-icon"></i>
+                <span class="sidebar-nav-mini-hide">Add Distributor</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('distributors') }}">
+                <i class="fa fa-sitemap sidebar-nav-icon"></i>
+                <span class="sidebar-nav-mini-hide">Manage distributors</span>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('customers') }}">
                 <i class="gi gi-group sidebar-nav-icon"></i>
                 <span class="sidebar-nav-mini-hide">All Customers</span>
@@ -212,6 +224,12 @@
                 </li>
                 <li>
                     <a href="{{ route('settings.geneology.levels') }}">Geneology Levels</a>
+                </li>
+                <li>
+                    <a href="{{ route('settings.membership.levels') }}">Membership Levels</a>
+                </li>
+                <li>
+                    <a href="{{ route('settings.payout') }}">Payout Settings</a>
                 </li>
 
             </ul>

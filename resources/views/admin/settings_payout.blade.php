@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    {{ __("Geneology Level Benefits") }}
+    {{ __("Geneology Depth Setting") }}
 @endsection
 
 @section('content')
@@ -12,7 +12,7 @@
             <i class="fa fa-gears"></i>
             SETTINGS
             <br>
-            <small> Setup Geneology Levels and Benefits  </small>
+            <small> Setup Payout Maximum and minimum amounts  </small>
         </h1>
     </div>
 </div>
@@ -26,49 +26,36 @@
     <!-- All Orders Title -->
     <div class="block-title">
 
-        <h2><strong>Geneology Levels and Benefits</strong></h2>
+        <h2><strong>Modify the Payout amounts</strong></h2>
     </div>
 
-    <p>
-        <div class="callout callout-info">
-            <strong>Note Thant the benefit is a percentage of the Order Total Value.</strong>
-
-            <br>
-            <br>
-
-            <strong>
-                Please fill in the values for the benefits for
-                each geneology level.
-                <br>
-                Please just enter the percentage E.g 5 without the "%".
-            </strong>
-        </div>
-    </p>
-
-
-    <form class="form-horizontal" action="{{ route('settings.geneology.levels.store') }}" method="post">
+    <form class="form-horizontal" action="{{ route('settings.payout.store') }}" method="post">
         @csrf
         <div class="row">
             <div class="col-md-8">
-
-                @for($i = 1; $i <= $depth;  $i++)
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="product-name">
-                        Level {{ $i }}:
+                    <label class="col-md-3 control-label">
+                        Minimum Amount:
                         <span class="required">*</span>
                     </label>
                     <div class="col-md-9">
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="fa fa-percent"></i></div>
-
-                            <input type="text" name="level{{ $i }}"
-                            class="form-control" placeholder="Enter % benefit. E.g 5" required
-                            value="{{ \App\Models\GeneologyLevel::getLevelBenefit($i) }}">
-                        </div>
-
+                        <input type="text" name="minimum"
+                        class="form-control" placeholder="Enter the minimum payout amount." required
+                        value="{{ is_null($payout) ? '' : number_format($payout->minimum) }}">
                     </div>
                 </div>
-                @endfor
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">
+                        Maximum Amount:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" name="maximum"
+                        class="form-control" placeholder="Enter the maximum payout amount." required
+                        value="{{ is_null($payout) ? '' : number_format($payout->maximum) }}">
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="product-name">
@@ -77,7 +64,7 @@
                     <div class="col-md-9">
                         <button type="submit" name="button"
                         title="Save Changes" class="btn btn-info">
-                            Save Benefits
+                            Save Payout Settings
                         </button>
                     </div>
                 </div>

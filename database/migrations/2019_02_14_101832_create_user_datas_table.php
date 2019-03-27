@@ -17,7 +17,7 @@ class CreateUserDatasTable extends Migration
             $table->increments('id');
             $table->string('user_id')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('cookie');
+            $table->string('cookie')->nullable();
             $table->boolean('referred')->default(false);
             $table->string('referrer_code')->nullable();
             $table->string('ref_code')->nullable();

@@ -68,6 +68,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/{user}/commissions', 'CustomerController@commissions')->name('customer.commissions');
     });
 
+    Route::group(['prefix' => 'distributor'], function(){
+        Route::get('/', 'DistributorController@index')->name('distributors');
+        Route::get('/create', 'DistributorController@create')->name('distributor.create');
+        Route::post('/store', 'DistributorController@store')->name('distributor.store');
+        Route::get('/{id}', 'DistributorController@view')->name('distributor');
+        Route::get('/{id}/edit', 'DistributorController@edit')->name('distributor.edit');
+        Route::post('/{id}/update', 'DistributorController@update')->name('distributor.update');
+        Route::get('/{id}/destroy', 'DistributorController@destroy')->name('distributor.destroy');
+    });
+
     Route::group(['prefix' => 'settings'], function(){
         Route::get('/company', 'SettingsController@index')->name('settings.company');
         Route::post('/company', 'SettingsController@saveCompany')->name('settings.company.store');
@@ -78,6 +88,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/geneology/levels', 'GeneologySettingsController@levels')->name('settings.geneology.levels');
         Route::post('/geneology/levels', 'GeneologySettingsController@saveLevels')->name('settings.geneology.levels.store');
 
+        Route::get('/geneology/membership', 'GeneologySettingsController@showMembershipLevelForm')->name('settings.membership.levels');
+        Route::post('/geneology/membership', 'GeneologySettingsController@saveMembershipLevels')->name('settings.membership.store');
+
+        Route::get('/payout', 'PayoutController@index')->name('settings.payout');
+        Route::post('/payout/store', 'PayoutController@store')->name('settings.payout.store');
     });
 });
 

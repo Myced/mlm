@@ -16,7 +16,7 @@ class CreateGeneologyLevelsTable extends Migration
         Schema::create('geneology_levels', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('level');
-            $table->integer('benefit');
+            $table->string('benefit');
             $table->timestamps();
         });
     }

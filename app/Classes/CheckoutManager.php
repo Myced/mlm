@@ -85,7 +85,6 @@ class CheckoutManager
 
         //assume everything has been validated
         $user->email = $request->email;
-        $user->password = $request->password;
         $user->level = $this->userLevel;
         $user->name = $name;
         $user->password = Hash::make($request->password);

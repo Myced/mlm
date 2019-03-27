@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\GeneologyDepth;
 use App\Models\GeneologyLevel;
+use App\Models\MembershipLevel;
 
 class GeneologySettingsController extends Controller
 {
@@ -38,6 +39,8 @@ class GeneologySettingsController extends Controller
         }
 
         $depth->depth = $depthValue;
+        $depth->width = $request->width;
+        $depth->membership_levels = $request->membership_levels;
 
         $depth->save();
 
@@ -86,5 +89,45 @@ class GeneologySettingsController extends Controller
         $level->benefit = $value;
 
         $level->save();
+    }
+
+    public function showMembershipLevelForm()
+    {
+        $level = GeneologyDepth::find(1)->membership_levels;
+
+        return view('admin.settings_membership_levels', compact('level'));
+    }
+
+    public function saveMembershipLevels(Request $request)
+    {
+        for($i = 0; $i < count($request->title); $i++)
+        {
+            $title = $request->title[$i];
+            $points = $request->points[$i];
+            $bonus = $request->bonus[$i];
+
+            $this->storeMemberLevel($i, $title, $points, $bonus);
+        }
+
+        session()->flash('success', 'Membership Levels saved');
+
+        return back();
+    }
+
+    private function storeMemberLevel($level, $title, $points, $bonus)
+    {
+        $memberLevel = MembershipLevel::where('level', '=', $level)->first();
+
+        if(is_null($memberLevel))
+        {
+            $memberLevel = new MembershipLevel;
+            $memberLevel->level = $level;
+        }
+
+        $memberLevel->title = $title;
+        $memberLevel->points = $points;
+        $memberLevel->bonus = $bonus;
+
+        $memberLevel->save();
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGeneologyDepthsTable extends Migration
+class CreateMembershipLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateGeneologyDepthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('geneology_depths', function (Blueprint $table) {
+        Schema::create('membership_levels', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('depth')->default(5);
-            $table->integer('width')->default('5');
-            $table->integer('membership_levels')->default('6');
+            $table->string('level');
+            $table->string('title');
+            $table->string('points');
+            $table->text('bonus')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateGeneologyDepthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('geneology_depths');
+        Schema::dropIfExists('membership_levels');
     }
 }

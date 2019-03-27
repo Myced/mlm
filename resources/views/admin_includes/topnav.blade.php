@@ -27,7 +27,7 @@
             <!-- If you do not want the main sidebar to open when the alternative sidebar is closed, just remove the second parameter: App.sidebar('toggle-sidebar-alt'); -->
             <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar-alt', 'toggle-other');this.blur();">
                 <i class="fa fa-bell"></i>
-                <span class="label label-primary label-indicator animation-floating">44</span>
+                <span class="label label-primary label-indicator ">44</span>
             </a>
         </li>
         <!-- END Alternative Sidebar Toggle Button -->

@@ -47,6 +47,30 @@
 
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="product-name">
+                        Width:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="number" name="width"
+                        class="form-control" placeholder="Enter the geneology width." required
+                        value="{{ is_null($depth) ? '' : $depth->width }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">
+                        Membership Levels:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="number" name="membership_levels"
+                        class="form-control" placeholder="Enter the membership levels." required
+                        value="{{ is_null($depth) ? '' : $depth->membership_levels }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">
 
                     </label>
                     <div class="col-md-9">
