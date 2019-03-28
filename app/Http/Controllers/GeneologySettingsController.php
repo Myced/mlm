@@ -41,6 +41,7 @@ class GeneologySettingsController extends Controller
         $depth->depth = $depthValue;
         $depth->width = $request->width;
         $depth->membership_levels = $request->membership_levels;
+        $depth->points_level = $request->points_level;
 
         $depth->save();
 

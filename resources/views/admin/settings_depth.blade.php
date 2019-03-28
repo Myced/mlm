@@ -70,6 +70,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-md-3 control-label">
+                        Points Levels:
+                        <span class="required">**</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="number" name="points_level"
+                        class="form-control" placeholder="Enter the number of  levels to profit points from an order." required
+                        value="{{ is_null($depth) ? '' : $depth->points_level }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-md-3 control-label" for="product-name">
 
                     </label>

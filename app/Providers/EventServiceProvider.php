@@ -36,6 +36,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserRegistered' => [
             'App\Listeners\UserRegisteredListener'
         ],
+        'App\Events\MembershipLevelUpgraded' => [
+            'App\Listeners\MembershipLevelUpgradedListener'
+        ],
     ];
 
     /**

@@ -55,8 +55,14 @@
                             <tr>
                                 <td> {{ $count++ }} </td>
                                 <td> {{ $commission->created_at->diffForHumans() }} </td>
-                                <td> {{ $commission->order->user->name }} </td>
-                                <td> {{ number_format($commission->order->total) }} FCFA </td>
+                                <td>
+                                    @if($commission->order_id == -1)
+                                        {{ __("Level Upgrade") }}
+                                    @else
+                                        {{ $commission->order->user->name }}
+                                    @endif
+                                </td>
+                                <td> {{ number_format($commission->order_value) }} FCFA </td>
                                 <td> Level {{ $commission->level }} </td>
                                 <td> {{ $commission->percentage}} % </td>
                                 <th> {{ number_format($commission->commission) }} FCFA </th>

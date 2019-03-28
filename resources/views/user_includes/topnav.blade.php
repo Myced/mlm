@@ -36,7 +36,7 @@
   <!-- END Left navbar-->
   <!-- START Right Navbar-->
   <ul class="navbar-nav flex-row">
-    
+
 
     <!-- START Alert menu-->
     <li class="nav-item dropdown dropdown-list">
@@ -71,7 +71,7 @@
                 </div>
                 <div class="media-body">
                   <p class="m-0">{{ $data['heading'] }}</p>
-                  <p class="m-0 text-muted text-sm">{{ $data['title'] }}</p>
+                  <p class="m-0 text-muted text-sm">{!! $data['title'] !!}</p>
                 </div>
               </div>
             </div>

@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\MembershipLevel;
 use Illuminate\Database\Eloquent\Model;
+use App\Events\MembershipLevelUpgraded;
 
 class UserData extends Model
 {
@@ -15,9 +17,55 @@ class UserData extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function memberLevel()
+    {
+        return \App\Models\MembershipLevel::where('level', '=', $this->membership_level)->first();
+    }
+
     public function parent()
     {
         return static::where('ref_code', '=', $this->referrer_code)->first();
+    }
+
+    public function addPoints($points)
+    {
+        $oldPoints = $this->points;
+
+        $newPoints = round($oldPoints + $points, 1);
+
+        $this->points = $newPoints;
+
+        $this->save();
+
+        //try to see if the person has reached the next membership level;
+
+        $memberLevel = $this->membership_level;
+
+        $oldLevel = $memberLevel;
+
+        $memberLevels = array_reverse(MembershipLevel::all()->toArray());
+
+        //we start from the highest points and start check and coming down
+        // to see if the user is greater than that level .
+        foreach($memberLevels as $level)
+        {
+            if($newPoints >= $level['points'])
+            {
+                if($level['level'] > $memberLevel)
+                {
+                    //this is a new level. it has to be updated;
+                    $this->membership_level = $level['level'];
+                    $this->save();
+
+                    $newLevel = MembershipLevel::where('level', '=', $level['level'])->first();
+
+                    event(new MembershipLevelUpgraded($this->user, $newLevel, $oldLevel));
+
+                    break;
+                }
+            }
+        }
+
     }
 
     public function recruiterName()

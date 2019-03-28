@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('user_id');
             $table->string('order_code');
             $table->string('total');
+            $table->string('points')->nullable();
             $table->integer('item_number');
             $table->string('status');
             $table->string('coupon')->nullable();

@@ -7,18 +7,21 @@
 @section('content')
 <!-- START cards box-->
 <div class="row">
-  <div class="col-xl-3 col-md-6">
-    <!-- START card-->
-    <div class="card flex-row align-items-center align-items-stretch border-0">
-      <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
-        <em class="icon-cloud-upload fa-3x"></em>
-      </div>
-      <div class="col-8 py-3 bg-primary rounded-right">
-        <div class="h4 mt-0">{{ $user->created_at->toFormattedDateString() }}</div>
-        <div class="text-uppercase">Join Date</div>
+
+    <div class="col-xl-3 col-md-6">
+      <!-- START card-->
+      <div class="card flex-row align-items-center align-items-stretch border-0">
+        <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+          <em class="fa fa-trophy fa-3x"></em>
+        </div>
+        <div class="col-8 py-3 bg-primary rounded-right">
+          <div class="h2 mt-0">{{ $user->memberLevel()->title }}
+          </div>
+          <div class="text-uppercase">Member Level</div>
+        </div>
       </div>
     </div>
-  </div>
+
   <div class="col-xl-3 col-md-6">
     <!-- START card-->
     <div class="card flex-row align-items-center align-items-stretch border-0">
@@ -52,8 +55,8 @@
         <em class="icon-vector fa-3x"></em>
       </div>
       <div class="col-8 py-3 bg-warning rounded-right">
-        <div class="h2 mt-0">{{ $user->ref_code }}</div>
-        <div class="text-uppercase">Referral Code</div>
+        <div class="h2 mt-0">{{ number_format($user->points) }}</div>
+        <div class="text-uppercase">Member Points</div>
       </div>
     </div>
   </div>

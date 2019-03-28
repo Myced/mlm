@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 
 class CheckoutManager
 {
+    const POINT = 1000;
 
     protected $request;
     protected $userLevel = UserLevel::USER;
@@ -235,10 +236,14 @@ class CheckoutManager
     private function saveOrder($orderCode)
     {
         $order = new Order;
+        $total = Functions::getMoney(Cart::total());
+
+        $points = round($total/static::POINT, 1);
 
         $order->user_id = $this->user->id;
         $order->order_code = $orderCode;
-        $order->total = Functions::getMoney(Cart::total());
+        $order->total = $total;
+        $order->points = $points;
         $order->item_number = Cart::count();
         $order->status = OrderStatus::PENDING;
         $order->payment_method = $this->request->payment_method;

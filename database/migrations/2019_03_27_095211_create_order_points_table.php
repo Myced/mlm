@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGeneologyDepthsTable extends Migration
+class CreateOrderPointsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateGeneologyDepthsTable extends Migration
      */
     public function up()
     {
-        Schema::create('geneology_depths', function (Blueprint $table) {
+        Schema::create('order_points', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('depth')->default(5);
-            $table->integer('width')->default('5');
-            $table->integer('membership_levels')->default('6');
-            $table->intenger('points_level')->default('6');
+            $table->string('order_id');
+            $table->string('user_id');
+            $table->string('points');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateGeneologyDepthsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('geneology_depths');
+        Schema::dropIfExists('order_points');
     }
 }
