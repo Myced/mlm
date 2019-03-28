@@ -55,8 +55,8 @@
         <em class="icon-vector fa-3x"></em>
       </div>
       <div class="col-8 py-3 bg-warning rounded-right">
-        <div class="h2 mt-0">{{ number_format($user->points) }}</div>
-        <div class="text-uppercase">Member Points</div>
+        <div class="h2 mt-0">{{ number_format($user->points, 1) }}</div>
+        <div class="text-uppercase">Your Points</div>
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@ class UserData extends Model
 
     public function memberLevel()
     {
-        return \App\Models\MembershipLevel::where('level', '=', $this->membership_level)->first();
+        return MembershipLevel::where('level', '=', $this->membership_level)->first();
     }
 
     public function parent()
@@ -41,7 +41,7 @@ class UserData extends Model
 
         $memberLevel = $this->membership_level;
 
-        $oldLevel = $memberLevel;
+        $oldLevel = memberLevel::where('level', '=', $memberLevel)->first();
 
         $memberLevels = array_reverse(MembershipLevel::all()->toArray());
 

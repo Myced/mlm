@@ -12,7 +12,12 @@
             <i class="gi gi-user"></i>
             DISTRIBUTOR - {{ $user->name }}
             <br>
-            400 pts - (MEMBER)
+            {{ number_format($user->userData->points, 1) }} pts -
+            (
+                {{ $user->userData->memberLevel()->title }}
+                -
+                {{ $user->userData->membership_level }}
+            )
             <br>
             <small> {{ $user->email }}</small>
         </h1>
@@ -119,14 +124,14 @@
                         <td class="text-right">
                             <strong>Points</strong>
                         </td>
-                        <td>{{ $user->userData->ref_code }}</td>
+                        <td>{{ number_format($user->userData->points, 1) }}</td>
                     </tr>
 
                     <tr>
                         <td class="text-right">
                             <strong>Membership Level</strong>
                         </td>
-                        <td>{{ $user->userData->ref_code }}</td>
+                        <td>{{ $user->userData->memberLevel()->title }}</td>
                     </tr>
 
                     <tr>
@@ -408,8 +413,17 @@
 
                              <tr>
                                  <td> {{ $commission->created_at->diffForHumans() }} </td>
-                                 <td> {{ $commission->order->user->name }} </td>
-                                 <td> Level {{ $commission->level }} </td>
+                                 <td>
+                                     @if($commission->order_id == '-1')
+                                        {{ __('Level Upgrade') }}
+                                     @else
+                                        {{ $commission->order->user->name }}
+                                     @endif
+                                 </td>
+                                 <td>
+                                     {{ $commission->order_id != '-1' ? 'Level ' : '' }}
+                                     {{ $commission->level }}
+                                  </td>
                                  <th> {{ number_format($commission->commission) }} FCFA </th>
                                  <td>
                                      @if($commission->collected == true)

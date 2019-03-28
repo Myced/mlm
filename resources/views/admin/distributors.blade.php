@@ -63,10 +63,13 @@
                     </td>
                     <td> <strong> {{ $distributor->email }} </strong> </td>
                     <td>
-                        <strong>700</strong>
+                        <strong>{{ $distributor->userData->points }}</strong>
                     </td>
                     <td>
-                        <strong> MEMBER </strong>
+                        <strong>
+                            {{ $distributor->userData->memberLevel()->title }}
+                            ({{ $distributor->userData->membership_level}})
+                        </strong>
                     </td>
                     <td class="text-center">
                         <div class="">
