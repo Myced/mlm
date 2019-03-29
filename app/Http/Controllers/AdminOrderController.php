@@ -63,6 +63,24 @@ class AdminOrderController extends Controller
         return view('admin.orders', compact('orders', 'stats', 'title'));
     }
 
+    public function filter()
+    {
+        if(isset(request()->start))
+        {
+            $start = request()->start;
+            $end = request()->end;
+
+            $orders = OrderManager::filter($start, $end);
+            $stats = new OrderStats($orders);
+            $title = "Orders for the Period: "
+                        . $start . " - " . $end ;
+
+            return view('admin.orders_filter', compact('orders', 'stats', 'title'));
+        }
+
+        return view('admin.orders_filter');
+    }
+
     public function updateStatus($code, $status)
     {
         $order = $this->getOrder($code);

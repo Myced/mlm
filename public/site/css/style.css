@@ -1,8 +1,4 @@
-/*--------------------------/*
-Tempale name : TechOne
-Version    : 1.0.0
-Author     : kutethemes
-Last change: 16/04/2018
+
 
 /*--------------------------/*
 
@@ -7398,6 +7394,11 @@ fieldset[disabled] .form-control {
 .submit-btn
 {
     border: none;
+    border-radius: 0px;
+}
+
+.btn-flat
+{
     border-radius: 0px;
 }
 

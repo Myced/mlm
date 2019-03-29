@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\UserLevel;
 use Illuminate\Http\Request;
 use App\Classes\GeneologyManager;
 
@@ -10,7 +11,10 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = User::latest()->get();
+        $usersLevel  = UserLevel::USER;
+        $customers = User::where('level', '=', $usersLevel)
+                            ->latest()
+                            ->get();
 
         return view('admin.customers', compact('customers'));
     }

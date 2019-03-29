@@ -75,6 +75,13 @@ class OrderManager
         return $orders;
     }
 
+    public static function filter($start, $end)
+    {
+        $orders = static::ordersFromPeriod($start, $end);
+
+        return $orders;
+    }
+
     private static function ordersFromPeriod($start, $end)
     {
         $orders = Order::whereDate('created_at', '>=', $start)

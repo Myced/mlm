@@ -86,7 +86,7 @@ $(document).ready(function(){
 
                 }
                 else {
-                    var text = "<strong> Referrer not found </strong> <br>";
+                    var text = object.message;
 
                     if(!$("#ref_id").hasClass('error-form'))
                     {
@@ -291,6 +291,10 @@ $(document).ready(function(){
                 value : $("#fname")
             },
             {
+                name: "Last Name",
+                value : $("#lname")
+            },
+            {
                 name: "Address",
                 value : $("#address")
             },
@@ -474,7 +478,6 @@ $(document).ready(function(){
                 success : function(data)
                 {
                     $email = $("#email");
-                    console.log(data);
 
                     var response = $.parseJSON(data);
 

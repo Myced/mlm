@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Classes\ShopManager;
 use App\Classes\CookieManager;
 
 class HomeController extends Controller
@@ -26,7 +27,9 @@ class HomeController extends Controller
     {
         $this->validateCookie();
 
-        return view('site.index');
+        $topOrdered = ShopManager::topOrdered();
+
+        return view('site.index', compact('topOrdered'));
     }
 
     private function validateCookie()

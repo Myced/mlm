@@ -38,10 +38,11 @@
         <table id="ecom-orders" class="table table-bordered table-striped table-vcenter">
             <thead>
                 <tr>
-                    <th class="text-center" style="width: 100px;">S/N</th>
+                    <th class="text-center" style="width: 40px;">S/N</th>
                     <th class="">Customer Name</th>
                     <th class="">Email</th>
                     <th class="">Telephone</th>
+                    <th class="text-center">Level</th>
                     <th class="text-center ">Orders</th>
                     <th class="text-center">Recruits</th>
                     <th class="text-center">Joined On</th>
@@ -69,6 +70,9 @@
                         </td>
                         <td class="">
                             <strong>{{ $customer->userData->tel }}</strong>
+                        </td>
+                        <td class="text-center">
+                            <strong>{{ $customer->userData->memberLevel()->title }}</strong>
                         </td>
                         <td class="text-center">
                             <strong>{{ count($customer->orders) }}</strong>

@@ -29,6 +29,9 @@
             <a href="{{ route('orders.thismonth') }}"><i class="gi gi-shop_window"></i> This Month</a>
         </li>
 
+        <li>
+            <a href="{{ route('orders.filter.period') }}"><i class="gi gi-shop_window"></i> Filter Period</a>
+        </li>
 
     </ul>
 </div>

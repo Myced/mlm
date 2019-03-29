@@ -30,7 +30,7 @@
 
     <li class="">
       <a href="{{ route('home') }}" title="To Website">
-        <em class="fa fa-arrow-left"></em>
+        <em class="fa fa-home"></em>
         <span >To Home</span>
       </a>
     </li>

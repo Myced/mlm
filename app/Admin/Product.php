@@ -27,7 +27,7 @@ class Product extends Model
 
     public function movements()
     {
-        return $this->hasMany('App\Models\ProductMovement');
+        return $this->hasMany('App\Models\ProductMovement')->orderByDesc('id');
     }
 
     public function images()
@@ -57,37 +57,17 @@ class Product extends Model
 
     public function isOnPromotion()
     {
-        if($this->onPromotion == null)
-        {
-            $promotion = rand(0,2);
-            $this->onPromotion = $promotion;
-            return $this->onPromotion;
-        }
-        return $this->onPromotion;
+        return $this->promoted;
     }
 
     public function getPercentage()
     {
-        if($this->percentage == null)
-        {
-            $percentage = rand(0, 70);
-            $this->percentage = $percentage;
-            return $this->percentage;
-        }
-
-        return $this->percentage;
+        return $this->percent_off;
     }
 
     public function getPrice()
     {
-        $percentage = $this->getPercentage();
-
-        //calculate the deducation
-        $deduction = ($percentage / 100) * $this->price;
-
-        $deduction = ceil($deduction);
-
-        return $this->price - $deduction;
+        return $this->promotion_price;
     }
 
     public function isBestSeller()

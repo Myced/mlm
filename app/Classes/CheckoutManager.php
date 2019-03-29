@@ -357,10 +357,22 @@ class CheckoutManager
     private function emptyCart()
     {
         Cart::destroy();
+
+        //if the cart exist in the database then delete it
+        $cookie = Cookie::get(\App\UserCookie::NAME);
+
+        if(!is_null($cookie))
+        {
+            if(!empty($cookie))
+            {
+                Cart::deleteStoredCart($cookie);
+            }
+        }
     }
 
     private function FireOrderPlacedEvent($order)
     {
+        //this has already been done in place order method
         return;
     }
 

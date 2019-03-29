@@ -19,6 +19,7 @@
                       <tr>
                          <th>S/N</th>
                          <th>Full Name</th>
+                         <th>Referral Code</th>
                          <th>Level</th>
                          <th>Join Date</th>
                          <th>N<sup>o</sup> of Recruits</th>
@@ -41,6 +42,7 @@
                              <tr>
                                  <td> {{ $count++ }} </td>
                                  <td> {{ $user->first_name . ' ' . $user->last_name }} </td>
+                                 <td> {{ $user->ref_code }} </td>
                                  <td> Level {{ $key }} </td>
                                  <td>
                                      {{ $user->created_at->toFormattedDateString() }}

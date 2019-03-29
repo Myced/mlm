@@ -120,10 +120,27 @@
             <span class="sidebar-header-title">Products</span>
         </li>
 
-        <li class="{{ Request::is('/admin/product/create') ? 'active' : '' }}">
+        <li class="{{ Request::is('/admin/product/featured')
+                        || Request::is('/admin/product/featured/*')  ? 'active' : '' }}">
             <a href="{{ route('product.create') }}">
                 <i class="fa fa-plus sidebar-nav-icon"></i>
                 <span class="sidebar-nav-mini-hide">Add Product</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('products.featured') }}"
+                class="{{ Request::is('/admin/product/featured')
+                        || Request::is('/admin/product/featured/*')  ? 'active' : '' }}">
+                <i class="gi gi-snowflake sidebar-nav-icon"></i>
+                <span class="sidebar-nav-mini-hide">Featured Products</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('products.promoted') }}">
+                <i class="gi gi-gift sidebar-nav-icon"></i>
+                <span class="sidebar-nav-mini-hide">Promoted Products</span>
             </a>
         </li>
 
@@ -163,6 +180,9 @@
                 </li>
                 <li>
                     <a href="{{ route('orders.thismonth') }}">This Month</a>
+                </li>
+                <li>
+                    <a href="{{ route('orders.filter.period') }}">Filter Period</a>
                 </li>
                 <li>
                     <a href="{{ route('orders') }}">All Orders</a>

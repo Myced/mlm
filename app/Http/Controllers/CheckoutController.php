@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Cookie;
 use Illuminate\Http\Request;
+use App\Models\GeneologyDepth;
 use App\Classes\CheckoutManager;
 
 class CheckoutController extends Controller
@@ -56,11 +57,22 @@ class CheckoutController extends Controller
     //the user is already logged in
     public function createRegister()
     {
+        $myChildrenCount = auth()->user()->userData->getChildrenCount();
+        $geneology = GeneologyDepth::find(1);
+
+        if($myChildrenCount >= $geneology->width)
+        {
+            $full = true;
+        }
+        else {
+            $full = false;
+        }
+
         $ref_code = auth()->user()->userData->ref_code;
         $ref_name = auth()->user()->name;
         $cookie = Cookie::get(\App\UserCookie::NAME);
 
-        return view('site.checkout_register', compact('ref_code', 'ref_name', 'cookie'));
+        return view('site.checkout_register', compact('ref_code', 'ref_name', 'cookie', 'full'));
     }
 
     //store the information

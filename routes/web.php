@@ -40,6 +40,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/', 'ProductsController@index')->name('admin.products');
         Route::get('/create', 'ProductsController@create')->name('product.create');
         Route::post('/store', 'ProductsController@store')->name('product.store');
+        Route::get('/featured', 'ProductsController@featured')->name('products.featured');
+        Route::post('/featured/add', 'ProductsController@addFeatured')->name('products.featured.add');
+        Route::get('/featured/{id}/destroy', 'ProductsController@destroyFeatured');
+        Route::get('/featured/{id}/main', 'ProductsController@mainFeatured')->name('products.featured.main');
+        Route::get('/promoted', 'ProductsController@promoted')->name('products.promoted');
+        Route::post('/promoted/add', 'ProductsController@addPromotion')->name('products.promoted.add');
+        Route::get('/promoted/{id}/destroy', 'ProductsController@removePromotion')->name('product.promoted.remove');
         Route::get('/{id}', 'ProductsController@view')->name('admin.product.detail');
         Route::get('/{id}/edit', 'ProductsController@edit')->name('product.edit');
         Route::post('/{id}/update', 'ProductsController@update')->name('product.update');
@@ -58,6 +65,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/period/yesterday', 'AdminOrderController@yesterday')->name('orders.yesterday');
         Route::get('/period/this-week', 'AdminOrderController@thisWeek')->name('orders.thisweek');
         Route::get('/period/this-month', 'AdminOrderController@thisMonth')->name('orders.thismonth');
+        Route::get('/period/filter', 'AdminOrderController@filter')->name('orders.filter.period');
     });
 
     Route::group(['prefix' => 'customer'], function(){
@@ -177,6 +185,7 @@ Route::post('/checkout/register/store', 'CheckoutController@registerNewUser')->n
 Route::get('/checkout/confirmation', 'CheckoutController@confirmation')->name('checkout.confirmation');
 Route::get('/products', 'ShoppingController@index')->name('products');
 Route::get('/product/{slug}', 'ShoppingController@view')->name('product.detail');
+Route::get('/product/{slug}/cart', 'CartController@fastAdd')->name('cart.fast');
 Route::get('/category/{category}', 'ShoppingController@productsCategory')->name('products.category');
 Route::get('/brand/{brand}', 'ShoppingController@productBrand')->name('products.brand');
 

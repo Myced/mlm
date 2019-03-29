@@ -58,9 +58,46 @@ class CartController extends Controller
 
     }
 
+    public function fastAdd($slug)
+    {
+        //get the product from the slug
+        $product = Product::where('slug', '=', $slug)->first();
+
+        $quantity = 1;
+
+        $price = $product->price;
+
+        if($product->isOnPromotion())
+        {
+            $price = $product->getPrice();
+        }
+
+        //add the product to cart
+        $cartItem = Cart::add($product->id, $product->name, $quantity, $price);
+
+        $cartItem = $cartItem->associate('App\Admin\Product');
+
+        Session::flash('success', 'Product added to Cart');
+
+        return back();
+    }
+
     public function destroy()
     {
         Cart::destroy();
+
+        //if the cart exist in the database then delete it
+        $cookie = Cookie::get(\App\UserCookie::NAME);
+
+        if(!is_null($cookie))
+        {
+            if(!empty($cookie))
+            {
+                Cart::deleteStoredCart($cookie);
+            }
+        }
+
+        session()->flash('info', 'Your cart has been emptied');
         return back();
     }
 }

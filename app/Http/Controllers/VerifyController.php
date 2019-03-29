@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Models\UserData;
 use Illuminate\Http\Request;
+use App\Models\GeneologyDepth;
 
 class VerifyController extends Controller
 {
@@ -13,6 +14,8 @@ class VerifyController extends Controller
         //grab the ref id
         $ref = $request->ref;
         $cookie = $request->cookie;
+
+        $geneology = GeneologyDepth::find(1);
 
         $user = User::where('email', '=', $ref)->first();
 
@@ -29,14 +32,33 @@ class VerifyController extends Controller
                 $message = "Referrer Not found";
             }
             else {
-                $status = true;
-                $message = $user->first_name . ' ' . $user->last_name;
+
+                if($user->getChildrenCount() >= $geneology->width)
+                {
+                    $status = false;
+                    $message = "This person has reached the maximum recruiting level."
+                                . " Choose another person.";
+                }
+                else {
+                    $status = true;
+                    $message = $user->first_name . ' ' . $user->last_name;
+                }
+
             }
         }
         else {
-            $status = true;
-            $name = $user->userData->first_name . ' ' . $user->userData->last_name;
-            $message = $name;
+
+            if($user->userData->getChildrenCount() >= $geneology->width)
+            {
+                $message = "This person has reached the maximum recruiting level."
+                            . " Choose another person.";
+            }
+            else {
+                $status = true;
+                $name = $user->name;
+                $message = $name;
+            }
+
         }
 
         $response = [

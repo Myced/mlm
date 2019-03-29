@@ -90,7 +90,9 @@
                     <th class="text-center" style="width: 70px;">ID</th>
                     <th>Product Name</th>
                     <th class="text-right hidden-xs">Price (FCFA) </th>
+                    <th> Percent Off </th>
                     <th class="hidden-xs">Status</th>
+                    <th> Published </th>
                     <th class="hidden-xs text-center">Added</th>
                     <th class="text-center">Action</th>
                 </tr>
@@ -112,11 +114,27 @@
                         <td class="text-right hidden-xs">
                             <strong> {{ number_format($product->price) }} </strong>
                         </td>
+
+                        <td class="text-center">
+                            @if($product->promoted)
+                                <strong class="label label-danger btn-flat">
+                                    - {{ $product->percent_off }} %
+                                </strong>
+                            @endif
+                        </td>
                         <td class="hidden-xs">
                             @if($product->quantity == 0)
                                 <span class="label label-danger" >Out of Stock</span>
                             @else
                                 <span class="label label-success">Available ({{ $product->quantity }})</span>
+                            @endif
+                        </td>
+
+                        <td>
+                            @if($product->published)
+                                <span class="label label-primary" >PUBLISHED</span>
+                            @else
+                                <span class="label label-warning" >PENDING</span>
                             @endif
                         </td>
                         <td class="hidden-xs text-center">{{ $product->created_at->diffForHumans() }}</td>

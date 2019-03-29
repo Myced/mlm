@@ -5,11 +5,21 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="/site/css/all.css">
+    <link rel="stylesheet" href="/site/css/flat/green.css">
     <link rel="stylesheet" href="/site/css/smart_wizard.min.css">
-    <link rel="stylesheet" href="/site/css/smart_wizard_theme_arrows.min.css">
     <link rel="stylesheet" href="/site/css/smart_wizard_theme_dots.min.css">
-
+    <style media="screen">
+    .bg-aqua,
+    .callout.callout-info,
+    .alert-info,
+    .label-info,
+    .modal-info
+    .modal-body {
+        background-color: #00c0ef !important;
+        color: #fff;
+        font-weight: 600;
+    }
+    </style>
 @endsection
 
 @section('content')
@@ -71,6 +81,26 @@
 
                                 <div class="row">
                                     <div class="col-md-12">
+                                        @if($full == true)
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="alert alert-info alert-dismissible">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                                    <h4>
+                                                        <strong><i class="icon fa fa-info"></i> Alert!</strong>
+                                                    </h4>
+                                                    You have reached the maximum recruiting level.
+                                                    You can no longer recruit again.
+                                                    Please register any new user under someone else in
+                                                    your tree.
+                                                  </div>
+
+                                            </div>
+                                        </div>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-md-12">
                                         <h3>Were you reffered by someone ?</h3>
 
                                         <div class="row">
@@ -82,7 +112,8 @@
                                                         <div class="m-l-20">
                                                             <div class="form-group">
                                                                 <input type="radio" name="referred" id="referYes"
-                                                                class="flat-red ref_radio" value="yes"  checked>
+                                                                class="flat-red ref_radio" value="yes"
+                                                                checked>
                                                                 <label for="referYes" class="control-label my-label">
                                                                     Yes
                                                                 </label>
@@ -90,7 +121,7 @@
 
                                                             <div class="form-group">
                                                                 <input type="radio" name="referred" id="referNo"
-                                                                class="flat-red ref_radio" value="no" >
+                                                                class="flat-red ref_radio" value="no">
                                                                 <label for="referNo" class="control-label my-label">
                                                                     No
                                                                 </label>
@@ -103,20 +134,23 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
-                                                                        <input type="text" name="ref_id" value="{{ $ref_code }}" class="form-control "
+                                                                        <input type="text" name="ref_id"
+                                                                        value="{{ $full == true ? '' : $ref_code }}"
+                                                                        class="form-control "
                                                                         placeholder="Referrer id or email" id="ref_id">
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <input type="text" name="ref_name" value="{{ $ref_name }}"
+                                                                        <input type="text" name="ref_name"
+                                                                        value="{{ $full == true ? '' : $ref_name }}"
                                                                         id="ref_name" class="form-control"
                                                                         placeholder="Referrer Full Name (Automatically filled)" disabled>
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <button type="button" class="btn btn-primary"
+                                                                        <button type="button" class="btn btn-info btn-flat"
                                                                             name="button" id="verifyRefBtn">
-                                                                            Verfiy Referrer
+                                                                            <strong>Verfiy Referrer</strong>
                                                                         </button>
                                                                     </div>
                                                                 </div>
