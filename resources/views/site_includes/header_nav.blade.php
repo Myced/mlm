@@ -109,26 +109,31 @@
                 </div>
             </div>
             <div class="col-lg-7 col-md-5 col-sm-8 col-xs-8 col-ts-12 middle-content">
-                <div class="search-form layout2 box-has-content">
-                    <div class="search-block">
-                        <div class="search-choice parent-content">
-                            <select data-placeholder="All Categories" class="chosen-select">
-                                <option value="1">All categories</option>
-                                <option value="2">-Electronics</option>
-                                <option value="3">Acessories</option>
-                                <option value="4">Table & Accessories</option>
-                                <option value="5">Headphone</option>
-                                <option value="6">Batteries & Chargens</option>
-                                <option value="7">Headphone & Headsets</option>
-                                <option value="8">Mp3 Player & Acessories</option>
-                            </select>
+                <form class="" action="{{ route('products.search') }}" method="get">
+                    <div class="search-form layout2 box-has-content">
+                        <div class="search-block">
+                            <div class="search-choice parent-content">
+                                <select data-placeholder="All Categories" class="chosen-select"
+                                    name="category">
+                                    <option value="-1">All categories</option>
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="search-inner">
+                                <input type="text" class="search-info"
+                                    placeholder="Search  here..."
+                                    name="keyword" required>
+                            </div>
+                            <button class="search-button" type="submit">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
                         </div>
-                        <div class="search-inner">
-                            <input type="text" class="search-info" placeholder="Searh entire store here...">
-                        </div>
-                        <a href="#" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></a>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-4 col-xs-4 col-ts-12 right-content">
                 <div class="hotline">

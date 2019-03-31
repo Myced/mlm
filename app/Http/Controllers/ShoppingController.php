@@ -7,6 +7,7 @@ use App\UserCookie;
 use App\Admin\Brand;
 use App\Admin\Product;
 use App\Admin\Category;
+use App\Classes\ShopManager;
 use Illuminate\Http\Request;
 use App\Classes\CookieManager;
 
@@ -18,18 +19,19 @@ class ShoppingController extends Controller
         $this->validateCookie();
 
         //check that the per page has been changed
-        if(isset(request()->per_page))
+        if(!is_null(request()->per_page))
         {
-            $perPage = $request->per_page;
+            $perPage = request()->per_page;
         }
         else {
-            $perPage = 155;
+            $perPage = 18;
         }
         // composer require hardevine/shoppingcart
         $products = $this->getProducts($perPage);
+        $topProducts = ShopManager::topOrdered()->pluck('product_id');
 
 
-        return view('site.products', compact('products'));
+        return view('site.products', compact('products', 'topProducts'));
     }
 
     private function validateCookie()

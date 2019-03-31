@@ -13,33 +13,23 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                @if($flash = session('success'))
-                <div class="alert alert-success">
-                    {{ $flash }}
-                </div>
-                @endif
-
-                @if($flash = session('error'))
-                <div class="alert alert-danger">
-                    {{ $flash }}
-                </div>
-                @endif
-            </div>
-        </div>
-
-        <div class="row">
             <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9 content-offset">
                 <div class="about-product row">
                     <div class="details-thumb col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="owl-carousel nav-style3 has-thumbs" data-autoplay="false" data-nav="true" data-dots="false"
                          data-loop="true" data-slidespeed="800" data-margin="0"
                          data-responsive = '{"0":{"items":1}, "480":{"items":2}, "768":{"items":1}, "1024":{"items":1}, "1200":{"items":1}}'>
-                            <div class="details-item"><img src="/site/images/detail1.jpg" alt=""></div>
-                            <div class="details-item"><img src="/site/images/detail1.jpg" alt=""></div>
-                            <div class="details-item"><img src="/site/images/detail1.jpg" alt=""></div>
-                            <div class="details-item"><img src="/site/images/detail1.jpg" alt=""></div>
-                            <div class="details-item"><img src="/site/images/detail1.jpg" alt=""></div>
+                            <div class="details-item">
+                                <img src="{{ $product->image }}" alt=""
+                                    width="400px" height="400px">
+                            </div>
+                            @foreach($product->images as $image)
+                            <div class="details-item">
+                                <img src="{{ $image->image }}" alt=""
+                                    >
+                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                     <div class="details-info col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -57,7 +47,7 @@
                             <span class="count">5 Review(s)</span>
                         </div>
                         <p class="description">
-                            {{ nl2br($product->description) }}
+                            {!! $product->description !!}
                         </p>
                         <div class="price">
                             @if($product->isOnPromotion())

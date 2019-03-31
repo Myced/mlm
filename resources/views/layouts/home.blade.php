@@ -43,6 +43,7 @@
 	<!--/Footer-->
 	<a class="back-to-top" href="#"></a>
 	@include('site_includes.scripts')
+	@include('site_includes.notification')
 
     @yield('scripts')
 </body>

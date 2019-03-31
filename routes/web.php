@@ -184,6 +184,7 @@ Route::post('/checkout/register/store', 'CheckoutController@registerNewUser')->n
 
 Route::get('/checkout/confirmation', 'CheckoutController@confirmation')->name('checkout.confirmation');
 Route::get('/products', 'ShoppingController@index')->name('products');
+Route::get('/products/search', 'ShoppingController@searchProducts')->name('products.search');
 Route::get('/product/{slug}', 'ShoppingController@view')->name('product.detail');
 Route::get('/product/{slug}/cart', 'CartController@fastAdd')->name('cart.fast');
 Route::get('/category/{category}', 'ShoppingController@productsCategory')->name('products.category');

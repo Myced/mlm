@@ -1,6 +1,6 @@
 <div class="header-nav-inner">
     <div class="box-header-nav">
-        <div class=" container-wapper">
+        <div class=" container-wapper text-center ">
             <a class="menu-bar mobile-navigation" href="#">
                 <span class="icon">
                     <span></span>
@@ -12,7 +12,7 @@
             <a href="#" class="header-top-menu-mobile">
                 <span class="fa fa-cog" aria-hidden="true"></span>
             </a>
-            <ul id="menu-main-menu" class="main-menu clone-main-menu ovic-clone-mobile-menu box-has-content">
+            <ul id="menu-main-menu" class=" main-menu clone-main-menu ovic-clone-mobile-menu box-has-content">
                 <li class="menu-item">
                     <a href="/" class="kt-item-title ovic-menu-item-title" title="Home">HOME</a>
                 </li>
@@ -23,7 +23,7 @@
 
                 </li>
                 <li class="menu-item menu-item-has-children">
-                    <a href="#" class="kt-item-title ovic-menu-item-title" title="Megamenu">Megamenu </a>
+                    <a href="#" class="kt-item-title ovic-menu-item-title" title="Megamenu">Menu </a>
                     <div class="sub-menu mega-menu mega-menu1">
                         <div class="row">
                             <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
@@ -120,7 +120,7 @@
                                 Contact Us
                             </a>
                         </li>
-                        
+
                     </ul>
                 </li>
 

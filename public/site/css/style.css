@@ -481,8 +481,8 @@ input {
   height: 42px;
   line-height: 42px;
   background-color: #ffffff;
-  font-size: 13px;
-  color: #888888;
+  font-size: 18px;
+  color: #555555;
   padding: 0 29px;
   border-radius: 21px 0 0 21px;
   border-right: none;
@@ -501,6 +501,7 @@ input {
   height: 42px;
   line-height: 42px;
   text-align: center;
+  border: none;
   border-radius: 0 21px 21px 0 ;
   display: inline-block;
 }
@@ -3857,6 +3858,18 @@ body.home5 {
 .list-page li a.nav-button {
   width: auto;
   padding: 0 25px;
+}
+
+.list-page li a.nav-button.disabled {
+  cursor: not-allowed;
+  background: #eee;
+}
+
+.list-page li a.nav-button.disabled:hover {
+  cursor: not-allowed;
+  background: #eee;
+  border: 1px solid #eee;
+  color: #333;
 }
 
 .grid-style .product-item .description,
@@ -7411,4 +7424,21 @@ input.input-info.input-error
 {
     color: #e31010;
     margin-top: 0px;
+}
+
+
+.border
+{
+    border: 2px solid red;
+}
+
+/* custom css grid for the top header  */
+.col-lg-7-5
+{
+    width: 62.5%;
+}
+
+.col-lg-2-5
+{
+    width: 20.83333333%;
 }

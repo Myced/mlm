@@ -2,11 +2,11 @@
 <script src="/site/js/bootstrap.min.js" ></script>
 <script src="/site/js/owl.carousel.min.js"></script>
 <script src="/site/js/owl.thumbs.min.js"></script>
-<script src="/site/js/magnific-popup.min.js"></script>
+<!-- <script src="/site/js/magnific-popup.min.js"></script> -->
 <script src="/site/js/ovic-mobile-menu.js"></script>
 <script src="/site/js/mobilemenu.min.js"></script>
 <script src="/site/js/jquery.plugin-countdown.min.js"></script>
-<script src="/site/js/jquery-countdown.min.js"></script>
+<!-- <script src="/site/js/jquery-countdown.min.js"></script> -->
 <script src="/site/js/jquery-ui.min.js"></script>
 <script src="/site/js/jquery.scrollbar.min.js"></script>
 <script src="/site/js/chosen.min.js"></script>

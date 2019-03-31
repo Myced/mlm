@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Classes\ShopManager;
 use App\Classes\CookieManager;
+use App\Models\FeaturedProduct;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,11 @@ class HomeController extends Controller
 
         $topOrdered = ShopManager::topOrdered();
 
-        return view('site.index', compact('topOrdered'));
+        //get the main featured product
+        $mainProduct = FeaturedProduct::where('is_main', '=', true)->first();
+        $featuredProducts = FeaturedProduct::where('is_main', '=', false)->get();
+
+        return view('site.index', compact('topOrdered', 'mainProduct', 'featuredProducts'));
     }
 
     private function validateCookie()
