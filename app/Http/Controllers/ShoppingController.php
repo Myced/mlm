@@ -30,7 +30,6 @@ class ShoppingController extends Controller
         $products = $this->getProducts($perPage);
         $topProducts = ShopManager::topOrdered()->pluck('product_id');
 
-
         return view('site.products', compact('products', 'topProducts'));
     }
 

@@ -8,9 +8,15 @@
 @section('content')
 <div class="main-content shop-page main-content-grid">
     <div class="container">
-        <div class="breadcrumbs">
-            <a href="/">Home</a> \ <span class="current">Products</span>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumbs">
+                    <a href="/">Home</a> \ <span class="current">Products</span>
+                </div>
+            </div>
         </div>
+        <br><br>
+
         <div class="row">
             <div class="col-xs-12 col-sm-7 col-md-8 col-lg-9 content-offset">
                 <!-- <div class="main-banner">

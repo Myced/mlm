@@ -7,23 +7,27 @@
                     <span></span>
                     <span></span>
                 </span>
-                <span class="text">Main Menu</span>
+                <span class="text"> {{ __('navigation.main_menu') }} </span>
             </a>
             <a href="#" class="header-top-menu-mobile">
                 <span class="fa fa-cog" aria-hidden="true"></span>
             </a>
             <ul id="menu-main-menu" class=" main-menu clone-main-menu ovic-clone-mobile-menu box-has-content">
                 <li class="menu-item">
-                    <a href="/" class="kt-item-title ovic-menu-item-title" title="Home">HOME</a>
+                    <a href="/" class="kt-item-title ovic-menu-item-title" title="Home">
+                        {{ __('navigation.home') }}
+                    </a>
                 </li>
                 <li class="menu-item">
                     <a href="{{ route('products') }}" class="kt-item-title ovic-menu-item-title" title="Demos">
-                        Products
+                        {{ __('navigation.products') }}
                     </a>
 
                 </li>
                 <li class="menu-item menu-item-has-children">
-                    <a href="#" class="kt-item-title ovic-menu-item-title" title="Megamenu">Menu </a>
+                    <a href="#" class="kt-item-title ovic-menu-item-title" title="Megamenu">
+                        {{ __('navigation.menu') }}
+                    </a>
                     <div class="sub-menu mega-menu mega-menu1">
                         <div class="row">
                             <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
@@ -105,19 +109,19 @@
                 <li class="menu-item menu-item-has-children">
                     <a href="javascript:void(0)"
                         class="kt-item-title ovic-menu-item-title" title="Blog">
-                        ABOUT US
+                        {{ __('navigation.about_us') }}
                     </a>
                     <ul class="sub-menu">
                         <li>
                             <a href="{{ route('about-us') }}"
                                 class="kt-item-title ovic-menu-item-title" title="Sub Menu">
-                                About Us
+                                {{ __('navigation.about_us') }}
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('contact') }}"
                             class="kt-item-title ovic-menu-item-title" title="Contact Us">
-                                Contact Us
+                                {{ __('navigation.contact_us') }}
                             </a>
                         </li>
 
@@ -127,13 +131,13 @@
                 <li class="">
                     <a href="{{ route('blog') }}"
                     class="kt-item-title ovic-menu-item-title" title="Blog">
-                    Blog
+                    {{ __('navigation.blog') }}
                 </a>
                 @auth()
                 <li class="menu-item menu-item-has-children">
                     <a href="javascript:void(0)"
                         class="kt-item-title ovic-menu-item-title" title="Blog">
-                        My Account
+                        {{ __('navigation.my_account') }}
                     </a>
                     <ul class="sub-menu">
                         <li><a href="{{ route('user.dashboard') }}">Dashboard</a></li>

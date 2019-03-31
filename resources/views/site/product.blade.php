@@ -52,14 +52,14 @@
                         <div class="price">
                             @if($product->isOnPromotion())
 
-                            <span class="my-flash sale-flash">
-                                -{{ $product->getPercentage() }}%
-                            </span> <br><br>
+                                <span class="my-flash sale-flash">
+                                    -{{ $product->getPercentage() }}%
+                                </span> <br><br>
 
-                            <span class="delete">FCFA {{ number_format($product->price) }}</span> <br>
-                            <span class="insert">FCFA {{ number_format($product->getPrice()) }} </span>
+                                <span class="delete">FCFA {{ number_format($product->price) }}</span> <br>
+                                <span class="insert">FCFA {{ number_format($product->getPrice()) }} </span>
                             @else
-                            <span >FCFA {{ number_format($product->price) }}</span>
+                                <span >FCFA {{ number_format($product->price) }}</span>
                             @endif
                         </div>
                         <div class="availability">

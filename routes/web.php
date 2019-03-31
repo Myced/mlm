@@ -163,6 +163,9 @@ Route::get('/about-us', 'HomeController@about')->name('about-us');
 Route::get('/blog', 'PostController@index')->name('blog');
 Route::get('/post/{slug}', 'PostController@post')->name('blog.post');
 
+Route::get('/locale/en', 'LocaleController@en')->name('locale.en');
+Route::get('/locale/fr', 'LocaleController@fr')->name('locale.fr');
+
 //product view routes
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::post('/cart/add', 'CartController@add')->name('cart.add');

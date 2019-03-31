@@ -1,8 +1,10 @@
+
 <div class="topbar layout1">
     <div class="container">
         <ul class="menu-topbar">
             <li class="language menu-item-has-children">
-                <a href="#" class="toggle-sub-menu">
+                @if(app()->getLocale() == 'en')
+                <a href="javascript:void(0)" class="toggle-sub-menu">
                     <span class="flag">
                         <img src="/site/images/flag1.jpg" alt="">
                     </span>
@@ -10,15 +12,32 @@
                 </a>
                 <ul class="list-language sub-menu">
                     <li>
-                        <a href="#">
+                        <a href="{{ route('locale.fr') }}">
                             <span class="flag">
                                 <img src="/site/images/flag4.jpg" alt="">
                             </span>
-                            French
+                            Francias
                         </a>
                     </li>
-
                 </ul>
+                @else
+                <a href="javascript:void(0)">
+                    <span class="flag">
+                        <img src="/site/images/flag4.jpg" alt="">
+                    </span>
+                    Francias
+                </a>
+                <ul class="list-language sub-menu">
+                    <li>
+                        <a href="{{ route('locale.en') }}">
+                            <span class="flag">
+                                <img src="/site/images/flag1.jpg" alt="">
+                            </span>
+                            English
+                        </a>
+                    </li>
+                </ul>
+                @endif
             </li>
             <!--
             <li class="currencies menu-item-has-children">
