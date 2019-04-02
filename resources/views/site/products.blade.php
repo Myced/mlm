@@ -95,7 +95,7 @@
                                         </ul>
                                         <span class="count">5 Review(s)</span>
                                     </div>
-                                    <a href="detail.html" class="product-name">
+                                    <a href="{{ route('product.detail', ['slug' => $product->slug]) }}" class="product-name">
                                         {{ $product->name }}
                                     </a>
                                     <p class="description">
@@ -153,6 +153,7 @@
                                 name="category[]">
                             <label for="c{{ $category->id }}" class="label-text">
                                 {{ $category->name }}
+                                ({{ $category->products->count() }})
                             </label>
                         </li>
                         @endforeach

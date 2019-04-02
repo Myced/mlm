@@ -41,5 +41,58 @@ class ShopManager
                         ->orderBy('percent_off', 'desc')
                         ->get();
     }
+
+    public static function relatedProducts($product, $limit = 10)
+    {
+        $related = [];
+
+        $productId = $product->id;
+        $brand = $product->brand_id;
+        $category = $product->category_id;
+
+
+        //selected the most view from this brand
+        $products = Product::where('brand_id', $brand)
+                            ->where('category_id', $category)
+                            ->orderBy('views', 'desc')
+                            ->limit($limit)
+                            ->get();
+
+        $left = $limit - $products->count();
+
+        foreach($products as $product)
+        {
+            array_push($related, $product);
+        }
+
+        if($left > 0)
+        {
+            $used = $products->pluck('id');
+
+            $products = Product::where('brand_id', '=' ,$brand)
+                                ->orWhere('category_id', '=', $category)
+                                ->limit($limit)
+                                ->orderBy('views', 'desc')
+                                ->get();
+
+            foreach($products as $product)
+            {
+                if(!$used->contains($product->id))
+                {
+                    if($left >= 0)
+                    {
+                        array_push($related, $product);
+                        --$left;
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        return $related;
+    }
 }
 ?>

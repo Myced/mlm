@@ -70,6 +70,8 @@ class ShoppingController extends Controller
     {
         //get the product from the slug
         $product = Product::where('slug', '=', $slug)->first();
+        $topProducts = ShopManager::topOrdered(3);
+        $bestSellers = ShopManager::topOrdered(10)->pluck('product_id');
 
         //add the product views
         $product->addView();
@@ -77,7 +79,7 @@ class ShoppingController extends Controller
         //prepare the product images
         $images = [];
 
-        return view('site.product', compact('product'));
+        return view('site.product', compact('product', 'topProducts', 'bestSellers'));
     }
 
     //get the user cookie

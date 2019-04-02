@@ -23,12 +23,19 @@
                                 <img src="{{ $product->image }}" alt=""
                                     width="400px" height="400px">
                             </div>
-                            @foreach($product->images as $image)
-                            <div class="details-item">
-                                <img src="{{ $image->image }}" alt=""
-                                    >
-                            </div>
-                            @endforeach
+                            @if($product->images->count() == 0)
+                                <div class="details-item">
+                                    <img src="{{ $product->image }}" alt=""
+                                        width="400px" height="400px">
+                                </div>
+                            @else
+                                @foreach($product->images as $image)
+                                    <div class="details-item">
+                                        <img src="{{ $image->image }}" alt=""
+                                            >
+                                    </div>
+                                @endforeach
+                            @endif
 
                         </div>
                     </div>
@@ -116,6 +123,7 @@
                                 <p>Lorem ipsum dolor sit amet, an munere tibique consequat mel, congue albucius no qui, at everti meliore erroribus sea. Vero graeco cotidieque ea duo, in eirmod insolens interpretaris nam. Pro at nostrud percipit definitiones, eu tale porro cum. Sea ne accusata voluptatibus. Ne cum falli dolor voluptua, duo ei sonet choro facilisis, labores officiis torquatos cum ei.</p>
                                 <p>Cum altera mandamus in, mea verear disputationi et. Vel regione discere ut, legere expetenda ut eos. In nam nibh invenire similique. Atqui mollis ea his, ius graecis accommodare te. No eam tota nostrum cotidieque. Est cu nibh clita. Sed an nominavi, et duo corrumpit constituto, duo id rebum lucilius. Te eam iisque deseruisse, ipsum euismod his at. Eu putent habemus voluptua sit, sit cu rationibus scripserit, modus voluptaria ex per. Aeque dicam consulatu eu his, probatus neglegentur disputationi sit et. Ei nec ludus epicuri petentium, vis appetere maluisset ad. Et hinc exerci utinam cum. Sonet saperet nominavi est at, vel eu sumo tritani. Cum ex minim legere.</p>
                                 <p>Eos cu utroque inermis invenire, eu pri alterum antiopam. Nisl erroribus definitiones nec an, ne mutat scripserit est. Eros veri ad pri. An soleat maluisset per. Has eu idque similique, et blandit scriptorem necessitatibus mea. Vis quaeque ocurreret ea.cu bus scripserit, modus voluptaria ex per. Aeque dicam consulatu eu his, probatus neglegentur disputationi sit et. Ei nec ludus epicuri petentium, vis appetere maluisset ad. Et hinc exerci utinam cum. Sonet saperet nominavi est at, vel eu sumo tritani.</p>
+
                             </div>
                         </div>
                         <div id="tab2" class="tab-panel">
@@ -134,7 +142,8 @@
                                             <li>100% Cotton</li>
                                             <li>Our model wears a size Medium and is 185.5cm/6'1" tall</li>
                                         </ul>
-                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -257,73 +266,30 @@
                 <div class="widget widget-recent-post">
                     <h5 class="widgettitle">Bestseller</h5>
                     <ul class="list-recent-posts">
+                        @foreach($topProducts as $product)
+                        <?php $product = $product->model(); ?>
                         <li class="product-item">
-                            <div class="thumb"><a href="detail.html"><img src="/site/images/small-product14.jpg" alt=""></a></div>
+                            <div class="thumb">
+                                <a href="{{ route('product.detail', ['slug' => $product->slug]) }}">
+                                    <img src="{{ $product->thumbnail }}" alt="">
+                                </a>
+                            </div>
                             <div class="info">
-                                <div class="rating">
-                                    <ul class="list-star">
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                    <span class="count">5 Review(s)</span>
-                                </div>
-                                <a href="detail.html" class="product-name">Instant Camera</a>
+                                <a href="{{ route('product.detail', ['slug' => $product->slug]) }}"
+                                    class="product-name">
+                                    {{ $product->name }}
+                                </a>
                                 <div class="price">
-                                    <span class="del">$700.00</span>
-                                    <span class="ins">$350</span>
+                                    @if($product->isOnPromotion())
+                                        <span class="del">XAF {{ number_format($product->price) }}</span>
+                                        <span class="ins">XAF {{ number_format($product->getPrice()) }} </span>
+                                    @else
+                                        <span >FCFA {{ number_format($product->price) }}</span>
+                                    @endif
                                 </div>
                             </div>
                         </li>
-                        <li class="product-item">
-                            <div class="thumb"><a href="detail.html"><img src="/site/images/small-product15.jpg" alt=""></a></div>
-                            <div class="info">
-                                <div class="rating">
-                                    <ul class="list-star">
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                    <span class="count">5 Review(s)</span>
-                                </div>
-                                <a href="detail.html" class="product-name">SteelSeries NIMBUS Controlle</a>
-                                <div class="price">
-                                    <span>$100</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item">
-                            <div class="thumb"><a href="detail.html"><img src="/site/images/small-product16.jpg" alt=""></a></div>
-                            <div class="info">
-                                <a href="detail.html" class="product-name">Smartphone RAM 4 GB New</a>
-                                <div class="price">
-                                    <span >$350.00</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item">
-                            <div class="thumb"><a href="detail.html"><img src="/site/images/small-product15.jpg" alt=""></a></div>
-                            <div class="info">
-                                <div class="rating">
-                                    <ul class="list-star">
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                    <span class="count">5 Review(s)</span>
-                                </div>
-                                <a href="detail.html" class="product-name">SteelSeries NIMBUS Controlle</a>
-                                <div class="price">
-                                    <span>$100</span>
-                                </div>
-                            </div>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -334,149 +300,75 @@
             </div>
             <div class="section-content">
                 <div class="owl-carousel product-list-owl nav-style2 equal-container" data-autoplay="false" data-nav="true" data-dots="false" data-loop="false" data-slidespeed="800" data-margin="0"  data-responsive = '{"0":{"items":1}, "480":{"items":2}, "650":{"items":3}, "1024":{"items":4}, "1200":{"items":5}}'>
-                    <div class="product-item layout1">
-                        <div class="product-inner equal-elem">
-                            <div class="thumb">
-                                <a href="#" class="quickview-button"><span class="icon"><i class="fa fa-eye" aria-hidden="true"></i></span> Quick View</a>
-                                <a href="detail.html" class="thumb-link"><img src="/site/images/product1.jpg" alt=""></a>
-                            </div>
-                            <div class="info">
-                                <a href="detail.html" class="product-name">Rubberized Hard Case Older MacBook Pro 13.3"</a>
-                                <div class="price">
-                                    <span>$350.00</span>
-                                </div>
-                            </div>
-                            <div class="group-button">
-                                <div class="inner">
-                                    <a href="#" class="add-to-cart"><span class="text">ADD TO CART</span><span class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span></a>
-                                    <a href="#" class="compare-button"><i class="fa fa-exchange" aria-hidden="true"></i></a>
-                                    <a href="#" class="wishlist-button"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    <?php $prod = $product; ?>
+                    @foreach(\App\Classes\ShopManager::relatedProducts($prod) as $product)
+
                     <div class="product-item layout1">
                         <div class="product-inner equal-elem">
                             <ul class="group-flash">
+                                @if($product->isNew())
                                 <li><span class="new flash">NEW</span></li>
+                                @endif
+
+                                @if($product->isOnPromotion())
+                                <li>
+                                    <span class="sale flash">
+                                        -{{ $product->getPercentage() }}%
+                                    </span>
+                                </li>
+                                @endif
+
+                                @if($bestSellers->contains($product->id))
+                                    <li><span class="best flash">Bestseller</span></li>
+                                @endif
                             </ul>
                             <div class="thumb">
-                                <a href="#" class="quickview-button"><span class="icon"><i class="fa fa-eye" aria-hidden="true"></i></span> Quick View</a>
-                                <a href="detail.html" class="thumb-link"><img src="/site/images/product4.jpg" alt=""></a>
+                                <a href="{{ route('product.detail', ['slug' => $product->slug]) }}" class="quickview-button">
+                                    <span class="icon">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </span>
+                                    DETAILS
+                                </a>
+                                <a href="{{ route('product.detail', ['slug' => $product->slug]) }}"
+                                    class="thumb-link">
+                                    <img src="{{ $product->thumbnail }}" alt=""
+                                        width="214px" height="214px">
+                                </a>
                             </div>
                             <div class="info">
-                                <a href="detail.html" class="product-name">Smartphone RAM 4 GB New</a>
+                                <a href="{{ route('product.detail', ['slug' => $product->slug]) }}" class="product-name">
+                                    {{ $product->name }}
+                                </a>
                                 <div class="price">
-                                    <span >$350.00</span>
+                                    @if($product->isOnPromotion())
+                                    <span class="del">FCFA {{ number_format($product->price) }}</span>
+                                    <span class="ins">FCFA {{ number_format($product->getPrice()) }} </span>
+                                    @else
+                                    <span >FCFA {{ number_format($product->price) }}</span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="group-button">
                                 <div class="inner">
-                                <a href="#" class="add-to-cart"><span class="text">ADD TO CART</span><span class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span></a>
-                                <a href="#" class="compare-button"><i class="fa fa-exchange" aria-hidden="true"></i></a>
-                                <a href="#" class="wishlist-button"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                    <a href="{{ route('cart.fast', ['slug' => $product->slug]) }}"
+                                        class="add-to-cart">
+                                        <span class="text">ADD TO CART</span>
+                                        <span class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span>
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="wishlist-button">
+                                        <span class="icon"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="product-item layout1">
-                        <div class="product-inner equal-elem">
-                            <ul class="group-flash">
-                                <li><span class="sale flash">-50%</span></li>
-                                <li><span class="best flash">Bestseller</span></li>
-                            </ul>
-                            <div class="thumb">
-                                <a href="#" class="quickview-button"><span class="icon"><i class="fa fa-eye" aria-hidden="true"></i></span> Quick View</a>
-                                <a href="detail.html" class="thumb-link"><img src="/site/images/product5.jpg" alt=""></a>
-                            </div>
-                            <div class="info">
-                                <a href="detail.html" class="product-name">Fujifilm INSTAX Mini 8 Instant Camera (White)</a>
-                                <div class="price">
-                                    <span class="del">$700.00</span>
-                                    <span class="ins">$350.00</span>
-                                </div>
-                            </div>
-                            <div class="group-button">
-                                <div class="inner">
-                                <a href="#" class="add-to-cart"><span class="text">ADD TO CART</span><span class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span></a>
-                                <a href="#" class="compare-button"><i class="fa fa-exchange" aria-hidden="true"></i></a>
-                                <a href="#" class="wishlist-button"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item layout1">
-                        <div class="product-inner equal-elem">
-                            <div class="thumb">
-                                <a href="#" class="quickview-button"><span class="icon"><i class="fa fa-eye" aria-hidden="true"></i></span> Quick View</a>
-                                <a href="detail.html" class="thumb-link"><img src="/site/images/product6.jpg" alt=""></a>
-                            </div>
-                            <div class="info">
-                                <a href="detail.html" class="product-name">PC Prox 21.5-inch and 27-inch (Late 2018) reviews</a>
-                                <div class="price">
-                                    <span >$550.00</span>
-                                </div>
-                            </div>
-                            <div class="group-button">
-                                <div class="inner">
-                                <a href="#" class="add-to-cart"><span class="text">ADD TO CART</span><span class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span></a>
-                                <a href="#" class="compare-button"><i class="fa fa-exchange" aria-hidden="true"></i></a>
-                                <a href="#" class="wishlist-button"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item layout1">
-                        <div class="product-inner equal-elem">
-                            <ul class="group-flash">
-                                <li><span class="sale flash">-50%</span></li>
-                            </ul>
-                            <div class="thumb">
-                                <a href="#" class="quickview-button"><span class="icon"><i class="fa fa-eye" aria-hidden="true"></i></span> Quick View</a>
-                                <a href="detail.html" class="thumb-link"><img src="/site/images/product7.jpg" alt=""></a>
-                            </div>
-                            <div class="info">
-                                <a href="detail.html" class="product-name">Best Accessories- SteelSeries NIMBUS Controlle</a>
-                                <div class="price">
-                                    <span class="del">$500.00</span>
-                                    <span class="ins">$250.00</span>
-                                </div>
-                            </div>
-                            <div class="group-button">
-                                <div class="inner">
-                                <a href="#" class="add-to-cart"><span class="text">ADD TO CART</span><span class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span></a>
-                                <a href="#" class="compare-button"><i class="fa fa-exchange" aria-hidden="true"></i></a>
-                                <a href="#" class="wishlist-button"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item layout1">
-                        <div class="product-inner equal-elem">
-                            <ul class="group-flash">
-                                <li><span class="sale flash">-50%</span></li>
-                                <li><span class="best flash">Bestseller</span></li>
-                            </ul>
-                            <div class="thumb">
-                                <a href="#" class="quickview-button"><span class="icon"><i class="fa fa-eye" aria-hidden="true"></i></span> Quick View</a>
-                                <a href="detail.html" class="thumb-link"><img src="/site/images/product24.jpg" alt=""></a>
-                            </div>
-                            <div class="info">
-                                <a href="detail.html" class="product-name">Fujifilm INSTAX Mini 8 Instant Camera (White)</a>
-                                <div class="price">
-                                    <span class="del">$700.00</span>
-                                    <span class="ins">$350.00</span>
-                                </div>
-                            </div>
-                            <div class="group-button">
-                                <div class="inner">
-                                <a href="#" class="add-to-cart"><span class="text">ADD TO CART</span><span class="icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span></a>
-                                <a href="#" class="compare-button"><i class="fa fa-exchange" aria-hidden="true"></i></a>
-                                <a href="#" class="wishlist-button"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
+
+
                 </div>
             </div>
         </div>
