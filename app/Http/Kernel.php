@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\LocaleMiddleware::class,
+        \App\Http\Middleware\CartMiddleware::class,
     ];
 
     /**

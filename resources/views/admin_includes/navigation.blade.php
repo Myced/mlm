@@ -192,6 +192,37 @@
 
         <li class="sidebar-header">
             <span class="sidebar-header-options clearfix">
+                <a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings">
+                    <i class="gi gi-settings"></i>
+                </a>
+                <a href="javascript:void(0)" data-toggle="tooltip"
+                title="Create the most amazing pages with the widget kit!">
+                <i class="gi gi-lightbulb"></i></a></span>
+            <span class="sidebar-header-title">Orders</span>
+        </li>
+
+        <li>
+            <a href="#" class="sidebar-nav-menu">
+                <i class="fa fa-angle-left sidebar-nav-indicator sidebar-nav-mini-hide"></i>
+                <i class="fa fa-money sidebar-nav-icon"></i>
+                <span class="sidebar-nav-mini-hide">Payout</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{ route('payout.orange') }}">Orange Money</a>
+                </li>
+                <li>
+                    <a href="{{ route('payout.mtn') }}">MTN Mobile Money</a>
+                </li>
+                <li>
+                    <a href="{{ route('payout.failed') }}">Failed Payments</a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="sidebar-header">
+            <span class="sidebar-header-options clearfix">
                 <a href="javascript:void(0)" data-toggle="tooltip"
                 title="Quick Settings">
                     <i class="gi gi-users"></i>

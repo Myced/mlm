@@ -112,6 +112,44 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">
+                        Payout Network:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <div class="radio">
+                            <label for="orange">
+                                <input type="radio" id="orange"
+                                name="payout_network" value="orange" required
+                                {{ $user->userData->payout_network == 'orange' ? 'checked' : '' }}>
+                                Orange
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="mtn">
+                                <input type="radio" id="mtn"
+                                name="payout_network" value="mtn" required
+                                {{ $user->userData->payout_network == 'mtn' ? 'checked' : '' }}>
+                                MTN
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" >
+                        Payout Number:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" name="payout_number"
+                            value="{{ $user->userData->payout_number }}"
+                            class="form-control" required>
+                    </div>
+                </div>
+
+
                 <h3 class="page-header">Account Information</h3>
 
                 <div class="form-group">
@@ -154,7 +192,7 @@
                     <div class="col-md-9">
                         <button type="submit" name="button"
                         title="Save Changes" class="btn btn-info">
-                            Create Distributor
+                            Update Distributor
                         </button>
                     </div>
                 </div>

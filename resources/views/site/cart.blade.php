@@ -77,8 +77,15 @@
                                 </div>
                                 <div class="right">
                                     @if(\Cart::count() > 0)
-                                    <a href="{{ route('cart.destroy') }}" class="submit update">Clear Shopping Cart</a>
-                                    <a href="#" class="submit update">Update Shopping Cart</a>
+                                    <a href="#" class="submit update">
+                                        Update Shopping Cart
+                                    </a>
+
+                                    <a href="{{ route('cart.destroy') }}"
+                                        class="submit update">
+                                        Clear Shopping Cart
+                                    </a>
+
                                     @endif
                                 </div>
                             </td>

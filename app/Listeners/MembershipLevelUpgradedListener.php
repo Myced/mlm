@@ -34,7 +34,7 @@ class MembershipLevelUpgradedListener
         $newLevel = $event->newLevel;
         $oldLevel = $event->oldLevel;
 
-        if($oldLevel == 0)
+        if($oldLevel->level == 0)
         {
             //then u should receive a commission of 5% of level 1;
             $membershipLevel = MembershipLevel::where('level', '=', 1)->first();

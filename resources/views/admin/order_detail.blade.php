@@ -323,7 +323,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $total = 0; ?>
+                <?php $total = 0; $tot = 0; ?>
                 @foreach($order->content as $product)
                 <tr>
                     <td class="text-center">
@@ -369,7 +369,7 @@
                         <strong>Total Paid:</strong>
                     </td>
                     <td class="text-right">
-                        <strong>{{ $product->order->payment_status == true ? number_format($tot) . ' F' : '0 F' }}</strong>
+                        <strong>{{ $order->payment_status == true ? number_format($tot) . ' F' : '0 F' }}</strong>
                     </td>
                 </tr>
             </tbody>

@@ -51,6 +51,10 @@ class CartController extends Controller
 
             $cartItem = $cartItem->associate('App\Admin\Product');
 
+            //store the cart
+            $cookie = Cookie::get(\App\UserCookie::NAME);
+            Cart::store($cookie);
+
             Session::flash('success', 'Product added to Cart');
 
             return back();
@@ -76,6 +80,10 @@ class CartController extends Controller
         $cartItem = Cart::add($product->id, $product->name, $quantity, $price);
 
         $cartItem = $cartItem->associate('App\Admin\Product');
+
+        //store the cart
+        $cookie = Cookie::get(\App\UserCookie::NAME);
+        Cart::store($cookie);
 
         Session::flash('success', 'Product added to Cart');
 

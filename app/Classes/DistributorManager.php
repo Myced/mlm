@@ -70,6 +70,8 @@ class DistributorManager
         $userData->region_id = $request->region;
         $userData->address = $request->address;
         $userData->tel = $request->tel;
+        $userData->payout_network = $request->payout_network;
+        $userData->payout_number = $request->payout_number;
 
         //save the user Data ;
         $userData->save();

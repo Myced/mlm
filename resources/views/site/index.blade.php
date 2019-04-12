@@ -48,6 +48,7 @@
             <div class="kt-tab nav-tab-style1">
                 <div class="section-head box-has-content">
                     <h4 class="section-title">TOP ORDERED Products</h4>
+
                     <ul class="nav list-nav">
                         <li class="active">
                             <a data-animated="pulse" data-toggle="pill" href="#tab1">ALL</a>

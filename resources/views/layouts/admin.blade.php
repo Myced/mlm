@@ -12,6 +12,9 @@
 </head>
 
     <body>
+        <div class="loader" id="loading" >
+            &nbsp;
+        </div>
 
         <div id="page-wrapper" class="page-loading">
 

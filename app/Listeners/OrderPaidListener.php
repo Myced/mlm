@@ -54,7 +54,22 @@ class OrderPaidListener implements ShouldQueue
         }
 
         //add points to the person who made the order
+        $orderPoint = new OrderPoint;
+
+        $orderPoint->order_id = $order->id;
+        $orderPoint->user_id = $order->user->id;
+        $orderPoint->points = $order->points;
+        $comment = "Points from an order (" . $order->order_code . ") that you made";
+
+        $orderPoint->comment = $comment;
+        $orderPoint->save();
+
         $order->user->userData->addPoints($order->points);
+
+        //notify the user
+        $this->sendPointsAddedNotification($order->user->userData, $orderPoint);
+
+        //add a log for this points
 
 
         for($i = 1; $i <= $max; $i++)
@@ -78,6 +93,9 @@ class OrderPaidListener implements ShouldQueue
                     $orderPoint->order_id = $order->id;
                     $orderPoint->user_id = $beneficiary->user_id;
                     $orderPoint->points = $order->points;
+                    $comment = "Points from an order made by " . $order->user->name .
+                                " on your tree level " . $i;
+                    $orderPoint->comment = $comment;
                     $orderPoint->save();
 
                     $beneficiary->addPoints($order->points);

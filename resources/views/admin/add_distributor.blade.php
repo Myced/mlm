@@ -106,6 +106,40 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="product-name">
+                        Payout Network:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <div class="radio">
+                            <label for="example-radio1">
+                                <input type="radio" id="orange"
+                                name="payout_network" value="orange" checked required>
+                                Orange
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="example-radio2">
+                                <input type="radio" id="mtn"
+                                name="payout_network" value="mtn" required>
+                                MTN
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label" >
+                        Payout Number:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" name="payout_number"
+                            class="form-control" required>
+                    </div>
+                </div>
+
                 <h3 class="page-header">Account Information</h3>
 
                 <div class="form-group">

@@ -4,7 +4,7 @@ namespace App\Classes;
 ini_set('max_execution_time', 180); // 120 (seconds) = 2 Minutes
 ini_set('default_socket_timeout', 180);
 
-class MomoProcessor
+class MomoPayout
 {
     protected $amount;
     protected $number;
@@ -24,7 +24,8 @@ class MomoProcessor
 
     private function prepareURL()
     {
-        $url  = "https://developer.mtn.cm/OnlineMomoWeb/faces/transaction/transactionRequest.xhtml"."?idbouton=2&typebouton=PAIE&_amount="
+        $url  = "https://developer.mtn.cm/OnlineMomoWeb/faces/transaction/transaction.xhtml"
+                . "?idbouton=2&typebouton=PAIE&_amount="
                 . $this->amount . "&_tel="
                 . $this->number ."&_clP=Cedric@2017"."&_email="
                 . $this->momoEmail . "&submit.x=104&submit.y=70";

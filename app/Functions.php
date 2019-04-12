@@ -26,6 +26,21 @@ class Functions
         return $filter;
     }
 
+    public static function getTel($number)
+    {
+        $regex = '/[\s\,\.\-\+\_]/';
+        if(preg_match($regex, $number))
+        {
+            $filter = preg_filter($regex, '', $number);
+        }
+        else
+        {
+            $filter = $number;
+        }
+
+        return $filter;
+    }
+
     public static function getGeneologyDepth()
     {
         return $depth = \App\Models\GeneologyDepth::find(1)->depth;

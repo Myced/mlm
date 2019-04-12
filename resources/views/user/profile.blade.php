@@ -108,6 +108,28 @@
                             <td>Date of Birth</td>
                             <th>{{ $user->userData->dob }}</th>
                         </tr>
+                        <tr>
+                            <td>
+                                Payout Network
+
+                                 <a href="javascript:void(0)" style="margin-left: 15px;"
+                                    title="Tip: Payout network"
+                                     data-container="body"
+                                     data-toggle="popover"
+                                     data-placement="top"
+                                     data-content="This indicates the network of your payout number.
+                                        It can either be MTN or Orange. This information will help us fasciliate the
+                                        payment of commissions."
+                                        >
+                                     <i class="fa fa-question-circle fa-2x text-info"></i>
+                                 </a>
+                            </td>
+                            <th>{{ $user->userData->payout_network}}</th>
+                        </tr>
+                        <tr>
+                            <td>Payout Number</td>
+                            <th>{{ $user->userData->payout_number }}</th>
+                        </tr>
                     </table>
                 </div>
             </div>

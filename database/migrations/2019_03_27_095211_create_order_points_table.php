@@ -18,6 +18,7 @@ class CreateOrderPointsTable extends Migration
             $table->string('order_id');
             $table->string('user_id');
             $table->string('points');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

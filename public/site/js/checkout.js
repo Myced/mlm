@@ -288,23 +288,33 @@ $(document).ready(function(){
         var elements = [
             {
                 name: "First Name",
+                tel: false,
                 value : $("#fname")
             },
             {
                 name: "Last Name",
+                tel: false,
                 value : $("#lname")
             },
             {
                 name: "Address",
+                tel: false,
                 value : $("#address")
             },
             {
                 name : "Email",
+                tel: false,
                 value : $("#email")
             },
             {
-                name : "Telephone",
+                name : "Telephone Number",
+                tel: true,
                 value : $("#tel")
+            },
+            {
+                name : "Payout Number",
+                tel: true,
+                value : $("#number")
             }
         ];
 
@@ -318,23 +328,55 @@ $(document).ready(function(){
                 placeError(current.value, current.name);
             }
             else {
-                if(current.name != "Email")
+
+                //check if the current element is a Telephone number
+                if(current.tel == true)
+                {
+                    //validate the phone number
+                    var numb = current.value.val();
+
+                    var number = filter_num(numb);
+
+                    if(number.length != 9)
+                    {
+                        forward = false;
+                        var errorMessage = current.name + " must be 9 digits";
+
+                        placeError(current.value, current.name, errorMessage);
+                    }
+                    else {
+
+                        //make sure it contains only digits
+                        if(isNaN(number))
+                        {
+                            forward = false;
+                            var errorMessage = current.name + " must contain only digits";
+
+                            placeError(current.value, current.name, errorMessage);
+                        }
+                        else {
+                            //the number is valid
+                            removeError(current.value);
+                        }
+                    }
+                }
+
+                if(current.name != "Email" && current.tel != true)
                 {
                     removeError(current.value);
                 }
                 else {
-                    //check if it has an error
-                    if(current.value.hasClass('input-error'))
+                    //check if the email  has an error
+                    if($("#email").hasClass('input-error'))
                     {
-                        var message = "<strong>" +
-                            "Email has been used already"
-                        + "</strong>";
+                        var message = "Email has been used already";
 
                         notify(message, 'error');
                         forward = false;
                     }
                 }
             }
+
         }
 
         //now that all is validated
@@ -439,13 +481,20 @@ $(document).ready(function(){
         return forward;
     }
 
-    function placeError($element, name)
+    function placeError($element, name, customMessage='')
     {
-        var message = "<strong>" + name + " is required" + "</strong>";
+        if(customMessage == '')
+        {
+            var message =  name + " is required";
+        }
+        else {
+            var message  = customMessage;
+        }
+
         notify(message, "error");
 
         $element.addClass("input-error");
-        $element.next().text("This field is required");
+        $element.next().text(message);
     }
 
     function removeError($element)
@@ -516,6 +565,20 @@ $(document).ready(function(){
             });
             //end of ajax request
         }
+    }
+
+
+    //function to filter the phone number
+    function filter_num(number)
+    {
+     var num = number.replace(/\s/g, '');
+         num = num.replace(/\,/g, '');
+         num = num.replace(/\-/g, '');
+         num = num.replace(/\_/g, '');
+         num = num.replace(/\+/g, '');
+         num = num.replace(/\./g, '');
+
+     return num;
     }
 
 });

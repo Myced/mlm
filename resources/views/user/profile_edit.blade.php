@@ -83,7 +83,7 @@
                                     <input class="form-control" type="text"
                                         name="email" disabled
                                         placeholder="Email" value="{{ $user->email }}">
-                                    <span class="text-warning">You cannot edit your email address. It is unique</span>
+                                    <span class="text-warning">You cannot edit your email address.</span>
                                 </div>
 
                                 <div class="form-group">
@@ -96,8 +96,40 @@
                                 <div class="form-group">
                                     <label>Date of Birth:</label>
                                     <input class="form-control" type="text"
-                                        name="dob" 
+                                        name="dob"
                                         placeholder="E.g. 22/12/1990" value="{{ $user->dob }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Payout Network:</label>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="c-radio">
+                                                <label>
+                                                    <input type="radio" value="orange" name="payout_network"
+                                                    {{ $user->payout_network == 'orange' ? 'checked' : '' }}>
+                                                    <span class="fa fa-circle"></span>
+                                                    Orange
+                                                </label>
+                                            </div>
+
+                                            <div class="c-radio">
+                                                <label>
+                                                    <input type="radio" value="mtn" name="payout_network"
+                                                    {{ $user->payout_network == 'mtn' ? 'checked' : '' }}>
+                                                    <span class="fa fa-circle"></span>
+                                                    MTN
+                                            </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Payout Number:</label>
+                                    <input class="form-control" type="text"
+                                        name="payout_number"
+                                        placeholder="E.g. 678 965 896" value="{{ $user->payout_number }}">
                                 </div>
 
                                 <div class="form-group">

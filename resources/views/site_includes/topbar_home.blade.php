@@ -58,7 +58,7 @@
         </ul>
         <ul class="menu-topbar top-links">
             @auth
-            <li><a href="{{ route('user.dashboard') }}">My Account</a></li>
+            <li><a href="{{ route('user.dashboard') }}"> {{ auth()->user()->userData->first_name }} </a></li>
             @else
             <li><a href="{{ route('register') }}">Register</a></li>
             <li><a href="{{ route('login') }}">Sign in</a></li>

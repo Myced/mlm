@@ -122,6 +122,20 @@
 
                     <tr>
                         <td class="text-right">
+                            <strong>Payout Network</strong>
+                        </td>
+                        <td>{{ $user->userData->payout_network }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-right">
+                            <strong>Payout Number</strong>
+                        </td>
+                        <td>{{ $user->userData->payout_number }}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-right">
                             <strong>Points</strong>
                         </td>
                         <td>{{ number_format($user->userData->points, 1) }}</td>
@@ -395,7 +409,7 @@
                          <th>Order By</th>
                          <th>Level</th>
                          <th>Commission</th>
-                         <th>Collected</th>
+                         <th>Status</th>
                       </tr>
                    </thead>
                    <tbody>
@@ -429,7 +443,7 @@
                                      @if($commission->collected == true)
                                      <div class="label label-success">
                                          <i class="fa fa-check"></i>
-                                         COLLECTED
+                                         PAID
                                      </div>
                                      @else
                                      <div class="label label-warning">

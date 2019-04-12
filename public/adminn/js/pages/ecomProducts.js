@@ -34,7 +34,17 @@ var EcomProducts = function() {
                 ],
                 order: [[ 0, "desc" ]],
                 pageLength: 20,
-                lengthMenu: [[10, 20, 30, -1], [10, 20, 30, 'All']]
+                lengthMenu: [[10, 20, 30, 50, -1], [10, 20, 30, 50, 'All']]
+            });
+
+            /* Initialize Datatables */
+            $('#ecom-products-asc').dataTable({
+                columnDefs: [
+                    { type: 'date-custom', targets: [4] }
+                ],
+                order: [[ 0, "asc" ]],
+                pageLength: 20,
+                lengthMenu: [[10, 20, 30, 50, -1], [10, 20, 30, 50, 'All']]
             });
 
             /* Add placeholder attribute to the search input */

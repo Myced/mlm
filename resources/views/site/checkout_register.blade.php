@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="/site/css/smart_wizard.min.css">
     <link rel="stylesheet" href="/site/css/smart_wizard_theme_dots.min.css">
     <style media="screen">
+
+    .callout {
+        border-radius: 3px;
+        margin: 0 0 20px 0;
+        padding: 15px 30px 15px 15px;
+        border-left: 5px solid #eee;
+    }
+
+    .callout.callout-info {
+        border-color: #0097bc;
+    }
+
     .bg-aqua,
     .callout.callout-info,
     .alert-info,
@@ -17,8 +29,14 @@
     .modal-body {
         background-color: #00c0ef !important;
         color: #fff;
+    }
+
+    .f-w-600
+    {
         font-weight: 600;
     }
+
+
     </style>
 @endsection
 
@@ -84,7 +102,7 @@
                                         @if($full == true)
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="alert alert-info alert-dismissible">
+                                                <div class="alert alert-info alert-dismissible f-w-600">
                                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                                     <h4>
                                                         <strong><i class="icon fa fa-info"></i> Alert!</strong>
@@ -223,6 +241,82 @@
                                         </div>
                                         <!-- end of user info -->
                                     </div>
+
+                                    <!-- start of payout settings. -->
+                                    <div class="col-md-12 m-t-40">
+                                        <div class="checkout-form content-form">
+                                            <h4 class="main-title">Payout Settings.</h4>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="callout callout-info">
+                                                        <strong>Note:</strong>
+                                                        This is the number that will be used for your commission payouts.
+                                                        <br>
+                                                        Payments are made only through Orange Money for Orange numbers
+                                                        and MTN Mobile Money for MTN numbers.
+                                                        <br>
+                                                        <strong>
+                                                            If your telephone number has MTN Mobile Money or
+                                                            Orange Money, then you can re-enter it here.
+                                                            Else look for a number that has one an enter it here.
+                                                        </strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                                                    <div class="row">
+                                                        <div class="col-xs-4">
+                                                            <h4>
+                                                                <strong>
+                                                                    Select Network
+                                                                </strong>
+                                                            </h4>
+                                                        </div>
+
+                                                        <div class="col-xs-6">
+                                                            <div class="m-l-20">
+                                                                <div class="form-group">
+                                                                    <input type="radio" name="payout_network" id="orange"
+                                                                    class="flat-red ref_radio" value="orange"
+                                                                    checked>
+                                                                    <label for="orange" class="control-label my-label">
+                                                                        Orange
+                                                                    </label>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <input type="radio" name="payout_network" id="mtn"
+                                                                    class="flat-red ref_radio" value="mtn">
+                                                                    <label for="mtn" class="control-label my-label">
+                                                                        MTN
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                    <span class="label-text">
+                                                        Payout Number <span>*</span>
+                                                    </span>
+                                                    <input type="text" class="input-info"
+                                                        name="payout_number" id="number" required
+                                                        placeholder="E.g. 678 678 234">
+                                                    <span class="help-block"></span>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
+                                        <!-- end of user info -->
+                                    </div>
+                                    <!-- end of payout settings. -->
+
                                 </div>
                             </div>
                             <div id="step-3" class="">

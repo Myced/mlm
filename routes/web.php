@@ -68,6 +68,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/period/filter', 'AdminOrderController@filter')->name('orders.filter.period');
     });
 
+    Route::group(['prefix' => 'payout'], function(){
+        Route::get('/orange', 'PayoutController@orange')->name('payout.orange');
+        Route::get('/mtn', 'PayoutController@mtn')->name('payout.mtn');
+        Route::get('/failed', 'PayoutController@failed')->name('payout.failed');
+        Route::get('/refresh', 'PayoutController@refresh')->name('payout.refresh');
+    });
+
     Route::group(['prefix' => 'customer'], function(){
         Route::get('/', 'CustomerController@index')->name('customers');
         Route::get('/{user}', 'CustomerController@view')->name('customer');
@@ -99,8 +106,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function(){
         Route::get('/geneology/membership', 'GeneologySettingsController@showMembershipLevelForm')->name('settings.membership.levels');
         Route::post('/geneology/membership', 'GeneologySettingsController@saveMembershipLevels')->name('settings.membership.store');
 
-        Route::get('/payout', 'PayoutController@index')->name('settings.payout');
-        Route::post('/payout/store', 'PayoutController@store')->name('settings.payout.store');
+        Route::get('/payout', 'PayoutSettingController@index')->name('settings.payout');
+        Route::post('/payout/store', 'PayoutSettingController@store')->name('settings.payout.store');
     });
 });
 
@@ -150,6 +157,9 @@ Route::group(['prefix' => 'api'], function(){
 
     Route::post('/payment/momo', 'PaymentController@momo')->name('payment.momo');
     Route::post('/payment/orange', 'PaymentController@orange')->name('payment.orange');
+
+    Route::post('/payout/mtn', 'PaymentController@payoutMomo');
+    Route::post('/payout/orange', 'PaymentController@payoutOrange');
 
     //brands controller
     Route::get('/getbrands/{id}', 'ApiBrandController@getCatBrands');

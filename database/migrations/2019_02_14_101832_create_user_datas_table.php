@@ -28,6 +28,8 @@ class CreateUserDatasTable extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('tel')->nullable();
             $table->string('dob')->nullable();
+            $table->string('payout_network')->nullable();
+            $table->string('payout_number')->nullable();
             $table->string('points')->default('0');
             $table->string('membership_level')->default('0');
             $table->timestamps();

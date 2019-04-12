@@ -2,6 +2,7 @@
 namespace App\Classes;
 
 use App\Models\MomoLog;
+use App\Models\MomoPayoutLog;
 
 class MomoParser
 {
@@ -77,7 +78,7 @@ class MomoParser
         }
     }
 
-    public function logResult($order, $number, $momoEmail)
+    public function logResult($payout, $number, $momoEmail)
     {
         $log = new MomoLog;
 
@@ -96,6 +97,28 @@ class MomoParser
         $log->save();
 
         $log->refresh();
+
+        return $log;
+    }
+
+    public function logPayout($payout, $momoEmail)
+    {
+        $log = new MomoPayoutLog;
+
+        $log->payout_id = $payout->id;
+        $log->user_id = $payout->user_id;
+        $log->amount = $this->amount;
+        $log->receiver_number = $this->receiverNumber;
+        $log->momo_email = $momoEmail;
+        $log->status_code = $this->statusCode;
+        $log->transaction_id = $this->transactionID;
+        $log->processing_number = $this->processingNumber;
+        $log->raw_response = $this->response;
+
+        //save the log
+        $log->save();
+
+        $log->fresh();
 
         return $log;
     }

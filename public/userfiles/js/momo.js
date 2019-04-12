@@ -40,6 +40,7 @@ $(document).ready()
                 error: function(error)
                 {
                     show_error('Could not process Payment. Check your internet!');
+                    console.log(error.responseText);
                     page_loading_off();
                 },
                 success: function(data)
@@ -78,6 +79,8 @@ $(document).ready()
             num = num.replace(/\,/g, '');
             num = num.replace(/\-/g, '');
             num = num.replace(/\./g, '');
+            num = num.replace(/\_/g, '');
+            num = num.replace(/\+/g, '');
 
         return num;
     }

@@ -84,6 +84,8 @@ class UserPanelController extends Controller
         $user->address = $request->address;
         $user->region_id = $request->region;
         $user->dob = $request->dob;
+        $user->payout_network = $request->payout_network;
+        $user->payout_number = $request->payout_number;
         if(!empty($request->avatar))
         {
             $user->avatar = $this->updateAvatar($request->avatar, $user->avatar);

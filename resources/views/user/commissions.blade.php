@@ -26,7 +26,7 @@
                         <th>Level</th>
                         <th>Percentage</th>
                         <th>Commission</th>
-                        <th>Collected</th>
+                        <th>Status</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -71,7 +71,7 @@
                                     <?php $totalCollected += $commission->commission; ?>
                                     <div class="badge badge-success">
                                         <i class="fa fa-check"></i>
-                                        COLLECTED
+                                        PAID
                                     </div>
                                     @else
                                     <?php $totalPending += $commission->commission; ?>
@@ -96,7 +96,7 @@
 
                       <tr class="text-success">
                           <th class="f-20 text-center" colspan="6">
-                              Total Collected
+                              Total Paid
                           </th>
                           <th class="f-20 text-center" colspan="2">
                               {{ number_format($totalCollected) }} FCFA

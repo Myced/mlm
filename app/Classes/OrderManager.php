@@ -67,8 +67,8 @@ class OrderManager
 
     public static function ordersThisMonth()
     {
-        $start = '01/' . date('m') . date("Y");
-        $end = '31/' . date('m') . date("Y");
+        $start =   date("Y") . '-' . date('m') . '-' . '01/' ;
+        $end =   date("Y") . '-' . date('m') . '-' . '31/';
 
         $orders = static::ordersFromPeriod($start, $end);
 

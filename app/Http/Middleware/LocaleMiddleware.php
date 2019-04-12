@@ -28,19 +28,31 @@ class LocaleMiddleware
 
         //decription middleware has not kicked in yet.
         //so we need to manually decrypt the cookie
-        $currentValue = Crypt::decrypt($current, false);
-
-        if(!is_null($currentValue) && !empty($currentValue))
+        if(!is_null($current))
         {
-            //set the locale to this cookie
-            if(in_array($currentValue, $locales))
+            $currentValue = Crypt::decrypt($current, false);
+
+            if(!is_null($currentValue) && !empty($currentValue))
             {
-                app()->setLocale($currentValue);
+                //set the locale to this cookie
+                if(in_array($currentValue, $locales))
+                {
+                    app()->setLocale($currentValue);
+                }
+                else {
+                    app()->setLocale($default);
+                }
             }
             else {
+                
                 app()->setLocale($default);
+
+                //set the cookie too
+                Cookie::queue($cookie, $default, 2628000);
             }
         }
+
+
         else {
             app()->setLocale($default);
 

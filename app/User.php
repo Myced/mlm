@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\OrderCommission;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,6 +45,20 @@ class User extends Authenticatable
     public function commissions()
     {
         return $this->hasMany('App\Models\OrderCommission');
+    }
+
+    public function unpaidCommissions()
+    {
+        return OrderCommission::where('collected', '=', false)
+                                ->where('user_id', '=', $this->id)
+                                ->get();
+    }
+
+    public function paidCommissions()
+    {
+        return OrderCommission::where('collected', '=', true)
+                                ->where('user_id', '=', $this->id)
+                                ->get();
     }
 
     public function latestCommissions()

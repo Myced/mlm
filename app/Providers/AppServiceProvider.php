@@ -21,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', \App\Admin\Category::all());
         });
 
+        view()->composer('auth.*', function($view){
+            //pass the view with data
+            $view->with('categories', \App\Admin\Category::all());
+        });
+
         view()->composer(
             ['site.products', 'site.product_categories', 'site.product_brands']
             , function($view){

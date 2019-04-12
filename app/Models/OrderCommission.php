@@ -16,4 +16,10 @@ class OrderCommission extends Model
         // return $this->belongsTo('App\User');
         return \App\User::find($this->user_id);
     }
+
+    public function markAsPaid()
+    {
+        $this->collected = true;
+        $this->save();
+    }
 }

@@ -33,15 +33,22 @@
                         <div class="checkout-form content-form">
 
                             <div class="text-center">
+
+                                <div class="col-xs-12 col-md-12 col-lg-12">
+                                    <div class="group-button">
+                                        <a href="{{ route('user.orders') }}"
+                                            class="button submit submit-btn m-t-10"
+                                            title="Your orders">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            My Orders
+                                        </a>
+                                    </div>
+                                </div>
+
                                 <div class="col-xs-12 col-md-12 col-lg-12">
                                     <div class="text-center">
 
                                         <div class="group-button">
-                                            <a href="{{ route('user.orders') }}"
-                                            class="button submit submit-btn m-t-10"
-                                            title="Your orders">
-                                                My Orders
-                                            </a>
 
                                             <a href="{{ route('products') }}"
                                                 class="button submit submit-btn m-t-10"
@@ -52,6 +59,7 @@
                                             <a href="/"
                                                 class="button submit submit-btn m-t-10"
                                                 title="HomePage">
+                                                <i class="fa fa-home"></i>
                                                 Home
                                             </a>
 

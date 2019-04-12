@@ -11,11 +11,13 @@ use App\OrderStatus;
 use App\Models\Order;
 use App\Models\UserData;
 use App\Models\OrderLog;
+use App\Models\OrderPoint;
 use App\Events\OrderPlaced;
 use Illuminate\Http\Request;
 use App\Models\OrderContent;
 use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\PointsReceived;
 
 class CheckoutManager
 {
@@ -55,6 +57,40 @@ class CheckoutManager
 
         //place order
         $order = $this->placeOrder();
+
+        //if it is user registration,
+        //then the registered user should have
+        // this initial order points too
+        $order->refresh();
+
+        if($this->saveData)
+        {
+            if($this->authenticate != true)
+            {
+                //add the points when u are not registering yourself.
+                //points will be added in the order payment listener
+                //
+                //add points when a new user is being registered
+                //which means authentication has to be false;
+
+                $orderPoint = new OrderPoint;
+
+                $orderPoint->order_id = $order->id;
+                $orderPoint->user_id = $user->id;
+                $orderPoint->points = $order->points;
+
+                $comment = "Points received for the order made during your recruitment";
+
+                $orderPoint->comment = $comment;
+
+                $orderPoint->save();
+
+                $user->userData->addPoints($order->points);
+
+                //notify the user of the points received
+                $user->notify(new PointsReceived($orderPoint));
+            }
+        }
 
         $this->LogOrderConfirmation($order);
         $this->emptyCart();
@@ -139,6 +175,10 @@ class CheckoutManager
         $userData->address = $request->address;
         $userData->email = $request->email;
         $userData->tel = $request->tel;
+
+        ///payout settings
+        $userData->payout_network = $request->payout_network;
+        $userData->payout_number = $request->payout_number;
 
         //save the user Data ;
         $userData->save();
