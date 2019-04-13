@@ -13,7 +13,7 @@
     <!-- END Left Header Navigation -->
 
     <!-- Search Form -->
-    <form action="page_ready_search_results.html" method="post" class="navbar-form-custom">
+    <form action="" method="post" class="navbar-form-custom"method="get">
         <div class="form-group">
             <input type="text" id="top-search" name="top-search" class="form-control" placeholder="Search..">
         </div>
@@ -25,9 +25,9 @@
         <!-- Alternative Sidebar Toggle Button -->
         <li>
             <!-- If you do not want the main sidebar to open when the alternative sidebar is closed, just remove the second parameter: App.sidebar('toggle-sidebar-alt'); -->
-            <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar-alt', 'toggle-other');this.blur();">
+            <a href="javascript:void(0)" >
                 <i class="fa fa-bell"></i>
-                <span class="label label-primary label-indicator ">44</span>
+                <span class="label label-primary label-indicator ">0</span>
             </a>
         </li>
         <!-- END Alternative Sidebar Toggle Button -->
@@ -40,28 +40,15 @@
             <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                 <li class="dropdown-header text-center">Account</li>
                 <li>
-                    <a href="page_ready_timeline.html">
-                        <i class="fa fa-clock-o fa-fw pull-right"></i>
-                        <span class="badge pull-right">10</span>
-                        Updates
-                    </a>
-                    <a href="page_ready_inbox.html">
-                        <i class="fa fa-envelope-o fa-fw pull-right"></i>
-                        <span class="badge pull-right">5</span>
-                        Messages
-                    </a>
-                    <a href="page_ready_pricing_tables.html"><i class="fa fa-magnet fa-fw pull-right"></i>
-                        <span class="badge pull-right">3</span>
-                        Subscriptions
-                    </a>
-                    <a href="page_ready_faq.html"><i class="fa fa-question fa-fw pull-right"></i>
+
+                    <a href="javascript:void(0)"><i class="fa fa-question fa-fw pull-right"></i>
                         <span class="badge pull-right">11</span>
                         FAQ
                     </a>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="page_ready_user_profile.html">
+                    <a href="javascript:void(0)">
                         <i class="fa fa-user fa-fw pull-right"></i>
                         Profile
                     </a>
@@ -73,8 +60,16 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a href="page_ready_lock_screen.html"><i class="fa fa-lock fa-fw pull-right"></i> Lock Account</a>
-                    <a href="login.html"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+                    <a href="javascript:void(0)"><i class="fa fa-lock fa-fw pull-right"></i> Lock Account</a>
+
+                    <form id="logout" action="{{ route('logout') }}" method="post">
+                        @csrf
+                    </form>
+
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); $('#logout').submit();">
+                        <i class="fa fa-ban fa-fw pull-right"></i>
+                        Logout
+                    </a>
                 </li>
                 <li class="dropdown-header text-center">Activity</li>
                 <li>

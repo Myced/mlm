@@ -11,6 +11,7 @@ use App\Classes\MomoParser;
 use App\Classes\MomoPayout;
 use Illuminate\Http\Request;
 use App\Classes\MomoProcessor;
+use App\Models\OrderCommission;
 use App\Notifications\CommissionPaid;
 
 class PaymentController extends Controller
@@ -149,8 +150,12 @@ class PaymentController extends Controller
                 $user->notify(new CommissionPaid($payout));
 
                 //grab the users commission and set them to paid.
-                foreach($user->unpaidCommissions() as $commission)
+                $commissionsArray = explode(',', $payout->commissions);
+
+                foreach($commissionsArray as $commissionId)
                 {
+                    $commission = OrderCommission::find($commissionId);
+
                     $commission->markAsPaid();
                 }
             }

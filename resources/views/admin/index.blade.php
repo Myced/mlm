@@ -188,7 +188,7 @@
                     <a href="{{ route('admin.products') }}" class="btn btn-alt btn-sm btn-default"
                     data-toggle="tooltip" title="Show All"><i class="fa fa-eye"></i></a>
                 </div>
-                <h2><strong>Top</strong> Products</h2>
+                <h2><strong>Top Viewed</strong> Products</h2>
             </div>
             <!-- END Top Products Title -->
 

@@ -51,21 +51,7 @@
     @include('admin_includes.notification')
 
     <div class="row">
-        <div class="col-sm-6 col-lg-3">
-            <!-- Widget -->
-            <a href="javascript:void(0)" class="widget widget-hover-effect1">
-                <div class="widget-simple">
-                    <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
-                        <i class="fa fa-file-text"></i>
-                    </div>
-                    <h3 class="widget-content text-right animation-pullDown">
-                        <strong>{{ $beneficiaries->count() }}</strong><br>
-                        <small class="text-bold">Total Beneficiaries</small>
-                    </h3>
-                </div>
-            </a>
-            <!-- END Widget -->
-        </div>
+
         <div class="col-sm-6 col-lg-3">
             <!-- Widget -->
             <a href="javascript:void(0)" class="widget widget-hover-effect1">
@@ -106,6 +92,22 @@
                     <h3 class="widget-content text-right animation-pullDown">
                         <strong>F {{ number_format($amountLeft) }}</strong>
                         <small class="text-bold">Amount Left</small>
+                    </h3>
+                </div>
+            </a>
+            <!-- END Widget -->
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+            <!-- Widget -->
+            <a href="javascript:void(0)" class="widget widget-hover-effect1">
+                <div class="widget-simple">
+                    <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
+                        <i class="fa fa-arrow-right"></i>
+                    </div>
+                    <h3 class="widget-content text-right animation-pullDown">
+                        <strong>F {{ number_format($forward) }}</strong><br>
+                        <small class="text-bold">Carried Forward</small>
                     </h3>
                 </div>
             </a>
@@ -167,7 +169,7 @@
                 </a>
             </div>
 
-            <h2><strong>List of Beneficiaries</strong> </h2>
+            <h2><strong>List of Beneficiaries ({{ $beneficiaries->count() }}) </strong> </h2>
         </div>
         <!-- END All Products Title -->
 
@@ -238,9 +240,12 @@
 @endsection
 
 @section('scripts')
+<script src="/adminn/js/pages/ecomProducts.js"></script>
 <script src="/adminn/jquery-toastr/jquery.toast.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        EcomProducts.init();
 
         $('.pay').click(function(){
             var payoutId = $(this).data('payout');

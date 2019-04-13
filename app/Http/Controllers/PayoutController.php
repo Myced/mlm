@@ -45,7 +45,33 @@ class PayoutController extends Controller
     public function orange()
     {
 
-        return User::find(1);
+        $beneficiaries = $this->getBeneficiaries("orange");
+
+        $amountPaid = 0;
+        $forward = 0;
+
+        foreach($beneficiaries as $payout)
+        {
+            if($payout->paid == true)
+            {
+                $amountPaid += $payout->amount;
+                continue;
+            }
+
+            if($payout->moved == true)
+            {
+                $forward += $payout->amount;
+            }
+        }
+
+        $amountLeft = $beneficiaries->sum('amount') - $amountPaid;
+
+        $months  = $this->months;
+        $years = $this->years;
+
+        return view("admin.payout_orange", compact('months', 'years',
+                                                'beneficiaries', 'amountPaid',
+                                                'amountLeft', 'forward'));
     }
 
     public function mtn()
@@ -53,12 +79,19 @@ class PayoutController extends Controller
         $beneficiaries = $this->getBeneficiaries("mtn");
 
         $amountPaid = 0;
+        $forward = 0;
 
         foreach($beneficiaries as $payout)
         {
             if($payout->paid == true)
             {
                 $amountPaid += $payout->amount;
+                continue;
+            }
+
+            if($payout->moved == true)
+            {
+                $forward += $payout->amount;
             }
         }
 
@@ -69,7 +102,7 @@ class PayoutController extends Controller
 
         return view("admin.payout_mtn", compact('months', 'years',
                                                 'beneficiaries', 'amountPaid',
-                                                'amountLeft'));
+                                                'amountLeft', 'forward'));
     }
 
     public function refresh()
@@ -179,6 +212,7 @@ class PayoutController extends Controller
 
         $beneficiaries = UserPayout::where('month', '=', $month)
                                     ->where('year', '=', $year)
+                                    ->where('network', '=', $network)
                                     ->get();
 
         if($beneficiaries->count() == 0)
@@ -194,6 +228,7 @@ class PayoutController extends Controller
 
                 $beneficiaries = UserPayout::where('month', '=', $month)
                                             ->where('year', '=', $year)
+                                            ->where('network', '=', $network)
                                             ->get();
             }
         }
