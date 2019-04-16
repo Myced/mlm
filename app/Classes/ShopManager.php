@@ -39,6 +39,7 @@ class ShopManager
         return Product::where('published', true)
                         ->where('promoted', true)
                         ->orderBy('percent_off', 'desc')
+                        ->limit($limit)
                         ->get();
     }
 

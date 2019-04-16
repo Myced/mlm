@@ -29,78 +29,7 @@
                         {{ __('navigation.menu') }}
                     </a>
                     <div class="sub-menu mega-menu mega-menu1">
-                        <div class="row">
-                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                                <h5 class="title widgettitle">Laptop & Tablet</h5>
-                                <ul>
-                                    <li><a href="#">Laptops, Desktops & Monitors</a></li>
-                                    <li><a href="#">Printers & Ink</a></li>
-                                    <li><a href="#">Computer Accessories</a></li>
-                                    <li><a href="#">Software</a></li>
-                                    <li><a href="#">Macbook</a></li>
-                                    <li><a href="#">Macbook Air</a></li>
-                                    <li><a href="#">Laptop Pro</a></li>
-                                </ul>
-                            </div>
-                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                                <h5 class="title widgettitle">TV & Audio</h5>
-                                <ul>
-                                    <li><a href="#">Mouse</a></li>
-                                    <li><a href="#">Printer and Accessories</a></li>
-                                    <li><a href="#">Network Equipment</a></li>
-                                    <li><a href="#">Computer Components</a></li>
-                                    <li><a href="#">Memory Stick</a></li>
-                                    <li><a href="#">Selfie Stick</a></li>
-                                    <li><a href="#">Binoculars</a></li>
-                                </ul>
-                            </div>
-                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                                <h5 class="title widgettitle">Smartphone</h5>
-                                <ul>
-                                    <li><a href="#">Accessories</a></li>
-                                    <li><a href="#">Phone Batteries</a></li>
-                                    <li><a href="#">Phone Charger</a></li>
-                                    <li><a href="#">Phone Screen</a></li>
-                                    <li><a href="#">Head Set</a></li>
-                                    <li><a href="#">Software</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                                <h5 class="title widgettitle">Headphone</h5>
-                                <ul>
-                                    <li><a href="#">Accessories</a></li>
-                                    <li><a href="#">Phone Batteries</a></li>
-                                    <li><a href="#">Phone Charger</a></li>
-                                    <li><a href="#">Phone Screen</a></li>
-                                    <li><a href="#">Head Set</a></li>
-                                    <li><a href="#">Software</a></li>
-                                </ul>
-                            </div>
-                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                                <h5 class="title widgettitle">Camera</h5>
-                                <ul>
-                                    <li><a href="#">Accessories</a></li>
-                                    <li><a href="#">Phone Batteries</a></li>
-                                    <li><a href="#">Phone Charger</a></li>
-                                    <li><a href="#">Phone Screen</a></li>
-                                    <li><a href="#">Head Set</a></li>
-                                    <li><a href="#">Software</a></li>
-                                </ul>
-                            </div>
-                            <div class="widget-custom-menu col-xs-12 col-sm-12 col-md-12 col-lg-3">
-                                <h5 class="title widgettitle">Printer & ink</h5>
-                                <ul>
-                                    <li><a href="#">Accessories</a></li>
-                                    <li><a href="#">Phone Batteries</a></li>
-                                    <li><a href="#">Phone Charger</a></li>
-                                    <li><a href="#">Phone Screen</a></li>
-                                    <li><a href="#">Head Set</a></li>
-                                    <li><a href="#">Software</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        @include('site_includes.mega_menu')
                     </div>
                 </li>
 

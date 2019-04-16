@@ -90,6 +90,30 @@ class CartController extends Controller
         return back();
     }
 
+    public function remove($rowId)
+    {
+        Cart::remove($rowId);
+
+        session()->flash('success', 'Item removed from cart');
+
+        return back();
+    }
+
+    public function update(Request $request)
+    {
+        $rows = $request->rowId;
+        $quantities = $request->quantity;
+
+        for($i = 0; $i < count($rows); $i++)
+        {
+            $item = Cart::update($rows[$i], $quantities[$i]);
+        }
+
+        session()->flash('success', 'Cart Updated');
+
+        return back();
+    }
+
     public function destroy()
     {
         Cart::destroy();

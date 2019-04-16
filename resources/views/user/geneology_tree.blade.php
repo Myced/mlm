@@ -59,7 +59,7 @@
 
 
 @section('scripts')
-<script src="/userfiles/vendor/getOrgChart/getorgchart.js"></script>
+<script src="/userfiles/vendor/getOrgChart/getorgcharmax.js"></script>
 
 <script type="text/javascript">
     getOrgChart.themes.myCustomTheme =

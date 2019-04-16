@@ -16,7 +16,7 @@
                         <div class="slide-content">
                             <h5 class="subtitle">up to <span class="text-main-color">60% off</span> </h5>
                             <h3 class="title">Smart Watchs</h3>
-                            <h5 class="smalltitle">Only: <span> $226.00</span></h5>
+                            <h5 class="smalltitle">Only: <span> FCFA 226,000</span></h5>
                             <a href="#" class="button">Shop Now</a>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                         <div class="slide-content">
                             <h3 class="title"><span>Sales</span> & Sevice of Laptop</h3>
                             <h4 class="subtitle">up to <span class="text-main-color"> 50% off</span></h4>
-                            <h5 class="smalltitle">Only: <span> $268.00</span></h5>
+                            <h5 class="smalltitle">Only: <span>FCFA 268,000</span></h5>
                             <a href="#" class="button">Shop Now</a>
                         </div>
                     </div>
@@ -292,7 +292,7 @@
                                 <span class="day">23</span>
                                 <span class="month">Dec</span>
                             </div>
-                            <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                            <a href="blogpost.html" class="post-title">I AM A GOOD DEVELOPER FROM CAMEROON</a>
                         </div>
                         <div class="main-info-post">
                             <ul class="meta-post">
@@ -314,7 +314,7 @@
                                 <span class="day">13</span>
                                 <span class="month">May</span>
                             </div>
-                            <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                            <a href="blogpost.html" class="post-title">I AM A GOOD DEVELOPER FROM CAMEROON</a>
                         </div>
                         <div class="main-info-post">
                             <ul class="meta-post">
@@ -336,7 +336,7 @@
                                 <span class="day">23</span>
                                 <span class="month">Dec</span>
                             </div>
-                            <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                            <a href="blogpost.html" class="post-title">I AM A GOOD DEVELOPER FROM CAMEROON</a>
                         </div>
                         <div class="main-info-post">
                             <ul class="meta-post">

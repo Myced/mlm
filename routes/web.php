@@ -180,6 +180,8 @@ Route::get('/locale/fr', 'LocaleController@fr')->name('locale.fr');
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::post('/cart/add', 'CartController@add')->name('cart.add');
 Route::get('/cart/destroy', 'CartController@destroy')->name('cart.destroy');
+Route::get('/cart/remove/{id}', 'CartController@remove')->name('cart.remove');
+Route::post('/cart/update', 'CartController@update')->name('cart.update');
 Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 Route::post('/checkout/login', 'CheckoutController@login')->name('checkout.login');
 
@@ -201,7 +203,7 @@ Route::get('/products/search', 'ShoppingController@searchProducts')->name('produ
 Route::get('/product/{slug}', 'ShoppingController@view')->name('product.detail');
 Route::get('/product/{slug}/cart', 'CartController@fastAdd')->name('cart.fast');
 Route::get('/category/{category}', 'ShoppingController@productsCategory')->name('products.category');
-Route::get('/brand/{brand}', 'ShoppingController@productBrand')->name('products.brand');
+Route::get('/brand/{brand}', 'ShoppingController@productsBrand')->name('products.brand');
 
 Route::group(['prefix' => 'error'], function(){
     Route::get('/', 'ErrorsController@index')->name('error.index');

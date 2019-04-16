@@ -13,6 +13,7 @@ use App\Classes\CookieManager;
 
 class ShoppingController extends Controller
 {
+    private $perPage = 18;
     public function index()
     {
         //validate user cookie
@@ -21,13 +22,10 @@ class ShoppingController extends Controller
         //check that the per page has been changed
         if(!is_null(request()->per_page))
         {
-            $perPage = request()->per_page;
-        }
-        else {
-            $perPage = 18;
+            $this->perPage = request()->per_page;
         }
         // composer require hardevine/shoppingcart
-        $products = $this->getProducts($perPage);
+        $products = $this->getProducts($this->perPage);
         $topProducts = ShopManager::topOrdered()->pluck('product_id');
 
         return view('site.products', compact('products', 'topProducts'));
@@ -44,21 +42,30 @@ class ShoppingController extends Controller
     {
         $category = Category::where('slug', '=', $categorySlug)->first();
 
-        $products = Product::where('category_id', '=', $category->id)->get();
+        $products = Product::where('category_id', '=', $category->id)
+                            ->where('published', '=', true)
+                            ->paginate($this->perPage);
+        $topProducts = ShopManager::topOrdered()->pluck('product_id');
+        $cat = $category;
 
-        return view('site.product_categories', compact('products', 'category'));
+        return view('site.product_categories', compact('products', 'category', 'topProducts', 'cat'));
     }
 
     public function productsBrand($brandSlug)
     {
         $brand = Brand::where('slug', '=', $brandSlug)->first();
 
-        $products = Product::where('brand_id', '=', $brandSlug)->get();
+        $products = Product::where('brand_id', '=', $brandSlug)
+                            ->where('published', '=', true)
+                            ->paginate();
 
-        return view('site.product_brands', compact('products', 'brand'));
+        $topProducts = ShopManager::topOrdered()->pluck('product_id');
+        $b = $brand;
+
+        return view('site.product_brands', compact('products', 'b', 'topProducts'));
     }
 
-    public function getProducts($perPage = 15)
+    public function getProducts($perPage = 18)
     {
         $products = Product::where('published', '=', true)
                             ->paginate($perPage);
@@ -93,6 +100,37 @@ class ShoppingController extends Controller
         $cookie = $this->getCookie();
 
         return view('site.checkout', compact('cookie'));
+    }
+
+    public function searchProducts()
+    {
+        $keyword = request()->keyword;
+        $category = request()->category;
+
+        if(empty($keyword))
+        {
+            session()->flash('error', 'Search keyword cannot be empty');
+            return back();
+        }
+
+        $keyword = '%' . $keyword . '%';
+
+        //search for the product
+        $search = Product::where('name', 'LIKE', $keyword);  //the search query builder
+        $search->where('published', '=', true);
+
+        if(empty($category) || is_null($category) || $category == -1)
+        {
+            $products = $search->get();
+        }
+        else {
+            $search->where('category_id', '=', $category);
+            $products = $search->get();
+        }
+
+        $bestSellers = ShopManager::topOrdered(10)->pluck('product_id');
+
+        return view('site.products_search', compact('products', 'bestSellers'));
     }
 
 }

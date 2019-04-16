@@ -19,7 +19,7 @@
                         </div>
                         <div class="post-info">
                             <div class="head">
-                                <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                                <a href="blogpost.html" class="post-title">I AM THE A GOOD DEVELOPER FROM CAMEROON</a>
                                 <ul class="meta-post">
                                     <li class="author">Post by: Admin</li>
                                     <li class="time-post"><a href="#"><span class="day">23</span> Dec 2018</a></li>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="post-info">
                             <div class="head">
-                                <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                                <a href="blogpost.html" class="post-title">I AM THE A GOOD DEVELOPER FROM CAMEROON</a>
                                 <ul class="meta-post">
                                     <li class="author">Post by: Admin</li>
                                     <li class="time-post"><a href="#"><span class="day">23</span> Dec 2018</a></li>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="post-info">
                             <div class="head">
-                                <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                                <a href="blogpost.html" class="post-title">I AM THE A GOOD DEVELOPER FROM CAMEROON</a>
                                 <ul class="meta-post">
                                     <li class="author">Post by: Admin</li>
                                     <li class="time-post"><a href="#"><span class="day">23</span> Dec 2018</a></li>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="post-info">
                             <div class="head">
-                                <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                                <a href="blogpost.html" class="post-title">I AM THE A GOOD DEVELOPER FROM CAMEROON</a>
                                 <ul class="meta-post">
                                     <li class="author">Post by: Admin</li>
                                     <li class="time-post"><a href="#"><span class="day">23</span> Dec 2018</a></li>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="post-info">
                             <div class="head">
-                                <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                                <a href="blogpost.html" class="post-title">I AM THE A GOOD DEVELOPER FROM CAMEROON</a>
                                 <ul class="meta-post">
                                     <li class="author">Post by: Admin</li>
                                     <li class="time-post"><a href="#"><span class="day">23</span> Dec 2018</a></li>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="post-info">
                             <div class="head">
-                                <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                                <a href="blogpost.html" class="post-title">I AM THE A GOOD DEVELOPER FROM CAMEROON</a>
                                 <ul class="meta-post">
                                     <li class="author">Post by: Admin</li>
                                     <li class="time-post"><a href="#"><span class="day">23</span> Dec 2018</a></li>
@@ -167,7 +167,7 @@
                             </div>
                             <div class="post-info">
                                 <div class="head">
-                                    <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                                    <a href="blogpost.html" class="post-title">I AM THE A GOOD DEVELOPER FROM CAMEROON</a>
                                 </div>
                                 <div class="main-info-post">
                                     <ul class="meta-post">
@@ -182,7 +182,7 @@
                             </div>
                             <div class="post-info">
                                 <div class="head">
-                                    <a href="blogpost.html" class="post-title">We’re the best Designers from UK</a>
+                                    <a href="blogpost.html" class="post-title">I AM THE A GOOD DEVELOPER FROM CAMEROON</a>
                                 </div>
                                 <div class="main-info-post">
                                     <ul class="meta-post">

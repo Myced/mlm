@@ -36,6 +36,27 @@
         font-weight: 600;
     }
 
+    .sw-btn-prev,
+    .sw-btn-next
+    {
+        margin: 10px;
+        border-radius: 0px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #05c664;
+        transition: 1s all;
+    }
+
+    .sw-btn-prev:hover,
+    .sw-btn-prev:focus,
+    .sw-btn-next:hover,
+    .sw-btn-next:focus
+    {
+        background-color: #006934;
+        color: #fff;
+    }
+
 
     </style>
 @endsection

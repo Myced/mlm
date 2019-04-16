@@ -52,7 +52,9 @@ class Product extends Model
 
     public function isNew()
     {
-        return rand(0,2);
+        $now = \Carbon\Carbon::now();
+        
+        return $now->diffInMonths($this->created_at) <= 4;
     }
 
     public function isOnPromotion()

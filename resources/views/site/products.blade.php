@@ -27,26 +27,13 @@
                 <div class="categories-content">
                     <h4 class="shop-title">PRODUCTS</h4>
                     <div class="top-control box-has-content">
-                        <div class="control">
-                            <div class="filter-choice">
-                                <select data-placeholder="All Categories" class="chosen-select">
-                                    <option value="1">Sort by popularity</option>
-                                    <option value="2">Price</option>
-                                    <option value="4">Name</option>
-                                </select>
-                            </div>
-                            <div class="select-item">
-                                <select data-placeholder="All Categories" class="chosen-select">
-                                    <option value="3">12 per page</option>
-                                    <option value="4">15 per page</option>
-                                    <option value="5">18 per page</option>
-                                    <option value="5">21 per page</option>
-                                </select>
-                            </div>
-                            <div class="control-button">
-                                <a href="javascript:void(0)" class="grid-button active"><span class="icon"><i class="fa fa-th-large" aria-hidden="true"></i> </span>Grid</a>
-                            </div>
-                        </div>
+                        <span class="f-16">
+                            ALL PRODUCTS
+
+                            <strong>
+                                ({{ $products->count() }} results)
+                            </strong>
+                        </span>
                     </div>
                     <div class="product-container auto-clear grid-style equal-container box-has-content">
 

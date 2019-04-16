@@ -5,7 +5,7 @@
                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12  left-content">
                     <div class="logo">
                         <a href="/">
-                            <img src="/site/images/logo.png" alt=""
+                            <img src="/site/images/gen_logo.png" alt=""
                                 width="100%" height="100%">
                         </a>
                     </div>
