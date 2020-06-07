@@ -18,7 +18,7 @@ class CreateGeneologyDepthsTable extends Migration
             $table->integer('depth')->default(5);
             $table->integer('width')->default('5');
             $table->integer('membership_levels')->default('6');
-            $table->intenger('points_level')->default('6');
+            $table->integer('points_level')->default('6');
             $table->timestamps();
         });
     }

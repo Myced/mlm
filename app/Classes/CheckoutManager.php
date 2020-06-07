@@ -16,11 +16,14 @@ use App\Events\OrderPlaced;
 use Illuminate\Http\Request;
 use App\Models\OrderContent;
 use App\Events\UserRegistered;
+use App\Classes\GenerateRefCode;
 use Illuminate\Support\Facades\Hash;
 use App\Notifications\PointsReceived;
 
 class CheckoutManager
 {
+    use GenerateRefCode;
+
     const POINT = 1000;
 
     protected $request;
@@ -210,52 +213,6 @@ class CheckoutManager
         }
 
         return $user;
-    }
-
-    private function generateRefCode()
-    {
-        $length = 8;
-
-        //generate only random digits
-        $code = '';
-
-        while(strlen($code) < $length)
-        {
-            $num = rand(0, 9);
-
-            $code .= $num;
-        }
-
-        if($this->codeExists($code))
-        {
-            //generate a new one
-            do {
-                $code = '';
-
-                while(strlen($code) < $length)
-                {
-                    $num = rand(0, 9);
-
-                    $code .= $num;
-                }
-
-            } while ($this->codeExists($code));
-        }
-        else {
-            return $code;
-        }
-    }
-
-    private function codeExists($code)
-    {
-        $user = UserData::where('ref_code', '=', $code)->first();
-
-        if($user == null)
-        {
-            return false;
-        }
-
-        return true;
     }
 
     //order methods

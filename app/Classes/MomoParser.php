@@ -78,7 +78,7 @@ class MomoParser
         }
     }
 
-    public function logResult($payout, $number, $momoEmail)
+    public function logResult($order, $number, $momoEmail)
     {
         $log = new MomoLog;
 

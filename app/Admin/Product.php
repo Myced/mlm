@@ -38,7 +38,7 @@ class Product extends Model
     public function orders()
     {
         $results = \App\Models\OrderContent::where('product_id', '=', $this->id)
-                        ->groupBy('order_id', 'id')
+                        ->groupBy('order_id', 'product_id', 'id')
                         ->orderBy('id')
                         ->get();
 
@@ -53,7 +53,7 @@ class Product extends Model
     public function isNew()
     {
         $now = \Carbon\Carbon::now();
-        
+
         return $now->diffInMonths($this->created_at) <= 4;
     }
 

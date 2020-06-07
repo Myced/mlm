@@ -5,7 +5,7 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="/site/css/all.css">
+    <link rel="stylesheet" href="/site/css/flat/green.css">
     <link rel="stylesheet" href="/site/css/smart_wizard.min.css">
     <link rel="stylesheet" href="/site/css/smart_wizard_theme_arrows.min.css">
     <link rel="stylesheet" href="/site/css/smart_wizard_theme_dots.min.css">

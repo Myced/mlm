@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegistrationRequest;
 
 class UserAccountController extends Controller
 {
@@ -48,5 +50,19 @@ class UserAccountController extends Controller
                 return back();
             }
         }
+    }
+
+    public function register(RegistrationRequest $request)
+    {
+        $request->register();
+
+        $user = $request->user;
+
+        auth()->login($user, true);
+
+        //fire a registration event
+        event(new UserRegistered($user));
+
+        return redirect()->route('user.dashboard');
     }
 }

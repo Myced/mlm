@@ -210,7 +210,8 @@
                             </a>
                         </td>
 
-                        <td class="text-center"><strong>{{ $product->orders() }}</strong> orders</td>
+                        {{-- <td class="text-center"><strong>{{ $product->orders() }}</strong> orders</td> --}}
+                        <td class="text-center"><strong>{{ __("6") }}</strong> orders</td>
                         <td class="hidden-xs text-center">
                             <div class="text-warning">
                                 <i class="fa fa-star"></i>

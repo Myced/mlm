@@ -20,10 +20,10 @@ class CreateProductsTable extends Migration
             $table->string('code')->unique();
             $table->string('name');
             $table->string('slug');
-            $table->string('price');
+            $table->integer('price');
             $table->boolean('promoted')->default(false);
             $table->string('percent_off')->nullable();
-            $table->sting('promotion_price')->nullable();
+            $table->string('promotion_price')->nullable();
             $table->string('quantity');
             $table->integer('views')->default(0);
             $table->boolean('published')->defalt(false);

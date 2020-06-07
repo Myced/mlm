@@ -325,7 +325,7 @@ $(document).ready(function(){
             if(current.value.val() == "")
             {
                 forward = false;
-                placeError(current.value, current.name);
+                placeError(current.value, current.name, '');
             }
             else {
 
@@ -416,7 +416,7 @@ $(document).ready(function(){
         if(password == "")
         {
             forward = false;
-            placeError($("#password"), "Password");
+            placeError($("#password"), "Password", '');
         }
         else {
             removeError($("#password"));
@@ -424,7 +424,7 @@ $(document).ready(function(){
             if(rpassword == "")
             {
                 forward = false;
-                placeError($("#rpassword"), "Repeat Password ");
+                placeError($("#rpassword"), "Repeat Password ", '');
             }
             else {
 
@@ -481,7 +481,7 @@ $(document).ready(function(){
         return forward;
     }
 
-    function placeError($element, name, customMessage='')
+    function placeError($element, name, customMessage)
     {
         if(customMessage == '')
         {

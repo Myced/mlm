@@ -360,6 +360,10 @@ jQuery(document).ready(function ($) {
             var value_min = parseFloat($(this).data('value-min'));
             var value_max = parseFloat($(this).data('value-max'));
             var label_reasult = $(this).data('label-reasult');
+
+            var inputMax = $("#max_price");
+            var inputMin = $("#min_price");
+
             var t = $(this);
             $('.price-filter').slider({
                 range: true,
@@ -367,8 +371,13 @@ jQuery(document).ready(function ($) {
                 max: max,
                 values: [ value_min, value_max ],
                 slide: function (event, ui) {
-                    var result = '<span class="from">' + unit + ui.values[ 0 ] + ' </span><span class="to"> ' + unit + ui.values[ 1 ] + '</span>';
+                    var result = '<span class="from">' + unit + ' ' + ui.values[ 0 ] + ' </span><span class="to"> ' + unit+ ' ' + ui.values[ 1 ] + '</span>';
                     t.closest('.price-filter').find('.amount-range-price').html(result);
+
+                    //put the values in the input box too
+                    inputMax.val(ui.values[1]);
+                    inputMin.val(ui.values[0])
+
                 }
             });
         });

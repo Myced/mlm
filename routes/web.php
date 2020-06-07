@@ -167,6 +167,9 @@ Route::group(['prefix' => 'api'], function(){
 
 Auth::routes();
 
+//custom user registration
+Route::post('/register/store', 'UserAccountController@register')->name('user.register');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/about-us', 'HomeController@about')->name('about-us');
@@ -200,6 +203,7 @@ Route::post('/checkout/register/store', 'CheckoutController@registerNewUser')->n
 Route::get('/checkout/confirmation', 'CheckoutController@confirmation')->name('checkout.confirmation');
 Route::get('/products', 'ShoppingController@index')->name('products');
 Route::get('/products/search', 'ShoppingController@searchProducts')->name('products.search');
+Route::get('/products/filter', 'ShoppingController@filter')->name('products.filter');
 Route::get('/product/{slug}', 'ShoppingController@view')->name('product.detail');
 Route::get('/product/{slug}/cart', 'CartController@fastAdd')->name('cart.fast');
 Route::get('/category/{category}', 'ShoppingController@productsCategory')->name('products.category');

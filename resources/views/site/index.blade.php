@@ -155,55 +155,57 @@
                 <h4 class="section-title">Featured Products</h4>
             </div>
             <div class="section-content">
-                <div class="item-show">
-                    <div class="owl-carousel nav-style3 has-thumbs"
-                        data-autoplay="true"
-                        data-nav="false"
-                        data-dots="false"
-                        data-loop="false"
-                        data-slidespeed="800" data-margin="0"
-                        data-responsive = '{"0":{"items":1}, "640":{"items":1}, "768":{"items":1}, "1024":{"items":1}, "1200":{"items":1}}'>
-                        <a href="{{ route('product.detail', ['slug' => $mainProduct->model()->slug ]) }}">
-                            <img src="{{ $mainProduct->model()->image }}" alt="">
-                        </a>
-                        @foreach($mainProduct->model()->images as $image)
-                        <a href="{{ route('product.detail', ['slug' => $mainProduct->model()->slug ]) }}">
-                            <img src="{{ $image->image }}" alt="">
-                        </a>
-                        @endforeach
-                    </div>
-                    <div class="product-item">
-                        <div class="product-inner">
-                            <div class="info">
-                                <div class="rating">
-                                    <ul class="list-star">
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                    <span class="count">5 Review(s)</span>
-                                </div>
-                                <a href="{{ route('product.detail', ['slug' => $mainProduct->model()->slug ]) }}"
-                                    class="product-name">
-                                    {{ $mainProduct->model()->name }}
-                                </a>
-                                <div class="price">
-                                    @if($mainProduct->model()->isOnPromotion())
-                                        <span class="del">XAF {{ number_format($mainProduct->model()->price) }}</span>
-                                        <span class="ins">
-                                            XAF {{ number_format($mainProduct->model()->getPrice()) }}
-                                            (-{{ $mainProduct->model()->percent_off }}%)
-                                        </span>
-                                    @else
-                                        <span >FCFA {{ number_format($mainProduct->model()->price) }}</span>
-                                    @endif
+                @if($mainProduct != null)
+                    <div class="item-show">
+                        <div class="owl-carousel nav-style3 has-thumbs"
+                            data-autoplay="true"
+                            data-nav="false"
+                            data-dots="false"
+                            data-loop="false"
+                            data-slidespeed="800" data-margin="0"
+                            data-responsive = '{"0":{"items":1}, "640":{"items":1}, "768":{"items":1}, "1024":{"items":1}, "1200":{"items":1}}'>
+                            <a href="{{ route('product.detail', ['slug' => $mainProduct->model()->slug ]) }}">
+                                <img src="{{ $mainProduct->model()->image }}" alt="">
+                            </a>
+                            @foreach($mainProduct->model()->images as $image)
+                            <a href="{{ route('product.detail', ['slug' => $mainProduct->model()->slug ]) }}">
+                                <img src="{{ $image->image }}" alt="">
+                            </a>
+                            @endforeach
+                        </div>
+                        <div class="product-item">
+                            <div class="product-inner">
+                                <div class="info">
+                                    <div class="rating">
+                                        <ul class="list-star">
+                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                        <span class="count">5 Review(s)</span>
+                                    </div>
+                                    <a href="{{ route('product.detail', ['slug' => $mainProduct->model()->slug ]) }}"
+                                        class="product-name">
+                                        {{ $mainProduct->model()->name }}
+                                    </a>
+                                    <div class="price">
+                                        @if($mainProduct->model()->isOnPromotion())
+                                            <span class="del">XAF {{ number_format($mainProduct->model()->price) }}</span>
+                                            <span class="ins">
+                                                XAF {{ number_format($mainProduct->model()->getPrice()) }}
+                                                (-{{ $mainProduct->model()->percent_off }}%)
+                                            </span>
+                                        @else
+                                            <span >FCFA {{ number_format($mainProduct->model()->price) }}</span>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
                 <div class="other-product-show auto-clear box-has-content equal-container">
 

@@ -88,9 +88,7 @@ $(document).ready(function(){
 
         if(forward == false)
         {
-            var message = "<strong>" +
-                    "Please selected a payment method"
-                + "</strong>";
+            var message = "Please selected a payment method";
 
             notify(message, 'error');
         }

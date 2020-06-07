@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Cookie;
 use App\UserCookie;
 use App\Admin\Brand;
@@ -14,6 +15,7 @@ use App\Classes\CookieManager;
 class ShoppingController extends Controller
 {
     private $perPage = 18;
+
     public function index()
     {
         //validate user cookie
@@ -131,6 +133,63 @@ class ShoppingController extends Controller
         $bestSellers = ShopManager::topOrdered(10)->pluck('product_id');
 
         return view('site.products_search', compact('products', 'bestSellers'));
+    }
+
+    public function filter()
+    {
+        $brands = request()->brands;
+        $categories = request()->categories;
+        $minPrice = request()->min_price;
+        $maxPrice = request()->max_price;
+
+
+        //now make sure the category and brands are actual arrays
+        if(is_null($brands))
+        {
+            $brands = [];
+        }
+
+        if(is_null($categories))
+        {
+            $categories = [];
+        }
+
+        $builder = Product::where('published', '=', true);
+        $builder->where('price', '>=', $minPrice);
+        $builder->where('price', '<=', $maxPrice);
+
+        // $rawSql = "select * from "
+        //             . "(select * from `products` where `price` >= ? "
+        //             . "and `price` <= ? and `published` = 1) as `products`";
+        //
+        // $subSelect = Product::where('price', '>=', $minPrice)
+        //                         ->where('price', '<=', $maxPrice)
+        //                         ->where('published', '=', true)
+        //                         ->toSql();
+        //
+        // $builder = Product::fromQuery($subSelect, [$minPrice, $maxPrice, true]);
+
+        //build for categories now
+        for($i = 0; $i < count($categories); $i++)
+        {
+            if($i == 0)
+                $builder->where('category_id', '=', $categories[$i]);
+
+            $builder->orWhere('category_id', '=', $categories[$i]);
+        }
+
+        for($i = 0; $i < count($brands); $i++)
+        {
+            $builder->orWhere('brand_id', '=', $brands[$i]);
+        }
+
+        // dd($builder->toSql());
+
+        $products = $builder->paginate($this->perPage);
+        $topProducts = ShopManager::topOrdered()->pluck('product_id');
+
+        return view('site.products_filtered', compact('products', 'topProducts'));
+
     }
 
 }
