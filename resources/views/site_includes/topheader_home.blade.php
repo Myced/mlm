@@ -4,7 +4,7 @@
             <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12  left-content">
                 <div class="logo">
                     <a href="/">
-                        <img src="/site/images/gen_logo.png" alt="">
+                        <img src="/site/images/hdteck_logo.jpeg" alt="">
                     </a>
                 </div>
             </div>

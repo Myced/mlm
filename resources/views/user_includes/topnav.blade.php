@@ -3,7 +3,7 @@
   <div class="navbar-header">
     <a class="navbar-brand" href="{{ route('user.dashboard') }}">
       <div class="brand-logo">
-        <img class="img-fluid" src="/userfiles/img/gen_logo.png" alt="App Logo">
+        <img class="img-fluid" src="/userfiles/img/hdteck_logo.png" alt="App Logo">
       </div>
       <div class="brand-logo-collapsed">
         <img class="img-fluid" src="/userfiles/img/GEN_Tree.png" alt="App Logo">

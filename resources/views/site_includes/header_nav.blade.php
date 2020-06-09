@@ -50,7 +50,7 @@
                     </div>
                     <div class="content">
                         <span class="text">Call us now</span>
-                        <span class="number">(+237) 6 73 90 19 39</span>
+                        <span class="number">(+237) 671 879 541</span>
                     </div>
                 </div>
             </div>
