@@ -93,7 +93,9 @@
                                 <strong>Product Category</strong>
                             </td>
                             <td>
-                                {{ $product->category->name }}
+                                @if($product->category != null)
+                                    {{ $product->category->name }}
+                                @endif
                             </td>
                         </tr>
 
@@ -193,7 +195,7 @@
                                 <strong>Total Product Orders</strong>
                             </td>
                             <td>
-                                {{ $product->orders() }}
+                                {{-- {{ $product->orders() }} --}}
                             </td>
                         </tr>
 

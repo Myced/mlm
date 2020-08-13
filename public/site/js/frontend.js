@@ -142,14 +142,14 @@ jQuery(document).ready(function ($) {
 
     function kt_innit_carousel() {
         //owl has thumbs
-        $('.owl-carousel.has-thumbs').owlCarousel({
-            loop: true,
-            items: 1,
-            thumbs: true,
-            thumbImage: true,
-            thumbContainerClass: 'owl-thumbs',
-            thumbItemClass: 'owl-thumb-item'
-        });
+        // $('.owl-carousel.has-thumbs').owlCarousel({
+        //     loop: true,
+        //     items: 1,
+        //     thumbs: true,
+        //     thumbImage: true,
+        //     thumbContainerClass: 'owl-thumbs',
+        //     thumbItemClass: 'owl-thumb-item'
+        // });
         // owl config
         $(".owl-carousel").each(function (index, el) {
             var config = $(this).data();

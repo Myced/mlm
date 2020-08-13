@@ -68,6 +68,7 @@
                                 data-responsive = '{"0":{"items":1}, "480":{"items":2,"margin":0}, "640":{"items":3,"margin":-1}, "992":{"items":4}, "1200":{"items":5}}'>
 
                                 @foreach($topOrdered as $product)
+                                
                                 <div class="product-item layout1">
                                     <div class="product-inner equal-elem">
                                         <ul class="group-flash">

@@ -127,6 +127,10 @@ class GeneologyManager
 
     private function joined($date)
     {
+        
+        if(is_null($date))
+            return "Joined: ";
+
         $date->setToStringFormat('j M, Y');
         $formatted = $date->__toString();
 

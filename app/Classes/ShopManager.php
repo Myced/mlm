@@ -14,7 +14,6 @@ class ShopManager
                             ->orderBy('orders', 'desc')
                             ->limit($limit)
                             ->get();
-
         return $products;
     }
 
